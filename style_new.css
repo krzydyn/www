@@ -1,0 +1,423 @@
+*{
+	z-index:1;
+	color:#333;
+	border:0px;margin:0px;
+	background-clip:border-box;
+	font-size:10px;
+}
+
+body{
+	bottom:0px;
+	background-color:#CCC;
+	/*IE7*/
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#555555,endColorstr=#CCCCCC,gradientType=1);
+	/*IE8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#555555,endColorstr=#CCCCCC,gradientType=1)";
+	background-image: -ms-linear-gradient(left, #555555 0%, #CCCCCC 100%);
+	/* Mozilla/Firefox */
+	background-image: -moz-linear-gradient(left, #555555 0%, #CCCCCC 100%);
+	/* Webkit/Chrome */
+	background-image: -webkit-gradient(linear, left top, right top, from(#555555), to(#CCCCCC));
+}
+h1{
+	padding:2px 5px;
+	font: italic 23pt times;
+	font-weight:bold;
+	text-align:center;
+}
+h2{
+	font-size:14pt;
+	padding:2px 5px;
+}
+hr {margin:10px; border:1px inset white;}
+/* set this to fix bullet show in FF and IE */
+ul{list-style:disc outside none;padding:0px;padding-left:18px;padding-right:6px;margin-left:8px;}
+p { text-indent: 20px;}
+a,a:visited,a:focus,a:hover {
+	text-decoration:none;color:#00c;
+	padding:0px 5px;
+}
+a:hover {background-color:#DDD;}
+td {vertical-align: top;}
+input,textarea,select {
+	font-size:9pt;
+	border:1px solid black;
+	padding:0px;
+	margin:0px;
+	background-color:#DDD;
+}
+option{font-size:8pt;}
+button,input[type="button"],input[type="submit"],input[type="reset"] {
+	padding:1px 2px;
+	cursor:pointer;
+	background-color:#AAA;
+}
+fieldset{
+	display:inline;
+	background-color:#BBB;
+	border:1px solid grey;
+}
+fieldset>legend{
+	font-weight:bold;
+	background-color:#BBB;
+	border:1px solid grey;
+	border-bottom:0px;
+	padding:1px 5px;
+}
+fieldset>table>tbody>tr>td{
+	padding:2px 5px;
+}
+code,.code {
+	display:block;
+	background-color: #eeeeee;
+	border:1px dashed black;
+	padding:1px 2px;
+	width:800px;
+	overflow-x: auto;
+	-webkit-tab-size: 4;
+	-moz-tab-size: 4;
+	-o-tab-size:   4;
+	tab-size:      4;
+}
+
+img.sp{padding:2px 5px;}
+img.logo {margin:-10px 0px;}
+img.icon{float:left;padding-right:5px;}
+.title {font-weight:bold;}
+.nowrap {white-space:nowrap;}
+.none {display:none;}
+.abs {position:absolute;left:50%;}
+.abs>div{
+	display:inline;
+	position:relative;
+	left:-50%;
+}
+.rel {display:inline;position:relative;left:100%;}
+.rel>div{position:absolute;left:-50%;}
+.relabs {position:relative;left:20px;}
+.relabs>div{position:absolute;}
+.fixed {z-index:100;position:fixed;}
+.numeric,.num {text-align:right;}
+.p80 {width:80%;}
+.p80 td {width:30%;}
+.alpha60 {
+	/* Fallback for web browsers that doesn't support RGBa */
+	background-color: rgb(0,0,0);
+	background:transparent;/* MSIE */
+	/* RGBa with 0.6 opacity */
+	background-color: rgba(0, 0, 0, 0.6);
+	/* For IE 5.5 - 7	*/
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000);
+	/* For IE 8	*/
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000)";
+}
+.hold {
+	float:left;
+	text-align:left;
+	display:block;
+	position:fixed;
+	z-index:101;
+	left:0px;top:0px;
+	width:100%;height:100%;
+}
+.b{font-weight:bold;}
+.center{
+	float:left;
+	position:relative;
+	left:50%;top:25%;
+}
+.center>div{
+	position:relative;
+	left:-50%;top:0px;
+}
+
+.sysmsg {
+	z-index:10;
+	top:10px;
+	display:block;
+	text-align:left;
+	margin:auto auto;
+}
+.sysmsg .error{ background-color: red; }
+.sysmsg .warn{ background-color: yellow; }
+.sysmsg .info{ background-color: #0b0; }
+
+.body {
+	float:none;
+	margin:10px 10px;
+	height:90%;
+}
+.content {
+	float:none;
+	margin-top:-2px;
+	background-color:#CCC;
+	padding:10px 10px;
+	border-left:1px solid black;
+	border-top:1px solid black;
+	border-bottom:1px solid black;
+}
+.content>div:first-child {
+	background-repeat:no-repeat;
+	background-position:right 25px;
+	background-attachment: scroll; 
+	min-height:400px;
+}
+div.about {
+	background-image:url('images/meprof.png');	
+}
+div.proj {
+	background-image:url('images/controlroom.png');
+}
+div.proj .multcol>tbody>tr>td {
+	width:400px;
+}
+div.proj_cern {
+	background-image:url('proj/cern/na61det.png');
+	background-attachment: fixed;
+	background-position:right 125px;
+}
+div.proj_cern>table {
+	width:700px;
+}
+div.proj_pan ol {
+	width:800px;
+}
+div.moto,div.moto_dynoiler {
+	background-image:url('images/cbr600me.png');
+}
+div.moto .multcol>tbody>tr>td {
+	width:400px;
+}
+div.links {
+	background-image:url('images/links.png');
+}
+div.contact {
+	background-image:url('images/contactgr.png');
+	padding: 0px 30px;
+}
+.sitemap ul {
+	list-style:none;
+}
+
+a.sitemap {display:none;}
+
+a.extern,a:hover.extern {
+	background: url('icony/exlink2.png') no-repeat right 3px;
+	padding: 0px 12px 0px 5px;
+}
+a:hover.extern {background-color:#DDD;}
+.post {
+	display:block;
+	width:99%; float:left;
+	font: normal 12pt times;
+	display:block;
+	vertical-align: top;
+	padding: 2px 2px;
+	border-bottom:1px dotted #555;
+	background-color:rgba(200,200,200,0.8);
+	/* IE5.5-IE7 */
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCC8C8C8,endColorstr=#CCC8C8C8);
+	/* IE8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCC8C8C8,endColorstr=#CCC8C8C8)";
+}
+a.post,a:visited.post,a:focus.post,a:hover.post {
+	display:block;
+	width:99%; float:left;
+	text-decoration:none;
+	color:#333;
+	vertical-align: top;
+	padding: 2px 2px;
+	border-bottom:1px dotted #555;
+}
+a.post:hover {
+	background:transparent;/* MSIE */
+	background-color:rgba(240,240,240,0.6);
+	/* IE5.5-IE7 */
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99FFFFFF,endColorstr=#99FFFFFF);
+	/* IE8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99FFFFFF,endColorstr=#99FFFFFF)";
+}
+div:hover.post {
+	background:transparent;/* MSIE */
+	background-color:rgba(240,240,240,0.6);
+	-background-color:rgb(255,255,0);
+	/* IE5.5-IE7 */
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99FFFFFF,endColorstr=#99FFFFFF);
+	/* IE8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99FFFFFF,endColorstr=#99FFFFFF)";
+}
+.joke { background-color:#cca; padding:2px 5px;}
+.hi { background-color:yellow; }
+
+.dlg>tbody>tr>* { padding: 2px 5px; }
+
+/* Multicolumn view */
+.multcol { padding-bottom:5px; }
+.multcol>tbody>tr>* {
+	padding: 2px 5px;
+	border-left:1px solid gray;
+}
+.multcol>tbody>tr>*:first-child { border-left:0; }
+
+.t1{border-left:1px solid gray;}
+.t1>caption{
+	padding: 1px 5px;
+	border:1px solid gray;
+	text-align:left;font-weight:bold;
+	white-space:nowrap;
+}
+.t1>tbody>tr>*{
+	padding: 1px 10px;
+	border-bottom:1px solid gray;
+	border-right:1px solid gray;
+}
+
+.db{border:1px solid gray;}
+.db>caption{
+	padding: 1px 10px;
+	text-align:left;font-weight:bold;
+	white-space:nowrap;
+}
+.db>tbody>tr.head{
+	background-color:#C8C8C8;
+}
+.db>tbody>tr.row{cursor:pointer;}
+.db>tbody>tr.row:hover{background-color:#D8D8D8;}
+.db>tbody>tr.row0{background-color:#A8A8A8;}
+.db>tbody>tr.row1{background-color:#B8B8B8;}
+.db>tbody>tr>* {
+	padding: 2px 5px;
+	border-left:1px solid #555;
+	border-bottom:1px dotted #777;
+}
+.db>tbody>tr>*:first-child { border-left:0; }
+tr.sp>td {background-color:white;padding:2px;}
+
+/* Tabs */
+ul.tabs {
+	border:0;margin:0;
+	display:block;
+	padding:2px 0px;
+	list-style: none;
+}
+ul.tabs li {
+  background-color:#AAA;
+	margin:0px 3px;
+	list-style: none;
+	display:inline;
+}
+ul.tabs a {
+	font-size:12pt;
+	display:inline;
+	color:#333;
+	font-weight:bold;
+  background-color:#AAA;
+	padding:2px 7px;
+  border:1px solid black;
+}
+ul.tabs a.sel {
+	background-color:#CCC;
+  border-bottom:1px solid #CCC;
+}
+ul.tabs a:hover {
+  background-color:#CCC;
+}
+ul.tabs a div {
+	display:none;
+	background-color:#CCC;
+}
+ul.tabs a:hover div {
+	margin:1px;
+	display:block;
+}
+
+/* Menu */
+/*Menu level 0*/
+ul.menu {
+	cursor:pointer;
+	display:block;
+	float:left; /*cover items*/
+	margin:0px;
+	padding:0px;
+	list-style: none;
+  background-color:#CCC;
+  border:1px solid black;
+}
+ul.menu li {
+	list-style: none;
+	float:left; /*items horizontal*/
+	padding:0px 3px 0px 3px;
+}
+ul.menu li:hover {
+	background-color:#0AA;	
+}
+/*Menu level 1*/
+ul.menu li ul{
+  border:1px solid black;
+	display: none;
+}
+ul.menu li:hover ul {
+	position: absolute;
+	display: block; /* diplay <ul> under the <li> */
+	background-color:#0F0;
+}
+ul.menu li ul li{
+	display:block;
+	float:none;
+}
+/*Menu level 2*/
+ul.menu li:hover ul li ul {
+	display: none;
+}
+ul.menu li ul li:hover ul {
+	display: inline; /* diplay <ul> next to the <li> */
+	background-color:#F00;
+}
+
+#fullsize {
+	padding:0;
+	border:3px solid yellow;
+	margin-top:3px;
+	margin-right:30px;
+}
+.suggest{
+	float:right;
+	position:relative;
+	top:10px;left:0px;
+	padding:0px;
+}
+.suggest>a{
+	float:right;
+	white-space:nowrap;
+	font-weight:bold;
+	color:white;
+	background:#591;
+	padding:0px 5px 3px 5px;
+}
+
+
+/*
+declare @STATUS_WAITING tinyint = 1
+
+declare @Id int = 0
+declare @EditTokenId uniqueidentifier = '21afea99-7cbe-4bfd-9d9a-9db31a7bd5b4'
+declare @ModerationStatus tinyint = @STATUS_WAITING
+declare @Lang nvarchar(2)='EN' 
+declare @AppDescription nvarchar(MAX)='ala ma kota'
+declare @AppTopic nvarchar(128)=''
+declare @AppTopicId smallint = 0
+
+exec AppEdit.AppEdit_Enqueue @Id,@EditTokenId,@ModerationStatus,@Lang,@AppDescription,@AppTopic,@AppTopicId
+*/
+/*
+Jestes 3310 osoba bioraca udzial w badaniu, co oznacza, ze po wypelnieniu ankiety Planeteo zostaniesz przekierowany do odbioru vouchera na 3 dni bezplatnego zakwaterowania dla 2 os?b.
+Voucher: 67849-3512-3
+Termin waznosci: 2013-08-13
+Ilosc nocleg?w: 3
+Ilosc os?b: 2
+Voucher zarezerwowany na: 15 min.
+
+Rezerwacja Vouchera wazna (67849-3512-3)
+Tw?j Kod promocyjny:	 DMW2M-1CD62
+
+*/

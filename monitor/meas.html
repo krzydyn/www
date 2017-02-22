@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<script src="vis/vis.min.js"></script>
+	<script src="ajax.js"></script>
+	<link href="vis/vis.min.css" rel="stylesheet" type="text/css" />
+
+<style>
+a {text-decoration: none !important; color:blue; }
+#selector {cursor: pointer; cursor: hand;}
+.inl {display:inline;}
+.hide {display:none;}
+.abs {position:absolute;z-index:100;}
+.ml10 {margin-left:10px;}
+</style>
+
+</head>
+<body>
+<table><tr>
+	<td><div class="inl" id="title"></div>
+	<td><button class="ml10" onclick="openSelector()">Change &#xbb;</button>
+	<td><div class="abs hide" id="selector">
+	<input tpye="text" cols="20" onkeyup="updateSearch(this)"><br>
+	<select onchange="changePntId(this);">
+	</select>
+	</div>
+</tr></table>
+<div id="visualization"></div>
+<div id="info"></div>
+<script type="text/javascript">
+var host='http://daq.if.pw.edu.pl';
+var title = document.getElementById('title');
+var container = document.getElementById('visualization');
+var selector = document.getElementById('selector');
+
+function openSelector() {
+	if (pntConfigList.length == 0) return ;
+
+	if (selector.style.display!='block') {
+		var input=selector.getElementsByTagName('input')[0];
+		updateSearch(input);
+		selector.style.display='block';
+		input.focus();
+	}
+	else
+		selector.style.display='none';
+}
+function closeSelector() {
+	selector.style.display='none';
+}
+function updateSearch(input) {
+	var selbox=selector.getElementsByTagName('select')[0];
+	selbox.innerHTML='';
+	var regex=new RegExp(input.value,"i");
+	pntConfigList.forEach(function(i){
+		if (i.name.search(regex)>=0 || i.descr.search(regex)>=0) {
+			var o=document.createElement('option');
+			//o.innerHTML='<option value="'+i.id+'">'+i.id+': '+i.name+' '+i.descr+'</option>';
+			o.value=i.id;
+			o.text=i.name+' '+i.descr;
+			selbox.add(o);
+		}
+	});
+}
+function changePntId(selbox) {
+	closeSelector();	
+	var id = selbox.options[selbox.selectedIndex].value;
+	selectPntId(id);
+}
+
+var measq = [];
+function processMeasQ() {
+	
+}
+
+var intervalInitial=3600*1000;
+var options = {
+	legend: {left:{position:"bottom-left"}},
+	start: vis.moment()-intervalInitial,
+	end: vis.moment(),
+	dataAxis: {
+		left: {
+			format: function(v) { return v.toPrecision(4); },
+		}
+	}
+};
+
+var selId=16;
+var yrange = { ymin:0, ymax:0 };
+var groups = new vis.DataSet();
+groups.add({ id:0, content: false, });
+var dataset = new vis.DataSet();
+var graph = new vis.Graph2d(container, dataset, groups, options);
+var ajax = new Ajax();
+var lasttm=0;
+var pntConfigList=[];
+function getPntContig_byid(id) {
+	for (var i = 0; i < pntConfigList.length;  ++i) {
+		if (pntConfigList[i].id == id) return pntConfigList[i];
+	}
+	return null;
+}
+function selectPntId(id) {
+	var cfg=getPntContig_byid(id);
+	if (cfg==null) {
+		console.log('no cfg for id='+id);
+		return ;
+	}
+	console.log('selectPntId = '+id);
+    dataset.clear();
+	selId=id;
+	title.innerText=cfg.descr;
+	groups.clear();
+	groups.add({
+		id:0, content: cfg.name,
+		options: { interpolation: false, }
+	});
+	graph.setGroups(groups);
+	var opt = {
+		dataAxis: {
+			left: {
+				title: {text:cfg.unit}
+			}
+		}
+	};
+	graph.setOptions(opt);
+	measHistory();
+}
+
+	var rangeTimeHnd=false;
+	onRangeChange = function(props) {
+		if (props.byUser==false) return ;
+		//console.log('onRangeChange: ' + JSON.stringify(props));
+		if (rangeTimeHnd!=false) clearTimeout(rangeTimeHnd);
+		rangeTimeHnd = setTimeout(measHistory,500);
+	}
+	graph.on('rangechanged', onRangeChange);
+
+	var onConfigReady = function(rc,tx) {
+		if (rc != 200) {
+			console.log('ready rc='+rc);
+			return ;
+		}
+		console.log('Config ready rc='+rc);
+		try{
+			pntConfigList = JSON.parse(tx);
+		}catch(e) { console.log('cant parse: '+tx); }
+		selectPntId(16);
+	}
+	var onHistReady = function(rc,tx) {
+		if (rc != 200) {
+			console.log('ready rc='+rc);
+			return ;
+		}
+		console.log('Hist ready rc='+rc);
+    	dataset.clear();
+		var a = JSON.parse(tx);
+		var ymax=false,ymin=false;
+		for (var i in a) {
+			var v=a[i].value;
+			if (ymax==false || ymax<v) ymax=v;
+			if (ymin==false || ymin>v) ymin=v;
+    		dataset.add({
+      			x: a[i].tm*1000,
+      			y: v,
+				group: 0
+    		});
+		}
+
+		//setrange Y
+		var dy=(ymax-ymin)*1.2;
+		yrange.ymin=ymin-dy;
+		yrange.ymax=ymax+dy;
+		var opt = {
+			dataAxis: {
+				left: {
+					range: {min:yrange.ymin,max:yrange.ymax},
+				}
+			}
+		};
+		graph.setOptions(opt);
+	}
+	var onLastReady = function(rc,tx) {
+		if (rc != 200) {
+			console.log('ready rc='+rc);
+			return ;
+		}
+		console.log('Last ready rc='+rc);
+		var ctm=vis.moment();
+		var range = graph.getWindow();
+		range.start=range.start.getTime();
+		range.end=range.end.getTime();
+
+		if (range.end<ctm-300*1000) {
+			console.log("past window");
+			return ; // winndow is scrolled to the past
+		}
+
+		try{
+			obj = JSON.parse(tx);
+		}catch(e) { console.log('cant parse: '+tx); }
+		var tm=obj.tm*1000;
+		var interval = range.end-range.start;
+
+		var rangeChanged=false;
+		if (range.start>tm) {
+			range.start=tm;
+			range.end=range.start+interval;
+			rangeChange=true;
+		}
+		if (range.end<ctm) {
+			range.end=ctm+60*1000;
+			range.start=range.end-interval;
+			rangeChanged=true;
+		}
+		if (rangeChanged)
+			graph.setWindow(range.start, range.end, {animation: false});
+
+		if (lasttm < tm) {
+			lasttm=tm;
+    		dataset.add({
+      			x: tm,
+      			y: obj.value,
+				group: 0
+    		});
+			rangeChanged=false;
+			if (obj.value < yrange.ymin) {
+				yrange.ymin=obj.value;
+				rangeChanged=true;
+			}
+			else if (obj.value > yrange.ymax) {
+				yrange.ymax=obj.value;
+				rangeChanged=true;
+			}
+			if (rangeChanged) {
+			var opt = {
+				dataAxis: {
+					left: {
+						range: {min:yrange.ymin,max:yrange.ymax},
+					}
+				}
+			};
+			graph.setOptions(opt);
+			}
+		}
+
+		interval = 300*1000;
+		//remove old ids
+		var oldIds = dataset.getIds({
+			filter: function (item) {
+        		return item.x < range.start-interval;
+      		}
+    	});
+    	dataset.remove(oldIds);
+	};
+
+	function measConfig() {
+		ajax.async('get',host+'/monitor/meas.php?c=cfg',onConfigReady);
+	}
+	function measHistory() {
+		rangeTimeHnd=false;
+		var range = graph.getWindow();
+		var tm1=range.start.getTime()/1000 | 0;
+		var tm2=range.end.getTime()/1000 | 0;
+		tm1-=300; tm2+=300;
+		ajax.async('get',host+'/monitor/meas.php?c=hist&id='+selId+'&fr='+tm1+'&to='+tm2,onHistReady);
+	}
+	function measUpdate() {
+		ajax.async('get',host+'/monitor/meas.php?c=last&id='+selId,onLastReady);
+		setTimeout(measUpdate,60*1000);
+	}
+	measConfig();
+	setTimeout(measUpdate,5*1000);
+</script>
+</body>
+</html>
