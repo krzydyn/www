@@ -101,39 +101,6 @@ class RecipeApp extends Application
 			$r=$db->tabinsert("user",array("name"=>"krzydyn","role"=>"1","passwd"=>md5("test")));
 			if ($r===false) $this->addval("error","DB:".$db->errmsg());
 		}
-		if ($db->tabcount("recipe")==0)
-		{
-			$r=$db->tabinsert("recipe",array("userid"=>"2","name"=>"Ogórki w zalewie musztardowej","author"=>"Piotro",
-				"category"=>"przetwory","type"=>"polska","icon"=>"image/ogorkimuszt.gif",
-				"time"=>"90","calority"=>"","difficulty"=>"2","contents"=>"<p><strong>Sk³adniki:</strong><br />
-1 litr wody, 1 szklanka octu 10%, 1.2 szklanki cukru, 3 ³y¿ki soli, 5 ³y¿ek musztardy np.sarepskiej, 3kg ogórków<br />
-po pó³ ³y¿eczki: pieprz, ziele angielskie, go¼dziki, imbir, ga³ka muszkato³owa, kolêdra, gorczyca, kurkuma<br />
-2 z±bki mia¿d¿onego czosnku.<br />
-<em>Przypraw nie nale¿y rozdrabniaæ.</em></p>
-<p><strong>Przyrz±dzanie:</strong><br />
-Ogórki obraæ ze skórki i rozkroiæ na czworo oraz usun±æ du¿e pestki. Pouk³adaæ w s³oikach (na bardzo lekkim ucisku).<br />
-Pozosta³e sk³adniki rozmieszaæ i zagotowaæ przez 5 min.<br />
-Zalaæ s³oiki z ogórkami przygotowan± (gor±c±) zalewê.<br />
-Odstawiæ do nastêpnego dnia.<br />
-Nastêpnego dnia s³oiki pasteryzowaæ przez 10min.</p>
-<p>Smakowaæ mo¿na po wystygniêciu - nastêpnego dnia.</p>
-<p><strong>Smacznego</strong></p>"));
-			if ($r===false) $this->addval("error","DB:".$db->errmsg());
-			$r=$db->tabinsert("recipe",array("userid"=>"2","name"=>"Ogórki w zalewie pikantnej","author"=>"Benia",
-				"category"=>"przetwory","type"=>"polska","icon"=>"image/ogorkipikant.gif",
-				"time"=>"90","calority"=>"","difficulty"=>"2","contents"=>"<p><strong>Sk³adniki:</strong><br />
-3 szklanki cukru, 2 szklanki octu, 6 ³y¿ek oleju, 5 ³y¿ek soli, 3.5kg ogórków<br />
-2 glówki drobno krojonego czosnku, 10gr chili w proszku (ok. 2 pe³ne ³y¿eczki)</p>
-<p><strong>Przyrz±dzanie:</strong><br />
-Ogórki umyæ pokroiæ i posoliæ. Odstawiæ na 6 godz. (mo¿e byæ wiêcej).<br/>
-Cukier, ocet i olej zagotowaæ i pozostawiæ a¿ przestygnie.
-Odlaæ wodê z ogórków. Czosnek i chili dodaæ do ogórków i wymieszaæ.<br/>
-Wystudzon± zalewê wlaæ do ogórków i pozostawiæ na 12 godzin.<br/>
-Ogórki wy³owiæ, w³o¿yæ w s³oiki. Zalaæ zalew± i zakrêciæ.</p>
-<p><strong>¯yczê smacznego</strong></p>"));
-			if ($r===false) $this->addval("error","DB:".$db->errmsg());
-		}
-		//db_delete("recipe","where id=0");
 	}
 	function getSession() {return $this->ses;}
 	function getUser() {return $this->user;}
@@ -278,7 +245,7 @@ Ogórki wy³owiæ, w³o¿yæ w s³oiki. Zalaæ zalew± i zakrêciæ.</p>
 	}
 	function showUserAction()
 	{
-		if (!$this->getUser()) return $this->recipesAction();
+		if (!$this->user) return $this->recipesAction();
 		$this->setval("req.view","useredit");
 		$id=$this->getval("req.id");
 		if ($this->getUser()->role>1 && $this->getUser()->id!=$id)
@@ -298,14 +265,14 @@ Ogórki wy³owiæ, w³o¿yæ w s³oiki. Zalaæ zalew± i zakrêciæ.</p>
 	}
 	function addUserAction()
 	{
-		if (!$this->getUser()) return $this->recipesAction();
+		if (!$this->user) return $this->recipesAction();
 		$this->setval("req.view","useredit");
 		$obj=&new User();
 		$obj->role=$this->getUser()->role;
 		$this->setval("rec",$obj);
 	}
 	function saveUserAction() {
-		if (!$this->user) return $this->defaultAction();
+		if (!$this->user) return $this->recipesAction();
 		$rec=$this->getval("req.rec");
 		//verify if current user->role can modify this record
 		if ($this->user->role>1){
