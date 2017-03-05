@@ -8,6 +8,7 @@ try{
 }
 catch(Exception $e)
 {
+	echo "Exception: ".$e->getMessage().";";
 	//$req->setval("error",$e->getMessage());
 }
 $t=&new TemplateEngine();

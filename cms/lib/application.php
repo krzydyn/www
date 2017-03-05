@@ -7,6 +7,9 @@ class Application{
 		$charset="utf-8";
 		$this->setval("charset",$charset);
 		$this->addval("hdr","Content-Type: text/html;charset=\"".$charset."\"");
+		$this->addval("hdr","Cache-Control: no-cache, no-store, must-revalidate"); //HTTP 1.1
+		$this->addval("hdr","Pragma: no-cache"); //IE6 and HTTP 1.0
+		$this->addval("hdr","Expires: 0"); //proxies
 	}
 	function initialize() { return true; }
 

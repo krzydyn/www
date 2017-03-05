@@ -2,10 +2,10 @@
 $text["tab"]=array(
 	"user"=>array(
 		"name"=>"Login",
-		"fullname"=>"Pe³na nazwa",
+		"fullname"=>"PeÅ‚na nazwa",
 		"created"=>"Utworzono",
 		"updated"=>"Zaktualizowano",
-		"lang"=>"J±zyk",
+		"lang"=>"JÄ™zyk",
 		"pict"=>"Obrazek",
 		"_roles"=>"Rola"
 	),
@@ -17,7 +17,7 @@ $text["tab"]=array(
 		"type"=>"Rodzaj kuchni",
 		"time"=>"Czas przygotowania",
 		"calority"=>"Kalorie",
-		"difficulty"=>"Trudno¶æ",
+		"difficulty"=>"TrudnoÅ›Ä‡",
 		"contents"=>"Przepis"
 	));
 ?>

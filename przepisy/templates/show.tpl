@@ -24,5 +24,5 @@
 
 </td></tr>
 <tr><td colspan=2 class="right">
-<a href="?act=recipes">Powrót</a>
+<a href="?act=recipes">PowrÃ³t</a>
 </td></tr></table>

@@ -12,7 +12,7 @@ IDC6<br>
 <li>http://www.bassline.com.pl/atmel-avr-xmega-id34.html
 <li>java for AVR: http://www.societyofrobots.com/robotforum/index.php?topic=15605.0
 <li><pre>Semiconductors Bank Ltd. Sp.z o.o.
-£”D¨, ul. RadwaÒska 55/2
+≈Å√≥d≈∫, ul. Radwa≈Ñska 55/2
 tel. 42-636 94 87, e-handel@semiconductors.com.pl</pre>
 <li>http://dangerousprototypes.com
 <li>http://www.state-machine.com/qp/
@@ -28,7 +28,7 @@ http://www.youtube.com/watch?v=GDnss0HZ9ho (play audio from rs232)
 http://elm-chan.org/works/sd8p/report.html (slabe)<br>
 http://playground.arduino.cc/Code/PCMAudio (arduino)<br>
 http://aquaticus.info/pwm-music<br>
-http://www.elektroda.pl/rtvforum/topic2363791-90.html (wyjscie na g≥osnik)<br>
+http://www.elektroda.pl/rtvforum/topic2363791-90.html (wyjscie na g≈Çosnik)<br>
 http://www.zen22142.zen.co.uk/Prac/winscope.htm<br>
 <li>Programtor<br>
 http://mdiy.pl/uprog-maly-szybki-przenosny-programator-avr-z-sd/?lang=en#more-2197
@@ -42,11 +42,11 @@ int rand(void)
 	lfsr = (lfsr >> 1) ^ (-(lfsr & 1) & 0xd0000001); 
 		return( lfsr );
 }
-<%code_end("c")%>
+<%code_stop("c")%>
 
 
 http://www.zegaruz.republika.pl  !!!!
-Projekt i wdroøenie protoko≥u komunikacyjnego pomiÍdzy Pulserem IKF a programem komputerowym uøytkownika/operatora na potrzeby eksperymentu NA61 wraz z programem demonstracyjnym
+Projekt i wdro≈ºenie protoko≈Çu komunikacyjnego pomiƒôdzy Pulserem IKF a programem komputerowym u≈ºytkownika/operatora na potrzeby eksperymentu NA61 wraz z programem demonstracyjnym
 
 from:2013-01-31 17:11
 to:  2013-02-02 06:50    worked 6:50 + 24 + 6:49 = 37:40

@@ -3,9 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
 <head>
   <title><%val("cfg.sitetitle")%></title>
+  <meta charset="UTF-8">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   <meta name="description" content="Przepisy kulinarne na przepyszne potrawy"/>
   <meta name="keywords" content="przepisy, kulinarne, smaczne potrawy, pyszne jedzenie, gotowanie, recipe"/>
-  <meta http-equiv="content-type" content="text/html; charset=iso-8859-2"/>
   <link rel="shortcat icon" href="favicon.ico" type="image/x-icon"/>
   <link rel="stylesheet" href="style.css" type="text/css"/>  
   <script type="text/javascript" src="<%val("cfg.cmsurl")%>js/prototype.js"></script>

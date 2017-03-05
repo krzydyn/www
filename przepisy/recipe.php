@@ -161,7 +161,7 @@ class RecipeApp extends Application
 	}
 	function showRecipeAction()
 	{
-		if ($this->getUser()) $this->setval("req.view","edit");
+		if ($this->user) $this->setval("req.view","edit");
 		else $this->setval("req.view","show");
 		$r=$this->dao->find(new Recipe(),null,new Criteria(array("id"=>$this->getval("req.id"))));
 		if ($r===false){
@@ -391,9 +391,16 @@ class RecipeApp extends Application
 		$this->defaultAction();
 	}
 	function authenticate(){
-		if (is_object($this->ses)) return true;
+		if (is_object($this->ses)) {
+			logstr("ses is obj");
+			return true;
+		}
 		$hash=$this->getval("req.hash");
-		if (empty($hash)) return false;
+		if (empty($hash)) {
+			logstr("hash is empty");
+			return false;
+		}
+		logstr("hash is $hash");
 
 		$this->setval("req.hash");
 		$crit=new Criteria("hash",$hash);

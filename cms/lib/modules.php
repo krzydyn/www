@@ -49,6 +49,7 @@ function logstr($str){
 		}
 		fclose($f);
 	}
+	else echo "<pre>can't open $fn</pre>";
 }
 function searchdir(&$a,$fn){
 	for ($i=0; $i<sizeof($a); $i++){
@@ -153,6 +154,8 @@ if(!function_exists('parse_ini_string')){
     return $ini;
   }
 }
+
+if(!function_exists('mime_content_type')){
 function mime_content_type($f){
 	$pinfo=pathinfo($f);
 
@@ -177,6 +180,7 @@ function mime_content_type($f){
 	if ($ext=="gif"||$ext=="png"||$ext=="jpg") return "image/".$ext;
 	//return "application/force-download";
 	return "application/download";
+}
 }
 $config["cmslib"]=strtr(dirname(__FILE__),"\\","/")."/";
 

@@ -4,7 +4,7 @@
   <tr><td><input name="user" type="text" value="<%val("req.user")%>"></td></tr>
   <tr><td><input name="passwd" type="password"></td></tr>
   <tr><td align="right">
-  <input class="button" type="button" value="Powrót" onclick="back()">
+  <input class="button" type="button" value="PowrÃ³t" onclick="back()">
   <input class="button" type="submit" value="Login" onclick="submitForm('act=login')">
   </td></tr>
 </table>

@@ -1,6 +1,6 @@
 <table class="db user">
 <caption>
-U¿ytkownicy
+UÅ¼ytkownicy
 <%if(val("user")){%>
 <a href="?act=addUser">dodaj usera</a>
 <%}%>
