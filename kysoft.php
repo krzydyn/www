@@ -292,13 +292,12 @@ class KySoft extends Application{
 		if (empty($from)) {$this->addval("error","FROM must not be empty");$err=true;}
 		if (empty($msg)) {$this->addval("error","TEXT must not be empty");$err=true;}
 		if ($err===false) {
-			//sendmail($from,$subj,$recipients,$body)
 			$r=sendmail("KySoft Kontakt",$from,"krzydyn@gmail.com",$msg);
 			if (!empty($r)) {$this->addval("error",$r);$err=true;}
 		}
 		if ($err) $this->addval("error","message not sent");
 		else {
-			$this->addval("info","e-mail zosta³ wys³any poprawnie!");
+			$this->addval("info","e-mail został wysłany poprawnie!");
 			$this->setval("req.msg");
 		}
 	}
@@ -840,7 +839,6 @@ class KySoft extends Application{
 			$c->contents=$rec["contents"];
 			$r=$this->dao->save($c);
 			if ($r===false) {$this->addval("error","DB:".$this->dao->errmsg());$err=true;}
-			//sendmail($from,$subj,$recipients,$body)
 			sendmail("Comment ".$rec["email"],$rec["name"]."/".$c->context,"krzydyn@gmail.com",$c->contents);
 		}
 		if ($err) {
@@ -1005,14 +1003,13 @@ class KySoft extends Application{
 			$tab=$this->getval("req.tab");
 			$qs=$this->getval("srv.QUERY_STRING");
 			if (strstr($qs,"tab=")===false) $qs="tab=".$tab."&".$qs;
-			//sendmail($from,$subj,$recipients,$body)
 			$r=sendmail("KySoft ".$rec["type"],$rec["subj"],"krzydyn@gmail.com","Path:[".$qs."]\n".$rec["msg"]);
 			if (!empty($r)) {$this->addval("error",$r);$err=true;}
 		}
 		if ($err) $this->addval("error","message not sent");
 		else {
 			$this->setval("req.suggest");
-			$this->addval("info","Sugestia zosta³a wys³ana!");
+			$this->addval("info","Sugestia została wysłana!");
 		}
 		$this->defaultAction();
 	}
