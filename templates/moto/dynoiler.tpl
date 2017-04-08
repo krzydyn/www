@@ -15,7 +15,9 @@ Standard opening time of valve is adjusted to the density of the Hipol oil, so t
 Adjustment of this parameter is also possible, which might be useful especially when used with oil of another density.<br/>
 </div>
 <br/>
+<!--
 <b>The promotion pack price</b> 70 &euro; (90 USD) +shipment [<a href="mailto:biuro@kysoft.pl?subject=Order%20oiler" target="_blank">order</a>]<br/>
+-->
 <br/>
 <table><tr><th>In the pack</th><th></th><th>Technical data</th></tr>
 <tr><td>
@@ -88,7 +90,9 @@ Olej samoistnie jest rozprowadzany po zębach i rolkach w trakcie pracy
 układu napędowego.
 <br/></div>
 <br>
+<!--
 <b>Promocyjna cena zestawu</b> 270 PLN +przesyłka [<a href="mailto:biuro@kysoft.pl?subject=Zamawiam%20olejarkę" target="_blank">zamów</a>]<br/>
+-->
 <br>
 <table><tr><th>Elementy zestawu</th><th></th><th>Dane techniczne</th></tr>
 <tr><td>

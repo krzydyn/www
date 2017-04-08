@@ -276,13 +276,13 @@
 //location maps
 //https://www.cia.gov/library/publications/the-world-factbook/graphics/maps/large/af-map.gif
 %>
-<% $flags=readfiles("icons/flags-lg",".*"); echo sizeof($flags)." flags, click name to enlarge"%>
+<% $flags=readfiles("icony/flags-lg",".*"); echo sizeof($flags)." flags, click name to enlarge"%>
 <table cellspacing="2"><tr>
 <%for ($rowcnt=0,$i=0; $i<sizeof($flags); ++$i){%>
 <%if ($i%10==0) {++$rowcnt;echo "</tr><tr><td>".$rowcnt."</td>";}%>
 <td>
-  <img src="icons/flags-lg/<%$flags[$i]%>" height="40px"><br>
-  <a href="getfile.php?t=inline&amp;f=icons/flags-lg/<%$flags[$i]%>"><%$country[substr($flags[$i],0,2)]%>
+  <img src="icony/flags-lg/<%$flags[$i]%>" height="40px"><br>
+  <a href="getfile.php?t=inline&amp;f=icony/flags-lg/<%$flags[$i]%>"><%$country[substr($flags[$i],0,2)]%>
 </a></td>
 <%}%>
 </tr></table>
