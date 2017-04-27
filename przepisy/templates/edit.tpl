@@ -29,7 +29,7 @@ CKEDITOR.replace('rec_contents',
 	filebrowserFlashUploadUrl : '<%val("cfg.fck")%>filemanager/connectors/php/upload.php?Type=Flash'
 	?>
 <%}else{%>
-<input type="text" name="rec[<%$f%>]" value="<%$v%>">
+<input class="recipe <%$f%>" type="text" name="rec[<%$f%>]" value="<%$v%>">
 <%}}else{%>
 <%$v%>
 <%}}%>

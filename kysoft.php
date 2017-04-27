@@ -5,14 +5,6 @@ require_once($config["cmslib"]."application.php");
 require_once($config["cmslib"]."model.php");
 require_once("email.php");
 
-/*
-pentegy.com, Grzegorz Nowakowski, czw. godz 10:00, bud.
-Cz³onkowie reprezentacji:
-SYLWIA JUSTYNA TCHÓRZEWSKA, uprawniony do sk³adania owiadczeñ samodzielnie
-S£AWOMIR ZBIGNIEW GROCHULSKI, prezes zarz¹du
-ROBERT GRZEGORZ JANKOWSKI, wiceprezes zarz¹du
-TOMASZ ANDRZEJ D¥BROWSKI, wiceprezes zarz¹du
-*/
 define('ITEMS_ON_PAGE',10);
 define('PAGES_LINKS',20);
 define('DEFAULT_TAB',"proj");
