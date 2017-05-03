@@ -1,6 +1,9 @@
 <?
 class Application{
 	var $req=null;
+	function __construct() {
+		self::Application();
+	}
 	function Application(){
 		$this->req=Request::getInstance();
 		//$charset="iso-8859-2";

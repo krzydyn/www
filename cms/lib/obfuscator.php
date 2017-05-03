@@ -36,7 +36,7 @@ $o=null;
 if (array_key_exists("cont",$_REQUEST))
 {
 	$cont=$_REQUEST["cont"];
-	$o=&new Obfuscator();
+	$o=new Obfuscator();
 	//$o->setParser(new ParserPHP());
 	$o->setParser(new ParserHTML());
 	//$o->addfile("parser.php");

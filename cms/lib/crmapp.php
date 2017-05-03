@@ -222,7 +222,7 @@ class CRMApplication extends Application
 					$this->addval("warn",get_class($ri)." has no field ".$f);
 					continue;
 				}
-				$o=&new $cl();
+				$o=new $cl();
 				$id=$ri->{$f};
 				$r=$this->dao->find($o,"concat(".implode(",':',",$o->getPK()).")='".$id."'");
 				if ($r!==false) $ri->{$f}=&$o;
@@ -260,7 +260,7 @@ class CRMApplication extends Application
 			return false;
 		}
 		$sesid=explode(":",$sesid);
-		$ses=&new Session();
+		$ses=new Session();
 		$ses->uid=$sesid[0];
 		$ses->hash=$sesid[1];
 		$this->setval("req.sesid");
@@ -281,7 +281,7 @@ class CRMApplication extends Application
 			$this->addval("error",$this->getval("txt.err.seskey","/wrong session key"));
 			return false;
 		}
-		$user=&new User(); $user->id=$ses->uid;
+		$user=new User(); $user->id=$ses->uid;
 		$r=$this->dao->find($user,$user->getPK());
 		if ($r===false) { $this->addval("error","DB:".$this->dao->errmsg()); return false; }
 		if (sizeof($r)!=1)
@@ -305,7 +305,7 @@ class CRMApplication extends Application
 	}
 	function loginAction()
 	{
-		$user=&new User();
+		$user=new User();
 		$user->name=$this->getval("req.crmname");
 		$user->passwd=md5($this->getval("req.passwd"));
 		$this->setval("req.passwd");//remove from workspace
@@ -324,7 +324,7 @@ class CRMApplication extends Application
 			return ;
 		}
 
-		$ses=&new Session();
+		$ses=new Session();
 		$ses->uid=$user->id;
 		$ses->host=$this->getval("server.remote.ip");
 		$ses->tmses=time();
@@ -370,7 +370,7 @@ class CRMApplication extends Application
 	}
 	function userAction()
 	{
-		$obj=&new User();
+		$obj=new User();
 		$cmd=$this->getval("req.cmd");
 		if (!$cmd)
 		{
@@ -467,7 +467,7 @@ class CRMApplication extends Application
 			//printobj("projs",$a);
 			for (reset($a); list($i,$o)=each($a); ) $o->setPath($a);
 			$this->setval("projects",$a);
-			$x=&new Employee();
+			$x=new Employee();
 			$a=$this->dao->find($x);
 			$this->setval("managers",$a);
 			$a=$this->dao->find(new Firm());
@@ -495,7 +495,7 @@ class CRMApplication extends Application
 	}
 	function workloadAction()
 	{
-		$obj=&new Workload();
+		$obj=new Workload();
 		$this->_daoAction($obj);
 		$cmd=$this->getval("req.cmd");
 		//printobj("meeeting",$this->getval("rec"));

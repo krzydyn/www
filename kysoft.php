@@ -76,7 +76,7 @@ class JokeIndex extends ModelObject{
 			$words=array_unique($words);
 		}
 
-		$ji=&new JokeIndex();
+		$ji=new JokeIndex();
 		$crit=new Criteria();
 		$crit->setOrder("_cnt desc");
 		$crit->setLimit(50);
@@ -123,7 +123,7 @@ class KySoft extends Application{
 
 	function initialize(){
 		$db=DB::connectDefault();
-		$this->dao=&new ObjectDB($db);
+		$this->dao=new ObjectDB($db);
 
 		$reqtabs=array(
 			"user"=>"id integer primary key,state int not null default 0,name varchar(63) not null,passwd varchar(32)not null default '',role int not null default 2,".
@@ -385,7 +385,7 @@ class KySoft extends Application{
 
 	function newUserAction(){
 		if (!$this->user||$this->user->role>1)return $this->listProj();
-		$obj=&new User();
+		$obj=new User();
 		$this->setval("rec",$obj);
 		$this->setval("req.tab","conf/editUser");
 	}
@@ -393,7 +393,7 @@ class KySoft extends Application{
 		if (!$this->user||$this->user->role>1)return $this->listProj();
 		$id=$this->getval("req.id");
 		if (!$id)	return $this->listConf("User");
-		$obj=&new User();
+		$obj=new User();
 		$r=$this->dao->find($obj,null,new Criteria("id",$id));
 		if ($r===false){
 			$this->addval("error","DB:".$this->dao->errmsg());
@@ -421,7 +421,7 @@ class KySoft extends Application{
 		//printobj("save.rec",$rec);
 		if (!empty($rec["passwd1"])) $rec["passwd"]=md5($rec["passwd1"]);
 
-		$obj=&new User();
+		$obj=new User();
 		$obj->setValues($rec);
 		$this->setval("rec",$obj);
 		if (empty($obj->name)) {
@@ -446,8 +446,8 @@ class KySoft extends Application{
 
 	function listJokeAction(){
 		$this->setval("req.tab","jokes");
-		$crit=&new Criteria();
-		$obj=&new Joke();
+		$crit=new Criteria();
+		$obj=new Joke();
 		$order=$this->getval("req.category");
 
 		if (substr($order,0,3)=="by_") {
@@ -538,13 +538,15 @@ class KySoft extends Application{
 			$this->setval("req.tab","jokes");
 			//result is ordered by match factor, can't build one criteria
 			$r=array();
-			$jtmp=&new Joke();
+			$jtmp=new Joke();
 			for ($i=0; $i<sizeof($jids); ++$i){
 				$ji=$jids[$i];
 				$rj=$this->dao->find($jtmp,null,new Criteria("id",$ji->jokeid));
 				if ($rj!==false){
 					$rj=$rj[0];
 					$rj->_cnt=$ji->_cnt;
+					if (checkEncoding($rj->contents,"UTF-8")==false)
+						$rj->contents=iconv("ISO-8859-2","UTF-8",$rj->contents);
 					$rj->contents=html_escape($rj->contents);
 					$rj->contents=highlight($rj->contents,$search);
 					$rj->contents=nl2br($rj->contents);
@@ -605,7 +607,7 @@ class KySoft extends Application{
 		$rank=($rank-1)/4.0;
 		$id=$this->getval("req.id");
 		if (!$id)	{logstr("joke id missed");return ;}
-		$obj=&new Joke();
+		$obj=new Joke();
 		$r=$this->dao->find($obj,null,new Criteria("id",$id));
 		if ($r===false){
 			$this->addval("error","DB:".$this->dao->errmsg());
@@ -633,14 +635,14 @@ class KySoft extends Application{
 		if (!$this->user) return $this->listJokeAction();
 		$id=$this->getval("req.id");
 		if (!$id) return $this->listJokeAction();
-		$obj=&new Joke();
+		$obj=new Joke();
 		$r=$this->dao->del($obj,new Criteria("id",$id));
 		if ($r!==false) $this->dao->del(new JokeIndex(),new Criteria("jokeid",$id));
 		$this->listJokeAction();
 	}
 	function newJokeAction(){
 		if (!$this->user) return $this->listJokeAction();
-		$obj=&new Joke();
+		$obj=new Joke();
 		$obj->userid=$this->user->id;
 		$obj->rank=0.5; $obj->votecnt=1; //default
 		$obj->category=$this->getval("req.category");
@@ -653,7 +655,7 @@ class KySoft extends Application{
 		if (!$this->user) return $this->listJokeAction();
 		$id=$this->getval("req.id");
 		if (!$id)	return $this->listJokeAction();
-		$obj=&new Joke();
+		$obj=new Joke();
 		$r=$this->dao->find($obj,null,new Criteria("id",$id));
 		if ($r===false){
 			$this->addval("error","DB:".$this->dao->errmsg());
@@ -674,7 +676,7 @@ class KySoft extends Application{
 		$this->setval("req.tab","jokes/editJoke");
 		$this->jokeCategories();
 
-		$obj=&new JokeIndex();
+		$obj=new JokeIndex();
 		$r=$this->dao->find($obj,null,new Criteria("jokeid",$this->getval("req.id")));
 		//$this->addval("info","q:".$this->dao->qstr());
 		if ($r===false){
@@ -687,7 +689,7 @@ class KySoft extends Application{
 		if (!$this->user || empty($rec["contents"])) return $this->listJokeAction();
 
 		$rec["contents"]=trim($rec["contents"]);
-		$obj=&new Joke();
+		$obj=new Joke();
 		$obj->setValues($rec);
 		if (!$obj->id) {
 			$obj->id=null;
@@ -907,7 +909,7 @@ class KySoft extends Application{
 			return $this->defaultAction();
 		}
 		$this->user=&$r[0];
-		$ses=&new Session();
+		$ses=new Session();
 		$ses->uid=$this->user->id;
 		$ses->tmses=time();
 		$ses->tmstamp=$ses->tmses;
@@ -1037,7 +1039,7 @@ class KySoft extends Application{
 			$this->addval("error","operation not allowed");
 			return $this->defaultAction();
 		}
-		$obj=&new Robot();
+		$obj=new Robot();
 		$r=$this->dao->find($obj,null,new Criteria("addr",$id));
 		if ($r===false){
 			$this->addval("error","DB:".$this->dao->errmsg());

@@ -216,6 +216,11 @@ class TemplateEngine {
 	var $req;
 	var $cachedir;
 	var $compiled=array();
+	var $headerdone=false;
+
+	function __construct() {
+		self::TemplateEngine();
+	}
 	function TemplateEngine(){
 		global $config;
 		$this->req=Request::getInstance();
@@ -228,6 +233,7 @@ class TemplateEngine {
 		}
 	}
 
+	function getvalExist($n,$def=null) {return $this->req->hasval($n);}
 	function getval($n,$def=null) {return $this->req->getval($n,$def);}
 	function getval2class($n,$def=null) {
 		return strtr($this->req->getval($n,$def),array("/"=>"_",));
@@ -287,16 +293,31 @@ class TemplateEngine {
 			eval("?>".$c);
 		}
 	}
-	function load($fn){
-		global $config;
+	function headers(){
+		if ($this->headerdone) return ;
 		$h=$this->getval("hdr");
 		if (is_array($h)) {while (list($f,$v)=each($h)) header($v);}
+		$this->headerdone=true;
+	}
+	function load($fn){
+		global $config;
+		$this->headers();
 
 		if (!searchdir($config["templatedir"],$fn)){
-			echo "load:file $fn not found in any of ".a2str($config["templatedir"])."<br>";
+			echo "load:file $fn not found in any of ".a2str($config["templatedir"])."\n";
 			//echo "file $fn not found";
 			return ;
 		}
+		$c = ob_get_contents();
+		ob_end_clean();
+		if (!empty($c)) {
+			echo "<pre>";
+			echo str_repeat("-",100)."\n";
+			echo $c;
+			echo str_repeat("-",100)."\n";
+			echo "</pre>";
+		}
+
 		ob_start();
 		$this->inc($fn);
 		$c = ob_get_contents();

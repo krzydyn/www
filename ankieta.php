@@ -114,10 +114,10 @@ class App extends Application{
 		$items[]=$item;
 	}
 }
-$a=&new App();
+$a=new App();
 $a->initialize();
 $a->process();
 unset($a);
-$t=&new TemplateEngine();
+$t=new TemplateEngine();
 $t->load("ankieta.tpl");
 ?>

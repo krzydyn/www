@@ -68,7 +68,7 @@ class RecipeApp extends Application
 	var $user;
 	function initialize() {
 		$db=DB::connectDefault();
-		$this->dao=&new ObjectDB($db);
+		$this->dao=new ObjectDB($db);
 		$this->ses=null;
 		$this->user=null;
 
@@ -124,7 +124,7 @@ class RecipeApp extends Application
 	}
 	function recipesAction() {
 		$crit=new Criteria();
-		$obj=&new Recipe();
+		$obj=new Recipe();
 		$this->setval("req.view","list");
 		if ($s=$this->getval("req.name")) $this->setval("req.search",$s);
 		else $s=$this->getval("req.search");
@@ -180,7 +180,7 @@ class RecipeApp extends Application
 		$this->setval("req.view","edit");
 		if ($this->getUser())
 		{
-			$obj=&new Recipe();
+			$obj=new Recipe();
 			$obj->userid=$this->getUser()->id;
 			$obj->author=$this->getUser()->fullname;
 			$obj->type="polska";
@@ -196,7 +196,7 @@ class RecipeApp extends Application
 		$rec=$this->getval("req.rec");
 		if ($user!=null && $rec!=null) {
 			$this->setval("req.view","edit");
-			$obj=&new Recipe();
+			$obj=new Recipe();
 			$obj->setValues($rec);
 			if (!$obj->id) $obj->id=null;
 			if (!$obj->userid) $obj->userid=$user->id;
@@ -221,7 +221,7 @@ class RecipeApp extends Application
 		$rec=$this->getval("req.rec");
 		if (!$this->getUser()) return $this->recipesAction();
 
-		$obj=&new Recipe();
+		$obj=new Recipe();
 		$obj->setValues($rec);
 		//printobj("del",$obj);
 		$r=$this->dao->del($obj);
@@ -237,7 +237,7 @@ class RecipeApp extends Application
 		if (!$this->getUser()) return $this->recipesAction();
 		if ($this->getUser()->role>1) return $this->recipesAction();
 		$this->setval("req.view","userlist");
-		$obj=&new User();
+		$obj=new User();
 		$this->setval("rec",$obj);
 		$r=$this->dao->find($obj);
 		if ($r===false) $this->addval("error","DB:".$this->dao->errmsg());
@@ -267,7 +267,7 @@ class RecipeApp extends Application
 	{
 		if (!$this->user) return $this->recipesAction();
 		$this->setval("req.view","useredit");
-		$obj=&new User();
+		$obj=new User();
 		$obj->role=$this->getUser()->role;
 		$this->setval("rec",$obj);
 	}
@@ -288,7 +288,7 @@ class RecipeApp extends Application
 		}
 		if (!empty($rec["passwd1"])) $rec["passwd"]=md5($rec["passwd1"]);
 
-		$obj=&new User();
+		$obj=new User();
 		$obj->setValues($rec);
 		$this->setval("rec",$obj);
 		if (!$obj->passwd) $obj->passwd=null;
@@ -332,7 +332,7 @@ class RecipeApp extends Application
 			$this->addval("error","you have no right to do this (delete)");
 			return $this->searchUserAction();
 		}
-		$obj=&new User();
+		$obj=new User();
 		$obj->setValues($rec);
 		//printobj("del",$obj);
 		$r=$this->dao->del($obj);
@@ -357,7 +357,7 @@ class RecipeApp extends Application
 			return $this->defaultAction();
 		}
 		$this->user=&$r[0];
-		$ses=&new Session();
+		$ses=new Session();
 		$ses->uid=$this->user->id;
 		$ses->tmses=time();
 		$ses->tmstamp=$ses->tmses;

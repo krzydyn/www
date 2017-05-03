@@ -1,6 +1,6 @@
 <?
 header("Content-type: application/rss+xml");
-echo "<?xml version=\"1.0\" encoding=\"iso-8859-2\"?>\n";
+echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 
 require_once("config.php");
 require_once($config["cmslib"]."modules.php");
@@ -9,7 +9,7 @@ require_once($config["cmslib"]."application.php");
 class App extends Application{
 	var $db;
 	function process(){
-		$this->setval("description","Aktualno¶ci");
+		$this->setval("description","AktualnoÅ›ci");
 		$r=filemtime("kysoft.php");
 		$this->setval("buildtm",$r);
 
@@ -25,7 +25,7 @@ class App extends Application{
 		else {
 			for ($i=0; $i<sizeof($r); ++$i){
 				$c=$r[$i]["contents"];
-				if (strlen($c)>80) $c=substr($c,0,50)." (wiêcej...)";
+				if (strlen($c)>80) $c=substr($c,0,50)." (wiÄ™cej...)";
 				$item=array();
 				$item["title"]=$r[$i]["category"];
 				$item["author"]="kysoft";
@@ -63,12 +63,12 @@ class App extends Application{
 		}
 	}
 }
-$a=&new App();
+$a=new App();
 $a->initialize();
 $a->process();
 //$req=$a->req;
 unset($a);
-$t=&new TemplateEngine();
+$t=new TemplateEngine();
 $t->load("rss.tpl");
 //print_r($req);
 ?>

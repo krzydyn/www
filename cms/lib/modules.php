@@ -1,4 +1,6 @@
 <?php
+ob_start();
+
 //Serach: \n[ \t]*{
 function printo($l,$n,&$o){
 	echo str_repeat(" ",2*$n);
@@ -41,7 +43,7 @@ function logstr($str){
 	$tm=time();
 	if (isset($config["appname"])) $fn="cache/log-".$config["appname"].date("Ymd",$tm).".txt";
 	else $fn="cache/log".date("Ymd",$tm).".txt";
-	$f=fopen($fn,"ab");
+	$f=@fopen($fn,"ab");
 	if ($f!==false){
 		if (flock($f,LOCK_EX)){
 			fwrite($f,$str."\n");
@@ -49,7 +51,7 @@ function logstr($str){
 		}
 		fclose($f);
 	}
-	else echo "<pre>can't open $fn</pre>";
+	else echo "can't open $fn\n";
 }
 function searchdir(&$a,$fn){
 	for ($i=0; $i<sizeof($a); $i++){

@@ -24,7 +24,7 @@ class Declinator extends Application{
 }
 
 try{
-	$a=&new Declinator();
+	$a=new Declinator();
 	$a->initialize();
 	$a->process();
 	unset($a);
@@ -33,6 +33,6 @@ catch(Exception $e)
 {
 	//$req->setval("error",$e->getMessage());
 }
-$t=&new TemplateEngine();
+$t=new TemplateEngine();
 $t->load("declinator.tpl");
 ?>

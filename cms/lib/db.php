@@ -135,7 +135,7 @@ abstract class DB{
 		if (empty($driver)) $driver=$config["dbtype"];
 		include_once($config["cmslib"]."db/".$driver.".php");
 		$c=$driver."_DB";
-		$c=&new $c();
+		$c=new $c();
 		return $c;
 	}
 	static function &connectDefault(){

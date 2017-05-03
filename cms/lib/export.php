@@ -30,6 +30,6 @@ $resp->addval("hdr","Pragma: no-store");
 db_connect();
 $resp->setval("result",db_find($resp->getval("req.res"),"*"));
 
-$t=&new TemplateEngine($resp);
+$t=new TemplateEngine($resp);
 $t->load("export.tpl");
 ?>

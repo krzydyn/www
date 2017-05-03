@@ -2,6 +2,9 @@
 //Serach: \n[ \t]*{
 
 class ModelObject{
+	function __construct() {
+		self::ModelObject();
+	}
 	function ModelObject(){
 		$cl=get_class($this);
 		$fld=get_class_vars($cl);
@@ -86,6 +89,9 @@ class Criteria{
 	var $val=array();
 	var $limit;
 	var $order;
+	function __construct($f=null,$v=null,$op="=") {
+		self::Criteria($f,$v,$op);
+	}
 	function Criteria($f=null,$v=null,$op="="){
 		if (!empty($f)) $this->addop($f,$v,$op);
 	}
@@ -130,6 +136,9 @@ class Criteria{
 class ObjectDB{
 	private $_errmsg;
 	var $db;
+	function __construct(&$db) {
+		self::ObjectDB($db);
+	}
 	function ObjectDB(&$db){$this->db=$db; $this->_errmsg=false;}
 
 	function save(&$o){

@@ -17,6 +17,15 @@ function array_setval(&$t,$n,&$v=null){
 	//echo "$t[$k]=$v<br>";
 	return true;
 }
+function array_hasval(&$t,$n){
+	$n=explode(".",$n);
+	for ($i=0; $i<sizeof($n); $i++){
+		$k=$n[$i];
+		if ((!is_array($t)&&!is_object($t))||!array_key_exists($k,$t)) return false;
+		if (is_object($t)) $t=&$t->{$k}; else $t=&$t[$k];
+	}
+	return true;
+}
 function &array_getval(&$t,$n,$def=null){
 	$n=explode(".",$n);
 	for ($i=0; $i<sizeof($n); $i++){
@@ -37,6 +46,9 @@ function array_unslash(&$t){
 class Request{
 	private static $instance=null;
 	private $vals=array();
+	private function __construct() {
+		self::Request();
+	}
 	private function Request(){
 		/*
 		note: form method GET does not send action paramters
@@ -92,6 +104,9 @@ class Request{
 			return true;
 		}
 		return array_setval($this->vals,$n,$v);
+	}
+	function hasval($n) {
+		return array_hasval($this->vals,$n);
 	}
 	function &getval($n,$v=null) {
 		return array_getval($this->vals,$n,$v);

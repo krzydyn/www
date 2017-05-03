@@ -16,7 +16,7 @@ if(!isset($f)){
 	exit;
 }
 /*
-$a=&new KySoft();
+$a=new KySoft();
 $a->initialize();
 $a->checkRobot();
 $a->logreq();

@@ -1,7 +1,7 @@
 <?
 require_once("kysoft.php");
 try{
-	$a=&new KySoft();
+	$a=new KySoft();
 	$a->initialize();
 	$a->process();
 	$req=$a->req;
@@ -11,6 +11,6 @@ catch(Exception $e)
 {
 	$req->setval("error",$e->getMessage());
 }
-$t=&new TemplateEngine($req);
+$t=new TemplateEngine($req);
 $t->load("kysoft.tpl");
 ?>
