@@ -34,11 +34,18 @@ abstract class DB{
 
 	function errmsg(){return $this->_errmsg;}
 	function qstr(){return $this->sql;}
+	function script($s){
+		$a = explode(";",$s);
+		for ($i=0; $i<sizeof($a); ++$i) {
+			if ($this->query($a[$i])===false) return false;
+		}
+		return true;
+	}
 	function tabcreate($tab,$def){
-		return $this->query("create table ".$tab."(".$def.")");
+		return $this->query("CREATE TABLE ".$tab."(".$def.")");
 	}
 	function tabdrop($tab){
-		return $this->query("drop table ".$tab);
+		return $this->query("DROP TABLE ".$tab);
 	}
 	function tabinsert($tab,$row){
 		$fields=array();
@@ -50,7 +57,7 @@ abstract class DB{
 			else $v="'".sql_escape($v)."'";
 			$fields[]=$f; $values[]=$v;
 		}
-		$r=$this->query("insert into ".$tab." (".implode(",",$fields).")values(".implode(",",$values).")");
+		$r=$this->query("INSERT INTO ".$tab." (".implode(",",$fields).")VALUES(".implode(",",$values).")");
 		if ($r===false) return false;
 		return $this->insertid();
 	}

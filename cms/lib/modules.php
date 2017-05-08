@@ -56,10 +56,13 @@ function logstr($str){
 function searchdir(&$a,$fn){
 	for ($i=0; $i<sizeof($a); $i++){
 		$d=$a[$i];
-		//echo "searching dir $d<br>";
-		if (!is_dir($d)) {/*echo "dir $d not found<br>";*/continue;}
+		//echo "searching dir $d\n";
+		if (!is_dir($d)) {
+			//echo "dir $d not found\n";
+			continue;
+		}
 		if (file_exists($d.$fn)) return $d.$fn;
-		//echo "file $d$fn not exists<br>";
+		//echo "file $d$fn not exists\n";
 	}
 	//echo "file $fn not found<br>";
 	return false;

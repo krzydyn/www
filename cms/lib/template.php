@@ -271,7 +271,7 @@ class TemplateEngine {
 			}
 			else {
 				//echo "inc:file $fn not found in any of ".a2str($config["templatedir"])."<br>";
-				echo "file $fn not found";
+				echo "file $fn not found\n";
 				return ;
 			}
 		}

@@ -40,6 +40,8 @@ class sqlite_DB extends DB{
 	function dbcreate($db){return $this->dbselect($db);}
 	function &query($q){
 		global $config;
+		$q=trim($q);
+		if (empty($q)) return true;
 		if (!$this->dbhnd) {$this->_errmsg="not connected";return false;}
 		$this->sql=$q;
 		if (array_getval($config,"debug.query")=="y") printobj("query",$this->sql);
