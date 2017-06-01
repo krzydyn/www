@@ -56,7 +56,6 @@ class sqlite3_DB extends DB{
 		if (!$this->dbhnd) {$this->_errmsg="not connected";return false;}
 		return $this->dbhnd->lastInsertRowID();
 	}
-
 	function affected() {
 		return $this->dbhnd->changes();
 	}
@@ -68,6 +67,19 @@ class sqlite3_DB extends DB{
 		return $tabs;
 	}
 	function describe($t) {
+		$r=$this->query("select sql from sqlite_master where type='table' and tbl_name='".$t."'");
+		if ($r===false) return false;
+		$row=$r->fetch(FETCH_NUM);
+		$row=$row[0];
+		$row=substr($row,strpos($row,"(")+1);
+		$row=substr($row,0,strrpos($row,")"));
+		$row=explode(",",$row);
+		$f=array();
+		for ($i=0; $i<sizeof($row); ++$i){
+			$l=explode(" ",$row[$i],2);
+			$f[$l[0]]=$l[1];
+		}
+		return $f;
 	}
 	private function seterr($r){
 		if ($r===false){
