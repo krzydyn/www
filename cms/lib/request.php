@@ -1,6 +1,7 @@
 <?php
 //\n[ \t]*{
 function array_setval(&$t,$n,&$v=null){
+	if (empty($n)) return false;
 	$n=explode(".",$n);
 	for ($i=0; $i<sizeof($n)-1; $i++){
 		$k=$n[$i];
@@ -18,6 +19,7 @@ function array_setval(&$t,$n,&$v=null){
 	return true;
 }
 function array_hasval(&$t,$n){
+	if (empty($n)) return true;
 	$n=explode(".",$n);
 	for ($i=0; $i<sizeof($n); $i++){
 		$k=$n[$i];
@@ -27,6 +29,7 @@ function array_hasval(&$t,$n){
 	return true;
 }
 function &array_getval(&$t,$n,$def=null){
+	if (empty($n)) return $t;
 	$n=explode(".",$n);
 	for ($i=0; $i<sizeof($n); $i++){
 		$k=$n[$i];
@@ -59,6 +62,7 @@ class Request{
 		$this->setval("txt",$text);
 		$this->setval("req",$_REQUEST);
 
+		//TODO SESSION -> req values
 		//POST is propagated into REQUEST
 		//COOKIE is propagated into REQUEST
 		//GET overwrite POST
@@ -69,15 +73,14 @@ class Request{
 
 		array_unslash($this->vals["req"]);
 		unset($_COOKIE);unset($_REQUEST);unset($_GET);unset($_POST);
-		//$this->addval("debug",$this->getval("req.lang"));
-		//$this->addval("debug",$this->getval("req.tab"));
 
 		$this->setval("srv",$_SERVER);
 		unset($_SERVER);
-		if (strpos($qstr=$this->getval("srv.QUERY_STRING"),"act=")!=null){
-			$this->setval("srv.QUERY_STRING",str_replace("act=","_=",$qstr));
-		}
-		//echo "qs=".$this->getval("srv.QUERY_STRING");
+		$uri=$this->getval("srv.REQUEST_URI");
+		$this->setval("uri",$uri);
+		$this->setval("ip",$this->getval("srv.REMOTE_ADDR"));
+		if (strpos($uri,$config["baseuri"])!==false)
+			$this->setval("short_uri",substr($uri,strlen($config["baseuri"])));
 
 		if (isset($_FILES)){
 			while (list($fld,$a)=each($_FILES)){
@@ -108,7 +111,7 @@ class Request{
 	function hasval($n) {
 		return array_hasval($this->vals,$n);
 	}
-	function &getval($n,$v=null) {
+	function &getval($n=null,$v=null) {
 		return array_getval($this->vals,$n,$v);
 	}
 	function addval($n,$v) {

@@ -301,6 +301,7 @@ class TemplateEngine {
 	}
 	function load($fn){
 		global $config;
+		$this->req->setval("srv",null);
 		$this->headers();
 
 		if (!searchdir($config["templatedir"],$fn)){

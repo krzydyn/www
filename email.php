@@ -1,5 +1,6 @@
 <?
-require_once("Mail.php");
+//error 500
+//require_once("Mail.php");
 
 require_once("config.php");
 require_once($config["cmslib"]."modules.php");
@@ -46,7 +47,6 @@ function sendmail($from,$subj,$recipients,$body){
 }
 
 /*
-
 require_once 'Mail.php';
 
 $params['host'] = 'mail.active24.pl';

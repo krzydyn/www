@@ -114,7 +114,6 @@ class Robot extends ModelObject{
 	function getPK(){return array("addr"=>null);}
 	function defaultOrder(){return "tm desc,ua";}
 }
-
 class KySoft extends Application{
 	var $dao;
 	var $user;
@@ -767,14 +766,14 @@ class KySoft extends Application{
 				logstr("proposeJoke: new user ".$user->name);
 				$r=$this->dao->save($user);
 				if ($r===false) {$this->addval("error","DB:".$this->dao->errmsg());return ;}
-				$this->user=&$user;
+				$this->user=$user;
 			}
 			else if (sizeof($r)==1){
 				$user=$r[0];
 				logstr("proposeJoke: known user ".$user->name);
 				if ($rec["name"]!=$user->name || $rec["email"]!=$user->email)
 					$this->addval("error","Wrong user or e-mail/".sizeof($r));
-				else $this->user=&$user;
+				else $this->user=$user;
 			}else {
 				logstr("propose joke: wrong user ".$user->name);
 				$this->addval("error","Wrong user or e-mail/".sizeof($r));
@@ -870,9 +869,9 @@ class KySoft extends Application{
 			$this->addval("error","operation not allowed");
 			return ;
 		}
-		$sql=&$this->getval("req.sql");
+		$sql=$this->getval("req.sql");
 		if (empty($sql)) return ;
-		$db=&$this->dao->db;
+		$db=$this->dao->db;
 		$sql=trim($sql);
 		$r=$db->query($sql);
 		if ($r===false){
@@ -908,7 +907,7 @@ class KySoft extends Application{
 			$this->addval("error","invalid username or passwd /".sizeof($r));
 			return $this->defaultAction();
 		}
-		$this->user=&$r[0];
+		$this->user=$r[0];
 		$ses=new Session();
 		$ses->uid=$this->user->id;
 		$ses->tmses=time();
@@ -919,7 +918,7 @@ class KySoft extends Application{
 			$this->addval("error","DB:".$this->dao->errmsg());
 			return $this->defaultAction();
 		}
-		$this->ses=&$ses;
+		$this->ses=$ses;
 		$this->setval("session",$this->ses);
 		$this->setval("user",$this->user);
 		$this->setval("req.hash",$this->ses->hash);
@@ -970,7 +969,7 @@ class KySoft extends Application{
 
 		$ses->tmstamp=$tm;
 		$this->dao->update($ses); //update timestamp
-		$this->ses=&$ses;
+		$this->ses=$ses;
 		setcookie("hash",$this->ses->hash);
 		$this->setval("req.hash",$this->ses->hash);
 		if ($ses->uid==0) return true; //no user for this session
@@ -982,7 +981,7 @@ class KySoft extends Application{
 			$this->addval("error","Invalid user refference /".sizeof($r));
 			setcookie("hash");return false;
 		}
-		$this->user=&$r[0];
+		$this->user=$r[0];
 		$this->setval("user",$this->user);
 		return true;
 	}
@@ -1125,4 +1124,5 @@ class KySoft extends Application{
 		logstr($str);
 	}
 }
+
 ?>

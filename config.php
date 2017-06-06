@@ -9,7 +9,8 @@ if ($_SERVER["HTTP_HOST"]=="localhost"){
 	error_reporting(E_ALL);
 }
 else {
-	error_reporting(E_ALL&~E_NOTICE);
+	error_reporting(E_ALL);
+	//error_reporting(E_ALL&~E_NOTICE);
 }
 
 ini_set('display_errors','Off');

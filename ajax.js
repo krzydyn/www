@@ -35,5 +35,3 @@ Ajax.prototype.async = function(method,url,onRespose) {
    }
 };
 
-var a=new Ajax();
-a.async('get','https://mcdsrvbld02.digital.local/~k.dynowski/');

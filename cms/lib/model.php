@@ -89,6 +89,7 @@ class Criteria{
 	var $val=array();
 	var $limit;
 	var $order;
+	var $groupby;
 	function __construct($f=null,$v=null,$op="=") {
 		self::Criteria($f,$v,$op);
 	}
@@ -97,6 +98,7 @@ class Criteria{
 	}
 	function setLimit($l){$this->limit=$l;}
 	function setOrder($o){$this->order=$o;}
+	function setGroup($g){$this->groupby=$g;}
 	function clear() { $this->crit=$this->limit=$this->order=""; $this->val=array();}
 	function hasValue($v){
 		return in_array($v,$this->val);
@@ -128,6 +130,7 @@ class Criteria{
 	}
 	function get(){
 		$s=$this->crit?"where ".$this->crit:"";
+		if ($this->groupby) $s.=" group by ".$this->groupby;
 		if ($this->order) $s.=" order by ".$this->order;
 		if ($this->limit) $s.=" limit ".$this->limit;
 		return DB::buildfmt($s,$this->val);
