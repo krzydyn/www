@@ -1,4 +1,4 @@
-<?
+<?php
 
 if ($_SERVER["HTTP_HOST"]!="localhost"){
 error_reporting(E_ALL&~E_NOTICE);

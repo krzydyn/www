@@ -1,4 +1,4 @@
-<?
+<?php
 $text["tab"]=array(
 	"user"=>array(
 		"name"=>"Login",

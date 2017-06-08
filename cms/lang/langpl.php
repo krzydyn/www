@@ -1,4 +1,4 @@
-<?
+<?php
 define('SINGULAR',0);
 define('PLURAL',1);
 

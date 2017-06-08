@@ -51,7 +51,7 @@ function logstr($str){
 		}
 		fclose($f);
 	}
-	else echo "can't open $fn\n";
+	else echo "[log] ".$str."\n";
 }
 function searchdir(&$a,$fn){
 	for ($i=0; $i<sizeof($a); $i++){
@@ -192,27 +192,23 @@ $config["cmslib"]=strtr(dirname(__FILE__),"\\","/")."/";
 //Application includes
 include_once($config["cmslib"]."text.php");
 include_once($config["cmslib"]."db.php");
+include_once($config["cmslib"]."request.php");
 
 $config["templatedir"][]=$config["cmslib"]."templates/";
 
 //set default lang
 if (!array_key_exists("lang",$config)) $config["lang"]="en";
-if (array_key_exists("lang",$_GET)) $lang=$_GET["lang"];
-else if (array_key_exists("lang",$_REQUEST)) $lang=$_REQUEST["lang"];
-else $lang=$config["lang"];
+
+$lang = Request::getInstance()->getval("req.lang",$config["lang"]);
 if (!file_exists("lang/text_".$lang.".php")){
-	logstr("no lang file for ".$lang);
 	$lang="en";
 }
-
 if (file_exists("lang/text_".$lang.".php")) {
 	include_once("lang/text_".$lang.".php");
+	Request::getInstance()->setval("txt",$text);
+	unset($text);
 }
 unset($lang);
 
-//include_once($config["cmslib"]."iterator.php");
-
-//Template Engine includes
-include_once($config["cmslib"]."request.php");
 include_once($config["cmslib"]."template.php");
 ?>

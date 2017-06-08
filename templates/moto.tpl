@@ -80,8 +80,8 @@ Oiler replaces the troublesome (and quite expensive) use&nbsp;of&nbsp;spray.</a>
 2012-08-29..30 <b>Pannonia Ring 2</b>, treningi jazdy torowej na Węgrzech</a>
 <br>
 <a class="post" href="?tab=moto/2012-08-04">
-<img class="icon" src="moto/events/2012-08-04/logo.jpg" alt="Balow" width="100px"/>
-2012-08-04..05 <b>Moto Zauro Music</b>, V zlot motocyklowy w Ba³towie</a>
+<img class="icon" src="moto/events/2012-08-04/logo.jpg" alt="Baltow" width="100px"/>
+2012-08-04..05 <b>Moto Zauro Music</b>, V zlot motocyklowy w Bałtowie</a>
 <br>
 <a class="post" href="?tab=moto/2012-07-27">
 <img class="icon" src="moto/logos/boyen.gif" alt="Gizycko" width="100px"/>

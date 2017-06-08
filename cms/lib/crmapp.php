@@ -1,4 +1,4 @@
-<?
+<?php
 require_once($config["cmslib"]."application.php");
 require_once($config["cmslib"]."model.php");
 

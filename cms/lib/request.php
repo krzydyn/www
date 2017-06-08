@@ -61,11 +61,11 @@ class Request{
 		$this->setval("cfg",$config);
 		$this->setval("txt",$text);
 		$this->setval("req",$_REQUEST);
-
-		//TODO SESSION -> req values
 		//POST is propagated into REQUEST
 		//COOKIE is propagated into REQUEST
 		//GET overwrite POST
+		//TODO SESSION propagate into REQUEST
+
 		if (isset($_GET)){
 			while (list($fld,$a)=each($_GET))
 				$this->setval("req.".$fld,$a);
@@ -76,11 +76,14 @@ class Request{
 
 		$this->setval("srv",$_SERVER);
 		unset($_SERVER);
-		$uri=$this->getval("srv.REQUEST_URI");
-		$this->setval("uri",$uri);
-		$this->setval("ip",$this->getval("srv.REMOTE_ADDR"));
-		if (strpos($uri,$config["baseuri"])!==false)
-			$this->setval("short_uri",substr($uri,strlen($config["baseuri"])));
+		$this->setval("uri",$this->getval("srv.REQUEST_URI"));
+		$this->setval("remote-addr",$this->getval("srv.REMOTE_ADDR"));
+		$this->setval("remote-port",$this->getval("srv.REMOTE_PORT"));
+
+		$appuri=$this->getval("appuri");
+		$uri = $this->getval("uri");
+		if ($appuri!==false && strpos($uri,$appuri)!==false)
+			$this->setval("short_uri",substr($uri,strlen($appuri)));
 
 		if (isset($_FILES)){
 			while (list($fld,$a)=each($_FILES)){

@@ -24,7 +24,12 @@ class sqlite_RecordSet extends RecordSet{
 	}
 }
 class sqlite_DB extends DB{
-	function sqlite_DB(){$this->dbtype="sqlite";}
+	function __construct() {
+		$this->dbtype="sqlite";
+		if (strncmp(phpversion(),"7.",2)>=0) {
+			throw new Exception("use sqlite3");
+		}
+	}
 	function connect($h,$u,$p="",$db=""){
 		if (!empty($db)) $this->dbselect($db);
 		return true;

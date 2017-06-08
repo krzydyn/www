@@ -1,4 +1,4 @@
-<?
+<?php
 require_once("recipe.php");
 try{
 	$a=new RecipeApp();

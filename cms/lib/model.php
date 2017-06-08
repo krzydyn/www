@@ -1,4 +1,4 @@
-<?
+<?php
 //Serach: \n[ \t]*{
 
 class ModelObject{
@@ -188,7 +188,7 @@ class ObjectDB{
 		$tab=strtolower(get_class($o));
 		return $this->db->tabcount($tab,$crit?$crit->get():null);
 	}
-	function &find(&$o,$fld=null,$crit=null){
+	function &find($o,$fld=null,$crit=null){
 		$fal=false;
 		$this->_errmsg=false;
 		if (!($o instanceof ModelObject)) {$this->_errmsg="ModelObject required";return $fal;}

@@ -1,4 +1,4 @@
-<?
+<?php
 class Resource
 {
 	var $cashed=new array();

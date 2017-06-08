@@ -1,4 +1,4 @@
-<?
+<?php
 header("Server: www.kysof.pl");
 header("X-Powered-By: www.kysof.pl");
 header("Cache-Control: no-cache, must-revalidate");

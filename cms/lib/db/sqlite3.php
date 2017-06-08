@@ -1,4 +1,4 @@
-<?
+<?php
 class sqlite3_RecordSet extends RecordSet{
 	function setresult($r){
 		$this->res=$r;
@@ -24,7 +24,7 @@ class sqlite3_RecordSet extends RecordSet{
 	}
 }
 class sqlite3_DB extends DB{
-	function sqlite3_DB(){$this->dbtype="sqlite3";}
+	function __construct() {$this->dbtype="sqlite3";}
 	function connect($h,$u,$p="",$db=""){
 		if ($this->dbhnd) {$this->dbhnd->close();$this->dbhnd=null;}
 		$this->dbhnd=new SQLite3($db);
@@ -40,8 +40,8 @@ class sqlite3_DB extends DB{
 	function &query($q){
 		global $config;
 		if (!$this->dbhnd) {$this->_errmsg="not connected";return false;}
-		$q=trim($q);
-		if (empty($q)) return true;
+		$q=trim($q); $r=true;
+		if (empty($q)) return $r;
 		$this->sql=$q;
 		//if (array_getval($config,"debug.query")=="y") printobj("query",$this->sql);
 		$r=@$this->dbhnd->query($this->sql);

@@ -1,4 +1,4 @@
-<?
+<?php
 class Application{
 	var $req=null;
 	function __construct() {

@@ -1,7 +1,7 @@
 <html>
 <title>Utils</title>
 <body>
-<?
+<?php
 $hex=$bin="";
 if (array_key_exists("hex",$_REQUEST)) $hex=$_REQUEST["hex"];
 if (array_key_exists("bin",$_REQUEST)) $bin=$_REQUEST["bin"];

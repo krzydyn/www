@@ -50,7 +50,7 @@
 
 <img class="logo" src="icony/kysoft.png" alt="logo" align="left" />
 <div class="abs" style="left:150px">
-[Your IP: <%val("ip")%>]
+[Your IP: <%val("remote-addr")%>]
 </div>
 <div style="float:right;text-align:right;" >
 <%if($u=val("user")){%>

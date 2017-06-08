@@ -1,4 +1,4 @@
-<?
+<?php
 //error 500
 //require_once("Mail.php");
 

@@ -194,7 +194,7 @@ function parseInlines($c){
 		));
 	$c=preg_replace("#(\\bval[0-9a-zA-z]*)\(#s","\$this->get\$1(",$c);
 	$c=preg_replace("#(\\bvstr[0-9a-zA-z]*)\(#s","\$this->\$1(",$c);
-	return "<?".$c."?>";
+	return "<?php ".$c."?>";
 }
 function compile_tags($c){
 	//try{

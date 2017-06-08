@@ -1,10 +1,10 @@
-<?
+<?php
 require_once("kysoft.php");
+$req = Request::getInstance();
 try{
 	$a=new KySoft();
 	$a->initialize();
 	$a->process();
-	$req=$a->req;
 	unset($a);
 }
 catch(Exception $e)

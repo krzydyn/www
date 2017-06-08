@@ -1,4 +1,4 @@
-<?
+<?php
 include_once($config["cmslib"]."collection.php");
 class KIterator
 {

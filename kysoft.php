@@ -1,4 +1,4 @@
-<?
+<?php
 require_once("config.php");
 require_once($config["cmslib"]."modules.php");
 require_once($config["cmslib"]."application.php");
@@ -246,7 +246,7 @@ class KySoft extends Application{
 		$this->setval("tabs",$tabs);
 
 		$t=$this->getval("txt.keywords");
-		if (array_key_exists($tab,$t))
+		if (is_array($t) && array_key_exists($tab,$t))
 			$this->setval("txt.keywords",$t[$tab]);
 		else $this->setval("txt.keywords",$t["about"]);
 

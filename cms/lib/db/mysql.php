@@ -23,7 +23,7 @@ class mysql_RecordSet extends RecordSet{
 	}
 }
 class mysql_DB extends DB{
-	function mysql_DB(){$this->dbtype="mysql";}
+	function __construct() {$this->dbtype="mysql";}
 	function connect($h,$u,$p="",$db=""){
 		$this->dbhnd=mysql_connect($h,$u,$p);
 		$this->seterr($this->dbhnd);

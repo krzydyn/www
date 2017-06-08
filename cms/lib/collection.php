@@ -1,4 +1,4 @@
-<?
+<?php
 class Collection
 {
 	var $arr;

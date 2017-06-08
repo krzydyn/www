@@ -26,7 +26,7 @@ class mssql_RecordSet extends RecordSet{
 	}
 }
 class mssql_DB extends DB{
-	function mssql_DB(){$this->dbtype="mssql";}
+	function __construct() {$this->dbtype="mssql";}
 	function connect($h,$u,$p="",$db=""){
 		$this->dbhnd=mssql_connect($h,$u,$p);
 		$this->seterr($this->dbhnd);
