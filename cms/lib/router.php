@@ -1,6 +1,8 @@
 <?php
 class Router {
-	function addRoute($path, $method, $module, $func) {
+	private $routes = array();
+	function addRoute($method, $resource, $handler) {
+		
 	}
 }
 ?>

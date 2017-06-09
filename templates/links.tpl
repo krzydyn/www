@@ -103,7 +103,7 @@
   <li><a class="extern" href="http://www.ladyada.net/make/mintyboost/parts.html">USB charger</a></li>
 </ul></td>
 
-<td><b>Ró¿no¶ci</b>
+<td><b>Różności</b>
 <ul>
   <li><a class="extern" href="http://www.antyradio.pl/sluchaj/online/Antyradio-online.html">AntyRadio</a></li>
   <li><a class="extern" href="http://www.bramka.pl/">bramka.pl</a></li>

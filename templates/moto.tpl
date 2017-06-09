@@ -112,7 +112,7 @@ Olejarka zastępuje uciążliwe (i&nbsp;dość drogie) smary w&nbsp;spray-u.</a>
 2011-12-14 Przejażdżka, okolice Warszawy</a>
 <br>
 <a class="post" href="?tab=moto/2011-12-04">
-<img class="icon" src="moto/events/2011-12-04/20111204193.jpg" alt="moto miko³ajki" width="100px"/>
+<img class="icon" src="moto/events/2011-12-04/20111204193.jpg" alt="moto mikolajki" width="100px"/>
 2011-12-04 <b>MotoMikołaje</b>, impreza okolicznościowa w<sp:/>Warszawie</a>
 
 </td>

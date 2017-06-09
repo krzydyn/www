@@ -3,7 +3,7 @@
 	color:#333;
 	border:0px;margin:0px;
 	background-clip:border-box;
-	font-size:10px;
+	font: normal 14px times;
 }
 
 body{
@@ -26,7 +26,7 @@ h1{
 	text-align:center;
 }
 h2{
-	font-size:14pt;
+	font-size:16px;
 	padding:2px 5px;
 }
 hr {margin:10px; border:1px inset white;}
@@ -40,14 +40,15 @@ a,a:visited,a:focus,a:hover {
 a:hover {background-color:#DDD;}
 td {vertical-align: top;}
 input,textarea,select {
-	font-size:9pt;
+	font:normal 14px times;
 	border:1px solid black;
 	padding:0px;
 	margin:0px;
 	background-color:#DDD;
 }
-option{font-size:8pt;}
+option{font-size:12px;}
 button,input[type="button"],input[type="submit"],input[type="reset"] {
+	font:normal 14px times;
 	padding:1px 2px;
 	cursor:pointer;
 	background-color:#AAA;
@@ -209,7 +210,7 @@ a:hover.extern {background-color:#DDD;}
 .post {
 	display:block;
 	width:99%; float:left;
-	font: normal 12pt times;
+	xfont: normal 12pt times;
 	display:block;
 	vertical-align: top;
 	padding: 2px 2px;
@@ -307,7 +308,6 @@ ul.tabs li {
 	display:inline;
 }
 ul.tabs a {
-	font-size:12pt;
 	display:inline;
 	color:#333;
 	font-weight:bold;

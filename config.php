@@ -29,7 +29,7 @@ $config["templateexpired"]="modtime"; //force|modtime
 //$config["fckfiledir"]="myfiles"; //relative to rootdir
 
 // db setup
-$config["dbtype"]="sqlite3";
+$config["dbtype"]="sqlite";
 $config["dbname"]="db/kysoft.db";
 
 $config["sitetitle"]="KySoft Site";
