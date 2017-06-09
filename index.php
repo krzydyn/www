@@ -9,7 +9,7 @@ try{
 }
 catch(Exception $e)
 {
-	$req->setval("error",$e->getMessage());
+	$req->setval("error",get_class($e).": ".$e->getMessage());
 }
 $t=new TemplateEngine($req);
 $t->load("kysoft.tpl");

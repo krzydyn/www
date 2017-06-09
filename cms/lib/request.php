@@ -76,14 +76,15 @@ class Request{
 
 		$this->setval("srv",$_SERVER);
 		unset($_SERVER);
-		$this->setval("uri",$this->getval("srv.REQUEST_URI"));
+		$this->setval("req.method",$this->getval("srv.REQUEST_METHOD"));
+		$this->setval("req.uri",$this->getval("srv.REQUEST_URI"));
 		$this->setval("remote-addr",$this->getval("srv.REMOTE_ADDR"));
 		$this->setval("remote-port",$this->getval("srv.REMOTE_PORT"));
 
-		$appuri=$this->getval("appuri");
-		$uri = $this->getval("uri");
-		if ($appuri!==false && strpos($uri,$appuri)!==false)
-			$this->setval("short_uri",substr($uri,strlen($appuri)));
+		$appuri=$this->getval("cfg.rooturl");
+		$uri = $this->getval("req.uri");
+		if ($appuri!==false && strpos($uri,$appuri)===0)
+			$this->setval("uri","/".substr($uri,strlen($appuri)));
 
 		if (isset($_FILES)){
 			while (list($fld,$a)=each($_FILES)){
@@ -104,18 +105,18 @@ class Request{
 		return self::$instance;
 	}
 
+	function hasval($n) {
+		return array_hasval($this->vals,$n);
+	}
+	function &getval($n=null,$v=null) {
+		return array_getval($this->vals,$n,$v);
+	}
 	function setval($n,$v=null) {
 		if (is_array($n)) {
 			while (list($nn,$v)=each($n)) $this->setval($nn,$v);
 			return true;
 		}
 		return array_setval($this->vals,$n,$v);
-	}
-	function hasval($n) {
-		return array_hasval($this->vals,$n);
-	}
-	function &getval($n=null,$v=null) {
-		return array_getval($this->vals,$n,$v);
 	}
 	function addval($n,$v) {
 		$a=$this->getval($n);

@@ -189,26 +189,26 @@ function parseInlines($c){
 	else if (substr($c,0,4)=="vstr") $c="echo ".$c;
 	$c=strtr($c,array(
 		">setval"=>">setval",
-		//"val"=>"\$this->getval",
+		//"val"=>"\$this->val",
 		"include("=>"\$this->inc("
 		));
-	$c=preg_replace("#(\\bval[0-9a-zA-z]*)\(#s","\$this->get\$1(",$c);
+	$c=preg_replace("#(\\bval[0-9a-zA-z]*)\(#s","\$this->\$1(",$c);
 	$c=preg_replace("#(\\bvstr[0-9a-zA-z]*)\(#s","\$this->\$1(",$c);
 	return "<?php ".$c."?>";
 }
 function compile_tags($c){
 	//try{
-	$x=@preg_replace('#<\\?.*\\?>#s','',$c);
+	$x=@preg_replace("#<\\?.*\\?>#s","",$c);
 	if ($x!="") $c=$x;
-	//$x=@preg_replace('#<>#s','',$c);
+	//$x=@preg_replace("#<>#s","",$c);
 	//if ($x!="") $c=$x;
 	//printobj("compile_tags",$c);
-	$x=@preg_replace_callback('#<(\w+:\w*)\s*(.*?)>(.*?)</\\1>#s','parseTags',$c);
+	$x=@preg_replace_callback("#<(\w+:\w*)\s*(.*?)>(.*?)</\\1>#s","parseTags",$c);
 	if ($x!="") $c=$x;
-	//$c=@preg_replace_callback('#(?P<x>.?<(\w+:\w*)((.(?!<\\2))|(?P>x))*?.</\\2>)#s','parseTags',$c);
-	$x=@preg_replace_callback('#<(\w+:\w*)\s*([^/]*)/>#s','parseTags',$c);
+	//$c=@preg_replace_callback("#(?P<x>.?<(\w+:\w*)((.(?!<\\2))|(?P>x))*?.</\\2>)#s","parseTags",$c);
+	$x=@preg_replace_callback("#<(\w+:\w*)\s*([^/]*)/>#s","parseTags",$c);
 	if ($x!="") $c=$x;
-	//$c=@preg_replace_callback('#<(\w+:\w*)\s(.(?!/>))*/>#s','parseTags',$c);
+	//$c=@preg_replace_callback("#<(\w+:\w*)\s(.(?!/>))*/>#s","parseTags",$c);
 	//}catch(Exception $e) {throw new Exception($e.getMessage());}
 	return $c;
 }
@@ -233,9 +233,9 @@ class TemplateEngine {
 		}
 	}
 
-	function getvalExist($n,$def=null) {return $this->req->hasval($n);}
-	function getval($n,$def=null) {return $this->req->getval($n,$def);}
-	function getval2class($n,$def=null) {
+	function valExist($n,$def=null) {return $this->req->hasval($n);}
+	function val($n,$def=null) {return $this->req->getval($n,$def);}
+	function val2class($n,$def=null) {
 		return strtr($this->req->getval($n,$def),array("/"=>"_",));
 	}
 	function vstr2link($v,$def=null) {
@@ -295,7 +295,7 @@ class TemplateEngine {
 	}
 	function headers(){
 		if ($this->headerdone) return ;
-		$h=$this->getval("hdr");
+		$h=$this->val("hdr");
 		if (is_array($h)) {while (list($f,$v)=each($h)) header($v);}
 		$this->headerdone=true;
 	}

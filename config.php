@@ -29,7 +29,8 @@ $config["templateexpired"]="modtime"; //force|modtime
 //$config["fckfiledir"]="myfiles"; //relative to rootdir
 
 // db setup
-$config["dbtype"]="sqlite";
+if (strncmp(phpversion(),"7.",2)>=0) $config["dbtype"]="sqlite3";
+else $config["dbtype"]="sqlite";
 $config["dbname"]="db/kysoft.db";
 
 $config["sitetitle"]="KySoft Site";
