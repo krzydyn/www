@@ -57,7 +57,7 @@ class Router {
 		if ($best_route) {
 			$r=$best_route;
 			echo "REQ '[".$method."]:".$uri."' ROUTE TO '[".$r->method."]:".$r->re_uri."'\n";
-			$args=[];
+			$args=array();
 			call_user_func_array($r->handler,$args);
 		}
 	}

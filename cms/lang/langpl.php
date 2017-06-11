@@ -16,70 +16,74 @@ $decl_info=array(
 	//    			kto   kogo  komu   kogo  kim     o kim   O!
 	//					co    czego czemu  co    czym    o czym  O!
 
-	//ania
-	"(.*)ia"=> array("\$1ia","\$1i","\$1ie","\$1iê","\$1i±","\$1ie","\$1iu",
-							"\$1ie","\$1","\$1iom","\$1ie","\$1iami","\$1iach","\$1ie"),
+	//bania
+	"(.*)nia"=> array("\$1nia","\$1ni","\$1ni","\$1niÄ™","\$1niÄ…","\$1ni","\$1nia",
+							"\$1nie","\$1Å„","\$1niom","\$1nie","\$1niami","\$1niach","\$1nie"),
 	//alicja
-	"(.*)ja"=> array("\$1ja","\$1ji","\$1ji","\$1jê","\$1j±","\$1ji","\$1ja",
+	"(.*)ja"=> array("\$1ja","\$1ji","\$1ji","\$1jÄ™","\$1jÄ…","\$1ji","\$1ja",
 							"\$1je","\$1yj","\$1jom","\$1ji","\$1jami","\$1jach","\$1ji"),
 	//anka
-	"(.*)ka"=> array("\$1ka","\$1ki","\$1ce","\$1kê","\$1k±","\$1ce","\$1ko",
+	"(.*)ka"=> array("\$1ka","\$1ki","\$1ce","\$1kÄ™","\$1kÄ…","\$1ce","\$1ko",
 							"\$1ki","\$1ek","\$1kom","\$1ki","\$1kami","\$1kach","\$1ki"),
-	"æma"=> array("æma","æmy","æmie","æmê","æm±","æmie","æmo",
-							"æmy","ciem","æmom","æmy","æmami","æmach","æmy"),
+	"Ä‡ma"=> array("Ä‡ma","Ä‡my","Ä‡mie","Ä‡mÄ™","Ä‡mÄ…","Ä‡mie","Ä‡mo",
+							"Ä‡my","ciem","Ä‡mom","Ä‡my","Ä‡mami","Ä‡mach","Ä‡my"),
 	//marta
-	"(.*)ta"=> array("\$1ta","\$1ty","\$1cie","\$1tê","\$1t±","\$1cie","\$1to",
+	"(.*)ta"=> array("\$1ta","\$1ty","\$1cie","\$1tÄ™","\$1tÄ…","\$1cie","\$1to",
 							"\$1ty","\$1t","\$1tom","\$1ty","\$1tami","\$1tach","\$1ty"),
 	//papa
-	"(.*)a"=> array("\$1a","\$1y","\$1ie","\$1ê","\$1±","\$1ie","\$1o",
+	"(.*)a"=> array("\$1a","\$1y","\$1ie","\$1Ä™","\$1Ä…","\$1ie","\$1o",
 							"\$1y","\$1","\$1om","\$1y","\$1ami","\$1ach","\$1y"),
-	"(.*)±c"=> array("\$1±c","\$1±ca","\$1±cowi","\$1±ca","\$1±cem","\$1±cu","\$1",
-							"\$1±ce","\$1êcy","\$1±com","\$1êcy","\$1±cami","\$1±cach","\$1±ce"),
+	"(.*)Ä…c"=> array("\$1Ä…c","\$1Ä…ca","\$1Ä…cowi","\$1Ä…ca","\$1Ä…cem","\$1Ä…cu","\$1",
+							"\$1Ä…ce","\$1Ä…cy","\$1Ä…com","\$1Ä…cy","\$1Ä…cami","\$1Ä…cach","\$1Ä…ce"),
+	//plemiÄ™
+	"(.*)Ä™"=> array("\$1Ä™","\$1enia","\$1eniu","\$1Ä™","\$1eniem","\$1eniu","\$1Ä™",
+							"\$1ona","\$1on","\$1onom","\$1ona","\$1onami","\$1onach","\$1ona"),
 	//android
 	"(.*id)"=> array("\$1","\$1a","\$1owi","\$1","\$1em","\$1zie","\$1",
-							"\$1y","\$1ów","\$1om","\$1y","\$1ami","\$1ach","\$1y"),
-	//b³¹d
+							"\$1y","\$1Ã³w","\$1om","\$1y","\$1ami","\$1ach","\$1y"),
+	//bÅ‚Ä…d
 	"(.*d)"=> array("\$1","\$1u","\$1owi","\$1","\$1em","\$1zie","\$1",
-							"\$1y","\$1ów","\$1om","\$1y","\$1ami","\$1ach","\$1y"),
+							"\$1y","\$1Ã³w","\$1om","\$1y","\$1ami","\$1ach","\$1y"),
 	"(.*)nie"=> array("\$1nie","\$1nia","\$1niu","\$1nie","\$1niem","\$1niu","\$1ni",
-							"\$1nia","\$1ñ","\$1niom","\$1nia","\$1niami","\$1niach","\$1nia"),
+							"\$1nia","\$1Å„","\$1niom","\$1nia","\$1niami","\$1niach","\$1nia"),
 	"(.*g)"=> array("\$1","\$1a","\$1owi","\$1","\$1iem","\$1u","\$1",
-							"\$1i","\$1ów","\$1om","\$1i","\$1ami","\$1ach","\$1i"),
+							"\$1i","\$1Ã³w","\$1om","\$1i","\$1ami","\$1ach","\$1i"),
 	"(.*)ch"=> array("\$1ch","\$1cha","\$1chowi","\$1ch","\$1chem","\$1chu","\$1ch",
-							"\$1chy","\$1chów","\$1chom","\$1chy","\$1chami","\$1chach","\$1chy"),
+							"\$1chy","\$1chÃ³w","\$1chom","\$1chy","\$1chami","\$1chach","\$1chy"),
 	//rodzaj
 	"(.*)j"=> array("\$1j","\$1ju","\$1jowi","\$1j","\$1jem","\$1ju","\$1j",
-							"\$1je","\$1jów","\$1jom","\$1je","\$1jami","\$1jach","\$1je"),
+							"\$1je","\$1jÃ³w","\$1jom","\$1je","\$1jami","\$1jach","\$1je"),
 	"(rok)"=>array("\$1","\$1u","\$1owi","\$1","\$1em","\$1u","\$1",
 							"lata","lat","latom","lata","latami","latach","lata"),
 	"(.*)ek"=>array("\$1ek","\$1ku","\$1kowi","\$1ka","\$1kiem","\$1ku","\$1ek",
-							"\$1ki","\$1ków","\$1kom","\$1ki","\$1kami","\$1kach","\$1ki"),
-	"(.*k)"=> array("\$1","\$1u","\$1owi","\$1","\$1em","\$1zie","\$1",
-							"\$1i","\$1ów","\$1om","\$1i","\$1ami","\$1ach","\$1i"),
-	"(.*)³o"=>array("\$1³o","\$1³a","\$1³u","\$1³o","\$1³em","\$1le","\$1³o",
-							"\$1³a","\$1e³","\$1³om","\$1³a","\$1³ami","\$1³ach","\$1³a"),
+							"\$1ki","\$1kÃ³w","\$1kom","\$1ki","\$1kami","\$1kach","\$1ki"),
+	"(.*k)"=> array("\$1","\$1a","\$1owi","\$1","\$1iem","\$1u","\$1",
+							"\$1i","\$1Ã³w","\$1om","\$1i","\$1ami","\$1ach","\$1i"),
+	"(.*)Å‚o"=>array("\$1Å‚o","\$1Å‚a","\$1Å‚u","\$1Å‚o","\$1Å‚em","\$1le","\$1Å‚o",
+							"\$1Å‚a","\$1eÅ‚","\$1Å‚om","\$1Å‚a","\$1Å‚ami","\$1Å‚ach","\$1Å‚a"),
 	"(.*)to"=>array("\$1to","\$1ta","\$1tu","\$1to","\$1tem","\$1cie","\$1to",
 							"\$1ta","\$1t","\$1tom","\$1ta","\$1tami","\$1tach","\$1ta"),
 	"(.*)o"=>array("\$1o","\$1a","\$1u","\$1o","\$1em","\$1ie","\$1o",
-							"\$1a","\$1e³","\$1om","\$1a","\$1ami","\$1ach","\$1a"),
+							"\$1a","\$1eÅ‚","\$1om","\$1a","\$1ami","\$1ach","\$1a"),
 	"(.*er)"=>array("\$1","\$1a","\$1owi","\$1","\$1em","\$1ze","\$1",
-							"\$1y","\$1ów","\$1om","\$1y","\$1ami","\$1ach","\$1y"),
+							"\$1y","\$1Ã³w","\$1om","\$1y","\$1ami","\$1ach","\$1y"),
 	"(.*)t"=> array("\$1t","\$1ta","\$1towi","\$1ta","\$1tem","\$1cie","\$1t",
-							"\$1ty","\$1tów","\$1tom","\$1ty","\$1tami","\$1tach","\$1ty"),
+							"\$1ty","\$1tÃ³w","\$1tom","\$1ty","\$1tami","\$1tach","\$1ty"),
 	"(.*)y"=> array("\$1y","\$1ego","\$1emu","\$1ego","\$1ym","\$1ym","\$1y",
-							"\$1e","\$1ych","\$1ym","\$1e","\$1ymi","\$1ych","\$1e"),
-	"(.*ysz)"=> array("\$1","\$1y","\$1y","\$1ê","\$1±","\$1y","\$1o",
-							"\$1e","\$1y","\$1om","\$1e","\$1ami","\$1ach","\$1e"),
+	                       "\$1e","\$1ych","\$1ym","\$1e","\$1ymi","\$1ych","\$1e"),
+	//mysz
+	"(.*ysz)"=> array("\$1","\$1y","\$1y","\$1","\$1Ä…","\$1y","\$1",
+							"\$1y","\$1y","\$1om","\$1y","\$1ami","\$1ach","\$1y"),
 	"(.*sz)"=> array("\$1","\$1a","\$1owi","\$1","\$1em","\$1u","\$1",
 							"\$1e","\$1y","\$1om","\$1e","\$1ami","\$1ach","\$1e"),
-	"(.*d)zieñ"=> array("\$1zieñ","\$1ni","\$1niowi","\$1","\$1niem","\$1niu","\$1niu",
+	"(.*d)zieÅ‚"=> array("\$1zieÅ‚","\$1ni","\$1niowi","\$1","\$1niem","\$1niu","\$1niu",
 							"\$1ni","\$1ni","\$1niom","\$1nie","\$1niami","\$1niach","\$1ni"),
-	"(.*)ñ"=> array("\$1ñ","\$1ni","\$1niowi","\$1","\$1niem","\$1niu","\$1niu",
+	"(.*)Åº"=> array("\$1Åº","\$1ni","\$1niowi","\$1","\$1niem","\$1niu","\$1niu",
 							"\$1nie","\$1ni","\$1niom","\$1nie","\$1niami","\$1niach","\$1ni"),
 
 	// this have to be last entry
 	"(.*)"=> array("\$1","\$1a","\$1owi","\$1","\$1em","\$1ie","\$1",
-							"\$1y","\$1ów","\$1om","\$1y","\$1ami","\$1ach","\$1y")
+							"\$1y","\$1Ã³w","\$1om","\$1y","\$1ami","\$1ach","\$1y")
 );
 
 function decline($name,$d,$p)
@@ -95,6 +99,7 @@ function decline($name,$d,$p)
 		if (preg_match($patt,$name))
 		{
 			//logstr("matched pattern: $patt on $name");
+			//echo "matched pattern: $patt on $name";
 			$v=preg_replace($patt,$val[7*$p+$d],$name); break;
 		}
 	}
@@ -115,13 +120,13 @@ function number2text($n)
 	$n=(int)$n;
 	//logstr("number2text($n)");
 	$d0=array("zero","jeden","dwa","trzy","cztery",
-		"piêæ","sze¶æ","siedem","osiem","dziewiêæ",
-		"dziesiêæ","jedena¶cie","dzwna¶cie","trzyna¶cie","czterna¶cie",
-		"piêtna¶cie","szesna¶cie","siedemna¶cie","osiemna¶cie","dziewiêtna¶cie");
-	$d10=array("dwadzie¶cia","trzydzie¶ci","czterdzie¶ci","piêædziesi±t",
-		"sze¶ædziesi±t","siedemdziesi±t","osiemdziesi±t","dziewiêædziesi±t");
-	$d100=array("sto","dwie¶cie","trzysta","czterysta","piêæset","sze¶æset",
-		"siedemset","osiemset","dziewiêæset");
+		"pi??","sze??","siedem","osiem","dziewi??",
+		"dziesi??","jedena?cie","dzwna?cie","trzyna?cie","czterna?cie",
+		"pi?tna?cie","szesna?cie","siedemna?cie","osiemna?cie","dziewi?tna?cie");
+	$d10=array("dwadzie?cia","trzydzie?ci","czterdzie?ci","pi??dziesi?t",
+		"sze??dziesi?t","siedemdziesi?t","osiemdziesi?t","dziewi??dziesi?t");
+	$d100=array("sto","dwie?cie","trzysta","czterysta","pi??set","sze??set",
+		"siedemset","osiemset","dziewi??set");
 	if ($n < 20) $t=$d0[$n];
 	else if ($n < 100)
 	{
@@ -135,7 +140,7 @@ function number2text($n)
 	}
 	else if ($n < 1000000)
 	{
-		$t=number2text($n/1000)." ".numbered("tysi±c",$n/1000); $n%=1000;
+		$t=number2text($n/1000)." ".numbered("tysi?c",$n/1000); $n%=1000;
 		if ($n) $t.=" ".number2text($n);
 	}
 	else
@@ -148,7 +153,7 @@ function number2text($n)
 }
 function amount2text($a)
 {
-	$t=number2text($a/100)." ".numbered("z³oty",$a); $a%=100;
+	$t=number2text($a/100)." ".numbered("z?oty",$a); $a%=100;
 	$t.=" i ".number2text($a)." ".numbered("grosz",$a);
 	return $t;
 }

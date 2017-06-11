@@ -3,7 +3,8 @@
 	color:#333;
 	border:0px;margin:0px;
 	background-clip:border-box;
-	font: normal 14px times;
+	font-size:14px;
+	font-family: times;
 }
 
 body{

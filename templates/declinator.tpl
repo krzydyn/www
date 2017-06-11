@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>Declinator</title>
-<meta http-equiv="Content-type" content="text/html;charset=iso-8859-2" />
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 <body>

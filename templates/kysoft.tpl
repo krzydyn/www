@@ -16,18 +16,18 @@
   <meta name="keywords" content="<%val("txt.keywords")%>" />
   <meta name="description" content="<%val("txt.keywords")%>" />
   <link rel="shortcat icon" href="" type="image/x-icon" />
-  <link rel="stylesheet" href="style_new.css" type="text/css" />
+  <link rel="stylesheet" href="<%val("cfg.rooturl")%>style_new.css" type="text/css" />
   <!--[if IE]>
   <link rel="stylesheet" href="style_ie.css" type="text/css" />
   <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
   <![endif]-->
-  <link rel="alternate" type="application/rss+xml" title="KySoft RSS" href="rss.php" />
+  <link rel="alternate" type="application/rss+xml" title="KySoft RSS" href="<%val("cfg.rooturl")%>rss.php" />
   <script type="text/javascript" src="<%val("cfg.cmsurl")%>js/prototype.js"></script>
   <script type="text/javascript" src="<%val("cfg.cmsurl")%>js/cms.js"></script>
   <script type="text/javascript" src="<%val("cfg.cmsurl")%>js/md5.js"></script>
   <script type="text/javascript" src="<%val("cfg.cmsurl")%>js/misc.js"></script>
-  <script type="text/javascript" src="shjs/sh_main.js"></script>
-  <link type="text/css" rel="stylesheet" href="shjs/sh_typical.css">
+  <script type="text/javascript" src="<%val("cfg.rooturl")%>shjs/sh_main.js"></script>
+  <link type="text/css" rel="stylesheet" href="<%val("cfg.rooturl")%>shjs/sh_typical.css">
   
   <meta name="alexaVerifyID" content="7XnaryZ9qWSAEJJ_0vJCpBqFaLc" />
   <meta name="msvalidate.01" content="4F75189BFBDDA48F2494B0C2F9358707" />
@@ -48,7 +48,7 @@
 <body onload="page_init();sh_highlightDocument('shjs/lang/','.js');/*getGeoLocation();*/">
 <div class="body">
 
-<img class="logo" src="icony/kysoft.png" alt="logo" align="left" />
+<img class="logo" src="<%val("cfg.rooturl")%>icony/kysoft.png" alt="logo" align="left" />
 <div class="abs" style="left:150px">
 [Your IP: <%val("remote-addr")%>]
 </div>
@@ -73,14 +73,14 @@
 </div>
 <%}%>
 <%val("txt.language")%>: 
-<a href="?lang=pl"><img src="icony/flag-pl.gif" alt="PL" /></a>
-<a href="?lang=en"><img src="icony/flag-en.gif" alt="EN" /></a>
+<a href="?lang=pl"><img src="<%val("cfg.rooturl")%>icony/flag-pl.gif" alt="PL" /></a>
+<a href="?lang=en"><img src="<%val("cfg.rooturl")%>icony/flag-en.gif" alt="EN" /></a>
 <br>
 <%include("suggest.tpl")%>
 </div>
 <h1><%val("txt.title")%></h1><br>
 
-<a class="sitemap" href="?tab=sitemap">sitemap</a>
+<a class="sitemap" href="<%val("cfg.rooturl")%>?tab=sitemap">sitemap</a>
 <div class="MainTabs">
 <%include("tabs.tpl")%>
 </div>
