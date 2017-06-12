@@ -85,6 +85,8 @@ class Request{
 		$uri = $this->getval("req.uri");
 		if ($appuri!==false && strpos($uri,$appuri)===0)
 			$this->setval("uri","/".substr($uri,strlen($appuri)));
+		else
+			$this->setval("uri","/");
 
 		if (isset($_FILES)){
 			while (list($fld,$a)=each($_FILES)){
