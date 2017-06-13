@@ -76,13 +76,13 @@ class Request{
 
 		$this->setval("srv",$_SERVER);
 		unset($_SERVER);
-		$this->setval("req.method",$this->getval("srv.REQUEST_METHOD"));
-		$this->setval("req.uri",$this->getval("srv.REQUEST_URI"));
+		$this->setval("method",$this->getval("srv.REQUEST_METHOD"));
+		$this->setval("abs-uri",$this->getval("srv.REQUEST_URI"));
 		$this->setval("remote-addr",$this->getval("srv.REMOTE_ADDR"));
 		$this->setval("remote-port",$this->getval("srv.REMOTE_PORT"));
 
 		$appuri=$this->getval("cfg.rooturl");
-		$uri = $this->getval("req.uri");
+		$uri = $this->getval("abs-uri");
 		if ($appuri!==false && strpos($uri,$appuri)===0)
 			$this->setval("uri","/".substr($uri,strlen($appuri)));
 		else
