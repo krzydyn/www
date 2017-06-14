@@ -1,7 +1,4 @@
 <?php
-header("Content-type: application/rss+xml");
-echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-
 require_once("config.php");
 require_once($config["cmslib"]."modules.php");
 require_once($config["cmslib"]."application.php");
@@ -18,6 +15,7 @@ class App extends Application{
 		$this->listMoto($items);
 		$this->listJokes($items);
 		$this->setval("items",$items);
+		$this->addval("hdr","Content-type: application/rss+xml");
 	}
 	function listJokes(&$items){
 		$r=$this->db->tabfind("joke","updatetm,category,contents","order by updatetm desc limit 5");
@@ -59,6 +57,7 @@ class App extends Application{
 			$c=implode("/",$tit);
 			//$item["contents"]=html_escape(nl2br($c));
 			$item["title"]=html_escape(nl2br($c));
+			$item["contents"]="";
 			$items[]=$item;
 		}
 	}
@@ -70,5 +69,4 @@ $a->process();
 unset($a);
 $t=new TemplateEngine();
 $t->load("rss.tpl");
-//print_r($req);
 ?>

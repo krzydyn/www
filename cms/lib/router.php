@@ -22,12 +22,10 @@ class Route {
 	}
 	public function match($method, $uri) {
 		if (!empty($this->method) && $this->method != $method) return 0;
-		$patt="|^".$this->esc_re($this->re_uri,"|")."|i";
+		$patt="/^".$this->esc_re($this->re_uri,"/")."/i";
 		if (!preg_match($patt, $uri, $matches)) {
-			//echo "uri no match to ".$this->re_uri."\n";
 			return 0;
 		}
-		//echo "* match to [".$this->method."] ".$patt."\n";
 		//count alnum
 		$cnt=0;
 		for ($i=strlen($this->re_uri); --$i>=0; ) {
@@ -45,18 +43,22 @@ class Router {
 		$this->routes[] = new Route($method, $uri, $handler);
 	}
 	public function route($method, $uri) {
+		$dbg=0;
 		$best_match=0;
 		$best_route=null;
+		if ($dbg) echo "<pre>matcing '".$uri."'\n";
 		foreach ($this->routes as $r) {
 			$m = $r->match($method, $uri);
+			if ($dbg) echo "match on ".$r->re_uri." is ".$m."\n";
 			if ($m > $best_match) {
 				$best_match = $m;
 				$best_route = $r;
 			}
 		}
+		if ($dbg) echo "</pre>";
 		if ($best_route) {
 			$r=$best_route;
-			echo "REQ '[".$method."]:".$uri."' ROUTE TO '[".$r->method."]:".$r->re_uri."'\n";
+			//echo "REQ '[".$method."]:".$uri."' ROUTE TO '[".$r->method."]:".$r->re_uri."'\n";
 			$args=array();
 			call_user_func_array($r->handler,$args);
 		}

@@ -42,10 +42,15 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
+function onload_init() {
+	page_init();
+	//sh_highlightDocument('shjs/lang/','.js');
+	//getGeoLocation();
+}
 </script>
 <%}%>
 </head>
-<body onload="page_init();sh_highlightDocument('shjs/lang/','.js');/*getGeoLocation();*/">
+<body onload="onload_init();">
 <div class="body">
 
 <img class="logo" src="<%val("cfg.rooturl")%>icony/kysoft.png" alt="logo" align="left" />

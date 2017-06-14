@@ -1,7 +1,8 @@
 <?php
 ob_start();
 
-//Serach: \n[ \t]*{
+global $config;
+
 function printo($l,$n,&$o){
 	echo str_repeat(" ",2*$n);
 	if ($l) echo $l." => ";
@@ -160,8 +161,7 @@ if(!function_exists('parse_ini_string')){
   }
 }
 
-if(!function_exists('mime_content_type')){
-function mime_content_type($f){
+function make_content_type($f){
 	$pinfo=pathinfo($f);
 
 	if (!array_key_exists("extension",$pinfo)){
@@ -172,7 +172,9 @@ function mime_content_type($f){
 
 	$ext=strtolower($pinfo["extension"]);
 	if ($ext=="txt"||$ext=="sh"||$ext=="c"||$ext=="h") return "text/plain";
-	if ($ext=="xml") return "text/xml";//other: text/rss+xml, text/atom+xml
+	//other: text/rss+xml, text/atom+xml
+	if ($ext=="css"||$ext=="xml") return "text/".$ext;
+	if ($ext=="js") return "text/javascript";
 
 	if ($ext=="jar") return "application/java-archive";
 	if ($ext=="exe") return "application/octet-stream";
@@ -186,6 +188,10 @@ function mime_content_type($f){
 	//return "application/force-download";
 	return "application/download";
 }
+//NOTE php.ini: mime_magic.magicfile = "file with mime defs"
+//     mime.magic can be downloaded from 'http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types'
+if(!function_exists('mime_content_type')){
+	function mime_content_type($f) { return make_content_type($f); }
 }
 $config["cmslib"]=strtr(dirname(__FILE__),"\\","/")."/";
 
