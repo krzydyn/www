@@ -1,5 +1,6 @@
 <?php
-//\n[ \t]*{
+date_default_timezone_set("Europe/Warsaw");
+
 function array_setval(&$t,$n,&$v=null){
 	if (empty($n)) return false;
 	$n=explode(".",$n);
@@ -82,7 +83,12 @@ class Request{
 		$this->setval("remote-port",$this->getval("srv.REMOTE_PORT"));
 
 		$appuri=$this->getval("cfg.rooturl");
+		$appuri=strtr($appuri,array("//"=>"/"));
+		$this->setval("cfg.rooturl",$appuri);
 		$uri = $this->getval("abs-uri");
+		if (strpos($uri,"?")!==false) {
+			$uri=substr($uri,0,strpos($uri,"?"));
+		}
 		if ($appuri!==false && strpos($uri,$appuri)===0)
 			$this->setval("uri","/".substr($uri,strlen($appuri)));
 		else

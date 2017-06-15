@@ -15,9 +15,9 @@ AddType text/plain .java
 AddType text/plain .c
 
 RewriteEngine on
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-#RewriteCond %{REQUEST_FILENAME} !=index.php
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !=index.php
 RewriteRule .* index.php [QSA,L]
 #RewriteBase /
 #RewriteRule ^/(.*)$		?tab=$1 [L]

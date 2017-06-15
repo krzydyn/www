@@ -3,6 +3,10 @@
    return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
 }
 
+function $(id) {
+	return document.getElementById(id);
+}
+
 function Ajax() {
 	var r=null;
 	if (window.XMLHttpRequest)

@@ -65,7 +65,6 @@ class App extends Application{
 $a=new App();
 $a->initialize();
 $a->process();
-//$req=$a->req;
 unset($a);
 $t=new TemplateEngine();
 $t->load("rss.tpl");

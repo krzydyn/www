@@ -1,10 +1,11 @@
 <?php
+require_once($config["cmslib"]."modules.php");
 class Route {
 	var $method;
 	var $re_uri;
 	var $handler;
 
-	private function esc_re($re,$esc) {
+	function esc_re($re,$esc) {
 		$l=strlen($re);
 		$r="";
 		for ($i=0; $i < $l; ++$i) {
@@ -22,7 +23,8 @@ class Route {
 	}
 	public function match($method, $uri) {
 		if (!empty($this->method) && $this->method != $method) return 0;
-		$patt="/^".$this->esc_re($this->re_uri,"/")."/i";
+		if (empty($this->re_uri)) return 1;
+		$patt="/^".$this->esc_re($this->re_uri,"/")."$/i";
 		if (!preg_match($patt, $uri, $matches)) {
 			return 0;
 		}
@@ -43,19 +45,19 @@ class Router {
 		$this->routes[] = new Route($method, $uri, $handler);
 	}
 	public function route($method, $uri) {
-		$dbg=0;
+		$dbg=1;
 		$best_match=0;
 		$best_route=null;
-		if ($dbg) echo "<pre>matcing '".$uri."'\n";
+		if ($dbg) logstr("matching '".$uri."'");
 		foreach ($this->routes as $r) {
 			$m = $r->match($method, $uri);
-			if ($dbg) echo "match on ".$r->re_uri." is ".$m."\n";
+			$patt="/^".$r->esc_re($r->re_uri,"/")."$/i";
+			if ($dbg) logstr("match on ".$patt." is ".$m);
 			if ($m > $best_match) {
 				$best_match = $m;
 				$best_route = $r;
 			}
 		}
-		if ($dbg) echo "</pre>";
 		if ($best_route) {
 			$r=$best_route;
 			//echo "REQ '[".$method."]:".$uri."' ROUTE TO '[".$r->method."]:".$r->re_uri."'\n";
