@@ -1,4 +1,10 @@
 <?php
+/*require_once("config.php");
+require_once($config["cmslib"]."router.php");
+require_once($config["cmslib"]."request.php");
+
+$r = new Router();
+ */
 require_once("recipe.php");
 try{
 	$a=new RecipeApp();

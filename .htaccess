@@ -18,6 +18,7 @@ RewriteEngine on
 #RewriteCond %{REQUEST_FILENAME} !-f
 #RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !=index.php
+RewriteRule przepisy/(.*) przepisy/$1 [QSA,L]
 RewriteRule .* index.php [QSA,L]
 #RewriteBase /
 #RewriteRule ^/(.*)$		?tab=$1 [L]
