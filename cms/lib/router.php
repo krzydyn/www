@@ -36,7 +36,7 @@ class Route {
 			}
 			if (ctype_alnum($this->re_uri[$i])) ++$cnt;
 		}
-		$wcnt = strlen($this->re_uri) - $cnt; 
+		$wcnt = strlen($this->re_uri) - $cnt;
 		$cnt=$wcnt + $cnt*10 + 2;
 		if (empty($this->method)) return $cnt-1;
 		return $cnt;
