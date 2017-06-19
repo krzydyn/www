@@ -20,14 +20,15 @@ class Application{
 	function setval($n,$v=null){return $this->req->setval($n,$v);}
 	function addval($n,$v) { return $this->req->addval($n,$v); }
 	function process() {
-		$action=$this->getval("req.act","default");
+		$action="";
+		$action=$this->getval("req.act",$action);
 		$this->setval("req.act");
+		$action=$this->getval("action",$action);
 		if ($action && !preg_match("#^[_A-Za-z0-9]+$#",$action)) $action="";
-
 		if (empty($action)) $action="default";
+		$this->setval("action",$action);
 		$method=$action."Action";
 		if (method_exists($this,$method)){
-			//printobj("processing",$method);
 			$this->$method();
 		}
 		else{
