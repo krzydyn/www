@@ -68,11 +68,12 @@ class Request{
 		//TODO SESSION propagate into REQUEST
 
 		if (isset($_GET)){
-			while (list($fld,$a)=each($_GET))
+			while (list($fld,$a)=each($_GET)) {
 				$this->setval("req.".$fld,$a);
+			}
 		}
-
 		array_unslash($this->vals["req"]);
+
 		unset($_COOKIE);unset($_REQUEST);unset($_GET);unset($_POST);
 
 		$this->setval("srv",$_SERVER);

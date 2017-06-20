@@ -49,7 +49,7 @@ class Router {
 		$this->routes[] = new Route($method, $uri, $handler);
 	}
 	public function route($method, $uri) {
-		$dbg=1;
+		$dbg=0;
 		$best_match=0;
 		$best_route=null;
 		$best_matches=null;
