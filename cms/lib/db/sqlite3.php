@@ -37,14 +37,25 @@ class sqlite3_DB extends DB{
 		return true;
 	}
 	function dbcreate($db){return $this->dbselect($db);}
-	function &query($q){
+	function &query($q, $params=array()){
 		global $config;
 		if (!$this->dbhnd) {$this->_errmsg="not connected";return false;}
 		$q=trim($q); $r=true;
 		if (empty($q)) return $r;
+		
 		$this->sql=$q;
-		//if (array_getval($config,"debug.query")=="y") printobj("query",$this->sql);
-		$r=@$this->dbhnd->query($this->sql);
+		//if (array_getval($config,"debug.query")=="y") logstr("query: ".$this->sql);
+		if (sizeof($params) > 0) {
+			$stmt = $this->dbhnd->prepare($q);
+			reset($params);
+			foreach ($params as $k => $v)
+				$stmt->bindValue($k, $v);
+			unset($k);unset($v);
+			$r=$stmt->execute();
+		}
+		else {
+			$r=@$this->dbhnd->query($this->sql);
+		}
 		$this->seterr($r);
 		if ($r===false) return $r;
 		$rs=new sqlite3_RecordSet();
