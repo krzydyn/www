@@ -34,9 +34,10 @@ class sqlite_DB extends DB{
 		if (!empty($db)) $this->dbselect($db);
 		return true;
 	}
+	function close() {if ($this->dbhnd) {sqlite_close($this->dbhnd);$this->dbhnd=null;}}
 	function dbselect($db){
+		$this->close();
 		$this->dbname=$db;
-		if ($this->dbhnd) sqlite_close($this->dbhnd);
 		$this->dbhnd=sqlite_open($db,0666);
 		$this->seterr($this->dbhnd);
 		if (!$this->dbhnd) return false;

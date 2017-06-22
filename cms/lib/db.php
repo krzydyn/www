@@ -24,6 +24,7 @@ abstract class DB{
 	var $_errmsg;
 
 	abstract function connect($h,$u,$p="",$db="");
+	abstract function close();
 	abstract function dbselect($db);
 	abstract function dbcreate($db);
 	abstract function &query($q);

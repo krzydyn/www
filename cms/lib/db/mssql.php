@@ -28,12 +28,14 @@ class mssql_RecordSet extends RecordSet{
 class mssql_DB extends DB{
 	function __construct() {$this->dbtype="mssql";}
 	function connect($h,$u,$p="",$db=""){
+		$this->close();
 		$this->dbhnd=mssql_connect($h,$u,$p);
 		$this->seterr($this->dbhnd);
 		if (!$this->dbhnd) return false;
 		if (!empty($db)) $this->dbselect($db);
 		return true;
 	}
+	function close() {if ($this->dbhnd) {mssql_close($this->dbhnd);$this->dbhnd=null;}}
 	function dbselect($db){
 		$this->dbname=$db;
 		if (!$this->dbhnd) {$this->_errmsg="not connected";return false;}

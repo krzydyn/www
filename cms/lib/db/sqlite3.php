@@ -26,10 +26,11 @@ class sqlite3_RecordSet extends RecordSet{
 class sqlite3_DB extends DB{
 	function __construct() {$this->dbtype="sqlite3";}
 	function connect($h,$u,$p="",$db=""){
-		if ($this->dbhnd) {$this->dbhnd->close();$this->dbhnd=null;}
+		$this->close();
 		$this->dbhnd=new SQLite3($db);
 		return true;
 	}
+	function close() {if ($this->dbhnd) {$this->dbhnd->close();$this->dbhnd=null;}}
 	function dbselect($db){
 		$this->dbhnd->close();
 		$this->dbname=$db;
