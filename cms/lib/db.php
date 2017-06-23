@@ -28,6 +28,7 @@ abstract class DB{
 	abstract function dbselect($db);
 	abstract function dbcreate($db);
 	abstract function &query($q);
+	//if you use a transaction you should use lastInsertId BEFORE you commit otherwise it will return 0
 	abstract function insertid();
 	abstract function affected();
 	abstract function tables();

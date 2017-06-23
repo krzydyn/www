@@ -1,4 +1,5 @@
 <?php
+ob_start();
 date_default_timezone_set("Europe/Warsaw");
 
 function array_setval(&$t,$n,&$v=null){
