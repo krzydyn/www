@@ -4,11 +4,10 @@ require_once($config["cmslib"]."modules.php");
 /**
  * $data = array("key"=>"value",....)
  */
-function apicall($method, $url, $data) {
+function restApi($method, $url, $data) {
 	$curl = curl_init();
 	$method = strtoupper($method);
-	switch ($method)
-    {
+	switch ($method) {
         case "POST": //post data
 			$json = json_encode($data);
             curl_setopt($curl, CURLOPT_POST, true);
@@ -39,6 +38,7 @@ function apicall($method, $url, $data) {
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     $result = curl_exec($curl);
     curl_close($curl);
+	logstr("API r=".$result);
     return $result;
 }
 ?>

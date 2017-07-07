@@ -49,6 +49,8 @@ class pdo_DB extends DB{
 		//if (array_getval($config,"debug.query")=="y") logstr("query: ".$this->sql);
 		if (sizeof($params) > 0) {
 			$stmt = $this->dbhnd->prepare($q);
+			$this->seterr($stmt);
+			if ($stmt===false) return $stmt;
 			reset($params);
 			foreach ($params as $k => $v)
 				$stmt->bindValue($k, $v);

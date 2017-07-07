@@ -172,7 +172,7 @@ function make_content_type($f){
 	$ext=strtolower($pinfo["extension"]);
 	if ($ext=="txt"||$ext=="sh"||$ext=="c"||$ext=="h") return "text/plain";
 	//other: text/rss+xml, text/atom+xml
-	if ($ext=="css"||$ext=="xml") return "text/".$ext;
+	if ($ext=="html"||$ext=="css"||$ext=="xml") return "text/".$ext;
 	if ($ext=="js") return "text/javascript";
 
 	if ($ext=="jar") return "application/java-archive";

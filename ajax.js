@@ -1,10 +1,6 @@
-﻿function isFunction(functionToCheck) {
+function isFunction(functionToCheck) {
    var getType = {};
    return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
-}
-
-function $(id) {
-	return document.getElementById(id);
 }
 
 function Ajax() {
@@ -15,27 +11,51 @@ function Ajax() {
 	else
 		// old IE
 		r = new ActiveXObject("Microsoft.XMLHTTP");
+	r.mozBackgroundRequest = true; //hide dialog window
 	this.req=r;
 };
 
-Ajax.prototype.async = function(method,url,onRespose) {
-   var that=this;
-   try {
-   this.req.open(method, url, true);
-   this.req.onerror = function (ev) { /*console.log('error:'+JSON.stringify(ev));*/ };
-   this.req.onreadystatechange = function () {
-       var r=that.req;
-       if (r.readyState!=4) return ;
-       //r.status==401 - login/password incorrect
-       //console.log('req:'+JSON.stringify(r));
-       if (isFunction(onRespose)) onRespose(r.status,r.responseText);
-       else alert('reslut is: '+r.responseText);
-   };
-   //req.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-   //req.setRequestHeader("Authorization", "Basic " + base64(username) + ':' + base64(password));
-   this.req.send();
-   } catch(error) {
-       console.log('exception:'+JSON.stringify(error));
-   }
+Ajax.prototype.async = function(method,url,onResponse) {
+	//var that=this;
+	console.log('req:'+method+'; '+url);
+	//open(method,url,async,user,passwd)
+	this.req.open(method, url, true);
+
+	this.req.onprogress = function (ev) { //XMLHttpRequestProgressEvent
+		//ev.loaded, ev.total
+		//console.log('onprogress');console.log(ev);
+	}
+	this.req.onreadystatechange = function (ev) { //Event
+    	var r=ev.target;
+		//console.log('onreadystatechange '+r.readyState);console.log(ev);
+		if (r.readyState==r.HEADERS_RECEIVED) {
+			//console.log('headers:'+r.getAllResponseHeaders());
+			return ; //continue
+		}
+		if (r.readyState==r.OPENED || r.readyState==r.LOADING) {
+			return ; //continue
+		}
+		var rc,tx;
+		if (r.readyState!=r.DONE) {
+			rc=-1; tx='Ajax internal error';
+		}
+		else if (r.status==0) {
+			rc=-1; tx='Network error';
+		}
+		else {
+			rc=r.status; tx=r.responseText;
+		}
+
+		//r.status==401 - login/password incorrect
+		if (isFunction(onResponse)) onResponse(rc, tx);
+	};
+	//this.req.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	//this.req.setRequestHeader("Authorization", "Basic " + base64(username) + ':' + base64(password));
+	try {
+		this.req.send();
+	} catch(e) {
+		console.log('exception:'+JSON.stringify(e));
+		if (isFunction(onResponse)) onResponse(-1, e.toString());
+	}
 };
 

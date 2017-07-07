@@ -14,6 +14,7 @@ w Europejskiej Organizacji Badań Jądrowych <a class="extern" href="http://cern
 <%}%>
 
 <br><br>
+<a class="extern" href="http://kdynowsk.web.cern.ch/kdynowsk/">DCS Apps</a> |
 <a class="extern" href="https://na61elog.cern.ch/">elog</a> |
 <a class="extern" href="http://op-webtools.web.cern.ch/op-webtools/vistar/vistars.php?usr=SPS1">SPS 1</a> |
 <a class="extern" href="http://tpg.hafas.de/hafas/tp/query.exe/fn?">tpg</a>
