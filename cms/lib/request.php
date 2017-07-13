@@ -84,17 +84,24 @@ class Request{
 		$this->setval("remote-addr",$this->getval("srv.REMOTE_ADDR"));
 		$this->setval("remote-port",$this->getval("srv.REMOTE_PORT"));
 
-		$appuri=$this->getval("cfg.rooturl");
+		$appuri=$this->getval("cfg.rooturl"); //contains trailing slash (/)
 		$appuri=strtr($appuri,array("//"=>"/"));
 		$this->setval("cfg.rooturl",$appuri);
 		$uri = $this->getval("abs-uri");
 		if (strpos($uri,"?")!==false) {
 			$uri=substr($uri,0,strpos($uri,"?"));
 		}
-		if ($appuri!==false && strpos($uri,$appuri)===0)
-			$this->setval("uri","/".substr($uri,strlen($appuri)));
-		else
+		if ($appuri!==false) {
+			if (strpos($uri,$appuri)===0)
+				$this->setval("uri","/".substr($uri,strlen($appuri)));
+			else {
+				header("Location: ".$appuri,true,303);
+				die();
+			}
+		}
+		else {
 			$this->setval("uri","/");
+		}
 
 		if (isset($_FILES)){
 			while (list($fld,$a)=each($_FILES)){
