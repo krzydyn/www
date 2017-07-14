@@ -17,7 +17,8 @@ function Ajax() {
 
 Ajax.prototype.async = function(method,url,onResponse) {
 	//var that=this;
-	console.log('req:'+method+'; '+url);
+	method=method.toUpperCase();
+	logw('AJAX '+method+':'+url);
 	//open(method,url,async,user,passwd)
 	this.req.open(method, url, true);
 

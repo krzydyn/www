@@ -2,6 +2,22 @@
 ob_start();
 date_default_timezone_set("Europe/Warsaw");
 
+function logstr($str){
+	global $config;
+	$tm=time();
+	if (isset($config["appname"])) $fn="cache/log-".$config["appname"].date("Ymd",$tm).".txt";
+	else $fn="cache/log".date("Ymd",$tm).".txt";
+	$f=@fopen($fn,"ab");
+	if ($f!==false){
+		if (flock($f,LOCK_EX)){
+			fwrite($f,$str."\n");
+			flock($f,LOCK_UN);
+		}
+		fclose($f);
+	}
+	else echo "[log] ".$str."\n";
+}
+
 function array_setval(&$t,$n,&$v=null){
 	if (empty($n)) return false;
 	$n=explode(".",$n);

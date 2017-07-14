@@ -25,13 +25,15 @@ class pdo_RecordSet extends RecordSet{
 	}
 }
 class pdo_DB extends DB{
+	var $dbtype;
 	function __construct() {$this->dbtype="pdo";}
 	function connect($h,$u,$p="",$db=""){
+		$this->dbtype=substr($db,0,strpos($db,':'));
 		$this->close();
 		$this->dbhnd=new PDO($db);
 		return true;
 	}
-	function close() {if ($this->dbhnd) {$this->dbhnd->close();$this->dbhnd=null;}}
+	function close() {if ($this->dbhnd) {$this->dbhnd=null;}}
 	function dbselect($db){
 		$this->dbhnd->close();
 		$this->dbname=$db;
@@ -59,12 +61,14 @@ class pdo_DB extends DB{
 		}
 		else {
 			$r=@$this->dbhnd->query($this->sql);
+			$stmt=$r;
 		}
 		$this->seterr($r);
 		if ($r===false) return $r;
 		$rs=new pdo_RecordSet();
 		//if ($r===true) return $rs;
 		$rs->setresult($stmt);
+		$stmt=null;
 		return $rs;
 	}
 	function insertid(){
@@ -76,14 +80,21 @@ class pdo_DB extends DB{
 		return $this->dbhnd->changes();
 	}
 	function tables() {
-		$r=$this->query("SHOW TABLES");
+		if ($this->dbtype=="sqlite")
+			$r=$this->query("select tbl_name from sqlite_master where type='table'");
+		else
+			$r=$this->query("SHOW TABLES");
+
 		if ($r===false) return false;
 		$tabs=array();
 		while ($row=$r->fetch(FETCH_NUM)) $tabs[]=$row[0];
 		return $tabs;
 	}
 	function describe($t) {
-		$r=$this->query("SHOW COLUMNS FROM `$t`");
+		if ($this->dbtype=="sqlite")
+			$r=$this->query("select tbl_name,sql from sqlite_master where type='table' and tbl_name='".$t."'");
+		else
+			$r=$this->query("SHOW COLUMNS FROM `$t`");
 		if ($r===false) return false;
 		$f=array();
 		while ($row = $r->fetch(FETCH_NUM)) {

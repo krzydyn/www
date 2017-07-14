@@ -38,21 +38,6 @@ function args($skip,&$a){
 	for ($i=0; $i<$skip; $i++) array_shift($a);
 	return is_array($a[0])?$a[0]:$a;
 }
-function logstr($str){
-	global $config;
-	$tm=time();
-	if (isset($config["appname"])) $fn="cache/log-".$config["appname"].date("Ymd",$tm).".txt";
-	else $fn="cache/log".date("Ymd",$tm).".txt";
-	$f=@fopen($fn,"ab");
-	if ($f!==false){
-		if (flock($f,LOCK_EX)){
-			fwrite($f,$str."\n");
-			flock($f,LOCK_UN);
-		}
-		fclose($f);
-	}
-	else echo "[log] ".$str."\n";
-}
 function searchdir(&$a,$fn){
 	for ($i=0; $i<sizeof($a); $i++){
 		$d=$a[$i];
