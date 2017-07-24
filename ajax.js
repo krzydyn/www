@@ -15,7 +15,12 @@ function Ajax() {
 	this.req=r;
 };
 
-Ajax.prototype.async = function(method,url,onResponse) {
+Ajax.prototype.async = function(method,url,onResponse,tag) {
+	var load_elem = $('loading');
+	if (load_elem) {
+		load_elem.style.display='inline-block';
+	}
+
 	//var that=this;
 	method=method.toUpperCase();
 	logw('AJAX '+method+':'+url);
@@ -47,16 +52,18 @@ Ajax.prototype.async = function(method,url,onResponse) {
 			rc=r.status; tx=r.responseText;
 		}
 
+		if (load_elem) load_elem.style.display='none';
 		//r.status==401 - login/password incorrect
-		if (isFunction(onResponse)) onResponse(rc, tx);
+		if (isFunction(onResponse)) onResponse(rc, tx, tag);
 	};
 	//this.req.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	//this.req.setRequestHeader("Authorization", "Basic " + base64(username) + ':' + base64(password));
 	try {
 		this.req.send();
 	} catch(e) {
+		if (load_elem) load_elem.style.display='none';
 		console.log('exception:'+JSON.stringify(e));
-		if (isFunction(onResponse)) onResponse(-1, e.toString());
+		if (isFunction(onResponse)) onResponse(-1, e.toString(), tag);
 	}
 };
 
