@@ -47,9 +47,8 @@ class pdo_DB extends DB{
 		$q=trim($q); $r=true;
 		if (empty($q)) return $r;
 		
-		$this->sql=$q;
-		//if (array_getval($config,"debug.query")=="y") logstr("query: ".$this->sql);
 		if (sizeof($params) > 0) {
+			$this->sql=$q."('".implode("','",$params)."')";
 			$stmt = $this->dbhnd->prepare($q);
 			$this->seterr($stmt);
 			if ($stmt===false) return $stmt;
@@ -60,13 +59,13 @@ class pdo_DB extends DB{
 			$r=$stmt->execute();
 		}
 		else {
-			$r=@$this->dbhnd->query($this->sql);
+			$this->sql=$q;
+			$r=@$this->dbhnd->query($q);
 			$stmt=$r;
 		}
 		$this->seterr($r);
 		if ($r===false) return $r;
 		$rs=new pdo_RecordSet();
-		//if ($r===true) return $rs;
 		$rs->setresult($stmt);
 		$stmt=null;
 		return $rs;
@@ -109,6 +108,7 @@ class pdo_DB extends DB{
 			$msg=$r[2];
 			$r=$r[0].":".$r[1];
 			$this->_errmsg=$r.":".$msg." '".$this->qstr()."'";
+			logstr($this->_errmsg);
 		}
 		else $this->_errmsg=null;
 	}

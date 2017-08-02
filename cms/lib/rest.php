@@ -33,12 +33,12 @@ function restApi($method, $url, $data) {
     }
 
 	//curl_setopt($curl, CURLOPT_HEADER, 1); //to include header in output
-	logstr("API url=".$url);
+	//logstr("API url=".$url);
 	curl_setopt($curl, CURLOPT_URL, $url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     $result = curl_exec($curl);
     curl_close($curl);
-	logstr("API r=".$result);
+	//logstr("API r=".$result);
     return $result;
 }
 ?>

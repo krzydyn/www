@@ -44,9 +44,8 @@ class sqlite3_DB extends DB{
 		$q=trim($q); $r=true;
 		if (empty($q)) return $r;
 		
-		$this->sql=$q;
-		//if (array_getval($config,"debug.query")=="y") logstr("query: ".$this->sql);
 		if (sizeof($params) > 0) {
+			$this->sql=$q."('".implode("','",$params)."')";
 			$stmt = $this->dbhnd->prepare($q);
 			reset($params);
 			foreach ($params as $k => $v)
@@ -55,7 +54,8 @@ class sqlite3_DB extends DB{
 			$r=$stmt->execute();
 		}
 		else {
-			$r=@$this->dbhnd->query($this->sql);
+			$this->sql=$q;
+			$r=@$this->dbhnd->query($q);
 		}
 		$this->seterr($r);
 		if ($r===false) return $r;
@@ -97,6 +97,7 @@ class sqlite3_DB extends DB{
 		if ($r===false){
 			$r=$this->dbhnd->lastErrorCode();
 			$this->_errmsg=$r.":".$this->dbhnd->lastErrorMsg()." '".$this->qstr()."'";
+			logstr($this->_errmsg);
 		}
 		else $this->_errmsg=null;
 	}
