@@ -123,6 +123,33 @@ abstract class DB{
 		$this->tabcreate($tab,implode(",",$cdef));
 		for ($i=0; $i<sizeof($a); ++$i) $this->tabinsert($tab,$a[$i]);
 	}
+	function tabdump($tab) {
+		$desc=$this->describe($tab);
+		$s="CREATE TABLE $tab (";
+		while (list($f,$v)=each($desc)){
+			$s.= "$f $v,";
+		}
+		$s = substr($s,0,-1).");";
+		logstr($s);
+		$r=$this->query("select * from ".$tab);
+		while ($row=$r->fetch()) {
+			$s="INSERT INTO $tab VALUES ('";
+			foreach ($row as $v) {
+				if (checkEncoding($v,"UTF-8")==false)
+					$v=iconv("ISO-8859-2","UTF-8",$v);
+				$s.=sql_escape($v)."','";
+			}
+			$s = substr($s,0,-3);
+			$s.="');";
+			logstr($s);
+		}
+	}
+	function dump() {
+		$tabs = $this->tables();
+		foreach($tabs as $t) {
+			$this->tabdump($t);
+		}
+	}
 	/*
 	 '#fld' in fmt will be replaced with $a[fld]
 	*/

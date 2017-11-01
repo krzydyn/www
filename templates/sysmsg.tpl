@@ -2,7 +2,7 @@
 <%if(val("error")||val("warn")||val("info")){%>
 <fieldset><legend>System message</legend><table>
 <%if(val("error")){%>
-<tr><td><t:list class="error" property="error" value="li" enclose="ul"><li><%$li%></li></t:list></td></tr>
+<tr><td><t:list class="error" property="error" value="li" enclose="ul"><li><pre><%$li%></pre></li></t:list></td></tr>
 <%}%>
 <%if(val("warn")){%>
 <tr><td><t:list class="warn" property="warn" value="li" enclose="ul"><li><%$li%></li></t:list></td></tr>

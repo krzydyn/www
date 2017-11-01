@@ -41,6 +41,7 @@ $r->addRoute("GET","/.*php",function() {
 
 //default
 $r->addRoute("","/",function() {
+logstr("processing default route '".Request::getInstance()->getval("uri")."'");
 global $config;
 require_once("kysoft.php");
 $req = Request::getInstance();

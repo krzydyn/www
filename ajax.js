@@ -13,7 +13,7 @@ function Ajax() {
 		r = new ActiveXObject("Microsoft.XMLHTTP");
 	r.mozBackgroundRequest = true; //hide dialog window
 	this.req=r;
-};
+}
 
 Ajax.prototype.async = function(method,url,onResponse,tag) {
 	var load_elem = $('loading');
@@ -65,5 +65,5 @@ Ajax.prototype.async = function(method,url,onResponse,tag) {
 		console.log('exception:'+JSON.stringify(e));
 		if (isFunction(onResponse)) onResponse(-1, e.toString(), tag);
 	}
-};
+}
 

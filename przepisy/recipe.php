@@ -101,6 +101,7 @@ class RecipeApp extends Application
 			$r=$db->tabinsert("user",array("name"=>"krzydyn","role"=>"1","passwd"=>md5("test")));
 			if ($r===false) $this->addval("error","DB:".$db->errmsg());
 		}
+		//$db->dump();
 	}
 	function getSession() {return $this->ses;}
 	function getUser() {return $this->user;}

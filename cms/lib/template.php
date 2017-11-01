@@ -313,11 +313,7 @@ class TemplateEngine {
 		ob_end_clean();
 		if (!empty($c)) {
 			if ($c[strlen($c)-1] != '\n') $c .= "\n";
-			echo "<pre>";
-			echo str_repeat("-",100)."\n";
-			echo $c;
-			echo str_repeat("-",100)."\n";
-			echo "</pre>";
+			$this->req->addval("error",$c);
 		}
 
 		ob_start();

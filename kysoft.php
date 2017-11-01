@@ -114,6 +114,7 @@ class Robot extends ModelObject{
 	function getPK(){return array("addr"=>null);}
 	function defaultOrder(){return "tm desc,ua";}
 }
+$dumpdone=false;
 class KySoft extends Application{
 	var $dao;
 	var $user;
@@ -154,10 +155,20 @@ class KySoft extends Application{
 			$r=$db->tabinsert("user",array("state"=>"1","name"=>"krzydyn","role"=>"1","passwd"=>md5("test")));
 			if ($r===false) $this->addval("error","DB:".$db->errmsg());
 		}
+		/*
 		$r=$db->describe("joke");
 		if ($r===false) {$this->addval("error","DB:".$db->errmsg());return false;}
 		if (!array_key_exists("votecnt",$r)) {
 			$db->addcolumn("joke","votecnt int default '1'");
+		}
+		*/
+
+		global $dumpdone;
+		if (!$dumpdone) {
+			$dumpdone=true;
+			//$db->tabdelete("robot","");
+			//logstr("*** DUMP");
+			//$db->dump();
 		}
 	}
 
@@ -507,8 +518,6 @@ class KySoft extends Application{
 		else {
 			$user=new User();
 			for ($i=0; $i<sizeof($r); ++$i){
-				if (checkEncoding($r[$i]->contents,"UTF-8")==false)
-					$r[$i]->contents=iconv("ISO-8859-2","UTF-8",$r[$i]->contents);
 				$r[$i]->contents=nl2br(html_escape($r[$i]->contents));
 				$u=$this->dao->find($user,null,new Criteria("id",$r[$i]->userid));
 				$r[$i]->_user=$u[0];
@@ -544,8 +553,6 @@ class KySoft extends Application{
 				if ($rj!==false){
 					$rj=$rj[0];
 					$rj->_cnt=$ji->_cnt;
-					if (checkEncoding($rj->contents,"UTF-8")==false)
-						$rj->contents=iconv("ISO-8859-2","UTF-8",$rj->contents);
 					$rj->contents=html_escape($rj->contents);
 					$rj->contents=highlight($rj->contents,$search);
 					$rj->contents=nl2br($rj->contents);

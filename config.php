@@ -17,6 +17,7 @@ else {
 // paths setup
 $config["rootdir"]=strtr(dirname(__FILE__),"\\","/")."/"; //path to the site files
 $config["rooturl"]=dirname($_SERVER["PHP_SELF"]."/")."/"; //url to the site
+if ($config["rooturl"] == "//") $config["rooturl"]="/";
 
 $config["cmslib"]=strtr(dirname(__FILE__),"\\","/")."/cms/lib/";
 $config["cmsurl"]=$config["rooturl"]."cms/";
@@ -29,9 +30,10 @@ $config["templateexpired"]="modtime"; //force|modtime
 //$config["fckfiledir"]="myfiles"; //relative to rootdir
 
 // db setup
-if (strncmp(phpversion(),"7.",2)>=0) $config["dbtype"]="sqlite3";
-else $config["dbtype"]="sqlite";
-$config["dbname"]="db/kysoft.db";
+//$config["dbtype"]="sqlite";
+//$config["dbname"]="db/kysoft.sqlite";
+$config["dbtype"]="pdo";
+$config["dbname"]="sqlite:db/kysoft.db";
 
 $config["sitetitle"]="KySoft Site";
 $config["lang"]="pl";

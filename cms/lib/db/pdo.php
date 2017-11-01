@@ -26,6 +26,7 @@ class pdo_RecordSet extends RecordSet{
 }
 class pdo_DB extends DB{
 	var $dbtype;
+	var $_affected;
 	function __construct() {$this->dbtype="pdo";}
 	function connect($h,$u,$p="",$db=""){
 		$this->dbtype=substr($db,0,strpos($db,':'));
@@ -43,8 +44,10 @@ class pdo_DB extends DB{
 	function dbcreate($db){return $this->dbselect($db);}
 	function &query($q, $params=array()){
 		global $config;
+		$this->_affected = -1;
 		if (!$this->dbhnd) {$this->_errmsg="not connected";return false;}
 		$q=trim($q); $r=true;
+		$this->_affected = 0;
 		if (empty($q)) return $r;
 		
 		if (sizeof($params) > 0) {
@@ -57,6 +60,7 @@ class pdo_DB extends DB{
 				$stmt->bindValue($k, $v);
 			unset($k);unset($v);
 			$r=$stmt->execute();
+			$this->_affected = $stmt->rowCount();
 		}
 		else {
 			$this->sql=$q;
@@ -76,7 +80,7 @@ class pdo_DB extends DB{
 		return $this->dbhnd->lastInsertId();
 	}
 	function affected() {
-		return $this->dbhnd->changes();
+		return $this->_affected;
 	}
 	function tables() {
 		if ($this->dbtype=="sqlite")
@@ -97,8 +101,14 @@ class pdo_DB extends DB{
 		if ($r===false) return false;
 		$f=array();
 		while ($row = $r->fetch(FETCH_NUM)) {
-			print_r($row);
-			$f[$row[0]]=$row[1];
+			if ($row[0] != $t) continue;
+			$def = substr($row[1], strpos($row[1],"(")+1,-1);
+			$comp = explode(",", $def);
+			foreach($comp as $c) {
+				$fdef = explode(" ", $c, 2);
+				if (sizeof($fdef) == 1) $fdef[1]="";
+				$f[$fdef[0]] = $fdef[1];
+			}
 		}
 		return $f;
 	}

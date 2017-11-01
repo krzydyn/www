@@ -21,12 +21,6 @@ class App extends Application{
 			$r=$db->tabcreate($t,$v);
 			if ($r===false) {$this->addval("error","DB:".$db->errmsg());return false;}
 		}
-		$r=$db->describe("santa2012");
-		if ($r===false) {$this->addval("error","DB:".$db->errmsg());return false;}
-		if (!array_key_exists("updatetm",$r)){
-			$db->addcolumn("santa2012","updatetm int","value");
-			$db->tabupdate("santa2012",array("updatetm"=>time()),"");
-		}
 	}
 	function process(){
 		$this->setval("sitetitle","Do św Mikołaja");

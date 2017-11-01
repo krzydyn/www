@@ -22,8 +22,10 @@ $config["fckconfig"]="FCKconfig.js"; //relative to rooturl
 
 // db setup
 //$config["debug"]["query"]="y";
-$config["dbtype"]="sqlite";
-$config["dbname"]="db/recipe.sqlite";
+//$config["dbtype"]="sqlite";
+//$config["dbname"]="db/recipe.sqlite";
+$config["dbtype"]="pdo";
+$config["dbname"]="sqlite:db/recipe.db";
 
 $config["sitetitle"]="Sprawdzone przepisy";
 $config["lang"]="pl";

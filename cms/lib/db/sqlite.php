@@ -87,8 +87,9 @@ class sqlite_DB extends DB{
 		$row=explode(",",$row);
 		$f=array();
 		for ($i=0; $i<sizeof($row); ++$i){
-			$l=explode(" ",$row[$i],2);
-			$f[$l[0]]=$l[1];
+			$l=explode(" ",trim($row[$i]),2);
+			if (sizeof($l) == 1) $l[1]="";
+			$f[trim($l[0])]=trim($l[1]);
 		}
 		return $f;
 	}
