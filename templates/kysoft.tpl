@@ -15,7 +15,11 @@
 %>
   <meta name="keywords" content="<%val("txt.keywords")%>" />
   <meta name="description" content="<%val("txt.keywords")%>" />
-  <link rel="shortcat icon" href="" type="image/x-icon" />
+  <meta property="og:title" content="<%val("sitetitle")%>" />
+  <meta property="og:description" content="<%val("txt.keywords")%>" />
+  <meta property="og:image" content="<%val("cfg.rooturl")%>favicon.ico" />
+
+  <link rel="shortcat icon" href="<%val("cfg.rooturl")%>favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="<%val("cfg.rooturl")%>style_new.css" type="text/css" />
   <!--[if IE]>
   <link rel="stylesheet" href="style_ie.css" type="text/css" />

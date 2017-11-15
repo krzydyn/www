@@ -1,4 +1,5 @@
 <?php
+// https://checkgzipcompression.com/?url=http%3A%2F%2Fkysoft.pl
 require_once("config.php");
 require_once($config["cmslib"]."modules.php");
 require_once($config["cmslib"]."application.php");

@@ -6,12 +6,13 @@ require_once($config["cmslib"]."application.php");
 require_once("kysoft.php");
  */
 
-$prot=$_SERVER["SERVER_PROTOCOL"];
-$ua=$_SERVER["HTTP_USER_AGENT"];
-@$f=$_GET["f"];@$t=$_GET["t"];
+$req = Request::getInstance();
+$prot=$req->getVal("srv.SERVER_PROTOCOL");
+$ua=$req->getVal("srv.HTTP_USER_AGENT");
+$f=$req->getVal("req.f");
+$t=$req->getVal("req.t");
 if(!isset($f)){
 	header($prot." 403 Forbidden");
-	echo "Forbidden";
 	logstr("filename not given");
 	exit;
 }

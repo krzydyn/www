@@ -1,9 +1,22 @@
-#ErrorDocument 404 /
-
 <FilesMatch "^\.ht">
 	Order allow,deny
 	Deny from all
 </FilesMatch>
+
+<FilesMatch ".(css)$">
+Header set Cache-Control "max-age=86400"  #one day
+</FilesMatch>
+<FilesMatch ".(ico|gif|jpg|jpeg|png)$">
+Header set Cache-Control "max-age=2419200"  #four weeks
+</FilesMatch>
+
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE text/javascript
+AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+</IfModule>
 
 Options +FollowSymlinks
 Options All -Indexes
