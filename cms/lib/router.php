@@ -1,5 +1,5 @@
 <?php
-ini_set('zlib.output_compression', '1');
+//ini_set('zlib.output_compression', '1');
 require_once($config["cmslib"]."modules.php");
 class Route {
 	var $method;

@@ -43,10 +43,3 @@ int rand(void)
 		return( lfsr );
 }
 <%code_stop("c")%>
-
-
-http://www.zegaruz.republika.pl  !!!!
-Projekt i wdrożenie protokołu komunikacyjnego pomiędzy Pulserem IKF a programem komputerowym użytkownika/operatora na potrzeby eksperymentu NA61 wraz z programem demonstracyjnym
-
-from:2013-01-31 17:11
-to:  2013-02-02 06:50    worked 6:50 + 24 + 6:49 = 37:40

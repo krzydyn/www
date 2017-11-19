@@ -78,12 +78,11 @@ class Request{
 		global $config,$text;
 		$this->setval("cfg",$config);
 		$this->setval("txt",$text);
-		$this->setval("req",$_REQUEST);
-		//POST is propagated into REQUEST
-		//COOKIE is propagated into REQUEST
-		//GET overwrite POST
-		//TODO SESSION propagate into REQUEST
 
+		$this->setval("cookie",$_COOKIE);
+		$this->setval("req",$_REQUEST);
+		//TODO propagate SESSION into REQUEST
+		//propagate get
 		if (isset($_GET)){
 			while (list($fld,$a)=each($_GET)) {
 				$this->setval("req.".$fld,$a);

@@ -929,16 +929,16 @@ class KySoft extends Application{
 		$this->ses=$ses;
 		$this->setval("session",$this->ses);
 		$this->setval("user",$this->user);
-		$this->setval("req.hash",$this->ses->hash);
+		$this->setval("cookie.hash",$this->ses->hash);
 		setcookie("hash",$this->ses->hash);
 		$this->addval("info","your are logged in");
 		$this->defaultAction();
 	}
 	function logoutAction(){
+		$this->setval("cookie.hash");
 		setcookie("hash");
 		if (!$this->user) return $this->defaultAction();
 		if ($this->ses) $this->dao->del($this->ses);
-		$this->setval("req.hash");
 		$this->ses=false;
 		$this->user=false;
 		$this->setval("session");
@@ -951,10 +951,10 @@ class KySoft extends Application{
 	}
 	function authenticate(){
 		if (is_object($this->ses)) return true;
-		$hash=$this->getval("req.hash");
+		$hash=$this->getval("cookie.hash");
 		if (empty($hash)) return false;
 
-		$this->setval("req.hash");
+		$this->setval("cookie.hash");
 		$crit=new Criteria("hash",$hash);
 		$r=$this->dao->find(new Session(),null,$crit);
 		if (sizeof($r)==0){
@@ -978,8 +978,8 @@ class KySoft extends Application{
 		$ses->tmstamp=$tm;
 		$this->dao->update($ses); //update timestamp
 		$this->ses=$ses;
+		$this->setval("cookie.hash",$this->ses->hash);
 		setcookie("hash",$this->ses->hash);
-		$this->setval("req.hash",$this->ses->hash);
 		if ($ses->uid==0) return true; //no user for this session
 
 		$crit->clear();
