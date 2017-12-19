@@ -1,8 +1,8 @@
 <style type="text/css">
-.name {width:80px;}
-.updatetm {width:80px;}
+.name {width:10%;}
+.updatetm {width:10%;}
 .value {width:75%;max-width:800px;}
-.action {width:20px;}
+.action {width:10%;}
 </style>
 <h1>Lista życzeń do św.Mikołaja</h1>
 <h2 style="color:yellow">&gt;&gt;&gt; należy podać conajmniej 3 konkretne pozycje &lt;&lt;&lt;</h2>

@@ -3,7 +3,7 @@
 	color:#333;
 	border:0px;margin:0px;
 	background-clip:border-box;
-	font-size:14px;
+	font-size:14pt;
 	font-family: times;
 }
 
@@ -41,15 +41,15 @@ a,a:visited,a:focus,a:hover {
 a:hover {background-color:#DDD;}
 td {vertical-align: top;}
 input,textarea,select {
-	font:normal 14px times;
+	font:normal 12pt times;
 	border:1px solid black;
 	padding:0px;
 	margin:0px;
 	background-color:#DDD;
 }
-option{font-size:12px;}
+option{font-size:12pt;}
 button,input[type="button"],input[type="submit"],input[type="reset"] {
-	font:normal 14px times;
+	font:normal 14pt times;
 	padding:1px 2px;
 	cursor:pointer;
 	background-color:#AAA;
@@ -161,11 +161,11 @@ img.icon{float:left;padding-right:5px;}
 .content>div:first-child {
 	background-repeat:no-repeat;
 	background-position:right 25px;
-	background-attachment: scroll; 
+	background-attachment: scroll;
 	min-height:400px;
 }
 div.about {
-	background-image:url('images/meprof.png');	
+	background-image:url('images/meprof.png');
 }
 div.proj {
 	background-image:url('images/controlroom.png');
@@ -211,7 +211,6 @@ a:hover.extern {background-color:#DDD;}
 .post {
 	display:block;
 	width:99%; float:left;
-	xfont: normal 12pt times;
 	display:block;
 	vertical-align: top;
 	padding: 2px 2px;
@@ -303,7 +302,7 @@ ul.tabs {
 	list-style: none;
 }
 ul.tabs li {
-  background-color:#AAA;
+	background-color:#AAA;
 	margin:0px 3px;
 	list-style: none;
 	display:inline;
@@ -312,13 +311,13 @@ ul.tabs a {
 	display:inline;
 	color:#333;
 	font-weight:bold;
-  background-color:#AAA;
+	background-color:#AAA;
 	padding:2px 7px;
-  border:1px solid black;
+	border:1px solid black;
 }
 ul.tabs a.sel {
 	background-color:#CCC;
-  border-bottom:1px solid #CCC;
+	border-bottom:1px solid #CCC;
 }
 ul.tabs a:hover {
   background-color:#CCC;
@@ -350,7 +349,7 @@ ul.menu li {
 	padding:0px 3px 0px 3px;
 }
 ul.menu li:hover {
-	background-color:#0AA;	
+	background-color:#0AA;
 }
 /*Menu level 1*/
 ul.menu li ul{
@@ -403,22 +402,10 @@ declare @STATUS_WAITING tinyint = 1
 declare @Id int = 0
 declare @EditTokenId uniqueidentifier = '21afea99-7cbe-4bfd-9d9a-9db31a7bd5b4'
 declare @ModerationStatus tinyint = @STATUS_WAITING
-declare @Lang nvarchar(2)='EN' 
+declare @Lang nvarchar(2)='EN'
 declare @AppDescription nvarchar(MAX)='ala ma kota'
 declare @AppTopic nvarchar(128)=''
 declare @AppTopicId smallint = 0
 
 exec AppEdit.AppEdit_Enqueue @Id,@EditTokenId,@ModerationStatus,@Lang,@AppDescription,@AppTopic,@AppTopicId
-*/
-/*
-Jestes 3310 osoba bioraca udzial w badaniu, co oznacza, ze po wypelnieniu ankiety Planeteo zostaniesz przekierowany do odbioru vouchera na 3 dni bezplatnego zakwaterowania dla 2 os?b.
-Voucher: 67849-3512-3
-Termin waznosci: 2013-08-13
-Ilosc nocleg?w: 3
-Ilosc os?b: 2
-Voucher zarezerwowany na: 15 min.
-
-Rezerwacja Vouchera wazna (67849-3512-3)
-Tw?j Kod promocyjny:	 DMW2M-1CD62
-
 */
