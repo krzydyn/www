@@ -1,20 +1,51 @@
 * {
-font-size:15px;
-font-family:Helvetica,Verdana,Arial,Times,sans-serif;
+	font-size:inherit;
+	font-family:inherit;
 }
+
 body {
+	font-size: 14pt;
 	background:#aaa;
 	padding:15px;margin:0;}
-h1{text-align:center; display:none;}
+h1{font:italic 20pt times;text-align:center;}
 img {margin:0;border:0;}
 p {text-align:left;}
 a,a:visited,a:focus {text-decoration:none;color:#00C;}
 a:hover {text-decoration:none;color:#3FA;background-color:#777;}
+fieldset{
+	display:inline;
+	background-color:#BBB;
+	border:1px solid grey;
+}
+fieldset>legend{
+	font-weight:bold;
+	background-color:#BBB;
+	border:1px solid grey;
+	border-bottom:0px;
+	padding:1px 5px;
+}
+fieldset>table>tbody>tr>td{
+	padding:2px 5px;
+}
+.none {display:none;}
+.abs {position:absolute;left:50%;}
+.abs>div{
+	display:inline;
+	position:relative;
+	left:-50%;
+}
 
-div.syserr{color:red;background-color:#0f0;font-size:12px;text-align:left;}
-div.error{ color:red;background-color:#0f0;padding:0 20px 0 0;}
-div.warning{color:yellow;background-color:#0f0;}
-div.msg{color:green;font-weight:bold;}
+.sysmsg {
+	z-index:10;
+	top:10px;
+	display:block;
+	text-align:left;
+	margin:auto auto;
+}
+.sysmsg .error{ background-color: red; }
+.sysmsg .warn{ background-color: yellow; }
+.sysmsg .info{ background-color: #0b0; }
+
 #waitmsg{
 	color:red;background-color:yellow;padding:5px 15px;
 	font-weight:bold;font-size:18px;

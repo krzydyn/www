@@ -1,7 +1,7 @@
 <style type="text/css">
 .name {width:10%;}
 .updatetm {width:10%;}
-.value {width:75%;max-width:800px;}
+.value {width:70%;}
 .action {width:10%;}
 </style>
 <h1>Lista życzeń do św.Mikołaja</h1>

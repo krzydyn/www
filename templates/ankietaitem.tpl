@@ -17,7 +17,7 @@
 </t:list>
 <tr><td colspan="2" align="right">
 <input type="submit" value="<%val("txt.save","Save")%>"/>
-<input type="button" value="<%val("txt.cancel","Cancel")%>" onclick="history.back();"/>
+<input type="button" value="<%val("txt.cancel","Cancel")%>" onclick="window.location.href='<%val("cfg.rooturl")%>ankieta.php';"/>
 </td></tr></table>
 </fieldset>
 </form>
