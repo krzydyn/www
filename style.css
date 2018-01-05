@@ -4,9 +4,10 @@
 }
 
 body {
+	font-family:times;
 	font-size: 14pt;
 	background:#aaa;
-	padding:15px;margin:0;}
+	padding:0;margin:0;}
 h1{font:italic 20pt times;text-align:center;}
 img {margin:0;border:0;}
 p {text-align:left;}
@@ -54,7 +55,6 @@ fieldset>table>tbody>tr>td{
 #dbgmsg{
 	text-align:left;
 }
-.title{font-family:Verdana,sans-serif;font-size:20px;font-weight:bold;color:#00C;}
 table {margin:0;padding:0;border:none;empty-cells:show;}
 td,th {margin:0;padding:0;border:0;}
 tr.sp>td {background-color:white;padding:2px;}
@@ -93,9 +93,6 @@ td.right {text-align:right;}
 td.icon{text-align:center;vertical-align:middle;}
 a.icon {color:#000;display:inline;background-color:transparent;}
 a.icon:hover .bigsample {display:inline;}
-.recipe .name {width:250px;}
-.recipe .author {width:60px;}
-.recipe .category {width:100px;}
 
 div.editor
 {
