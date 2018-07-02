@@ -4,7 +4,7 @@
 
 <h2>SQlite API</h2>
 <a href="getfile.php?f=proj/java/libs/sqlitejdbc-v056.jar">sqlitejdbc-v056.jar</a> (2 684 154 bytes)
-or from <a target="_blank" href="http://www.zentus.com/sqlitejdbc/">zentus</a>
+or from by <a target="_blank" href="https://github.com/xerial/sqlite-jdbc">Taro L. Saito</a>
 <br>
 
 <h2>JExcel API</h2>
