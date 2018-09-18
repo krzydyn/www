@@ -1,10 +1,10 @@
-<h2>Trening (2) na torze Pannonia Ring, Wêgry, sierpieñ 2012</h2>
+<h2>Trening (2) na torze Pannonia Ring, WÄ™gry, sierpieÅ„ 2012</h2>
 
 <img class="sp" class src="moto/logos/PannoniaPlan_bg.jpg" align="right"/>
 <br>
-Po raz drugi wzi±³em udia³ w treningach na Pannonia Ring (d³ugo¶æ toru 4740m).<br>
+Po raz drugi wziÄ…Å‚em udiaÅ‚ w treningach na Pannonia Ring (dÅ‚ugoÅ›Ä‡ toru 4740m).<br>
 <br>
-<b>Dzieñ 2 (30.08.2012)</b><br>
+<b>DzieÅ„ 2 (30.08.2012)</b><br>
 <table><tr><td>
 <%
 $race=array(
@@ -59,7 +59,7 @@ $race=array(
   array("tm"=>"2:39.221","diff"=>""),
 );
 %>
-<table class="t1"><caption>Wy¶cig:</caption>
+<table class="t1"><caption>WyÅ›cig:</caption>
 <tr><th>Lap</th><th>LapTm</th><th>Diff</th></tr>
 <%for($i=0; $i<sizeof($race); ++$i){$r=$race[$i];%>
 <tr><td class="num"><%$i+1%></td><td class="num<%$r["diff"]?"":" b"%>"><%$r["tm"]%></td><td class="num"><%$r["diff"]%></td>
@@ -79,28 +79,28 @@ $race=array(
   array("nr"=>"266","name"=>"Jaroslav Ozaniak","tm"=>"02:38.897","diff"=>"01:11.603"),
   array("nr"=>"295","name"=>"Piotr Kubat","tm"=>"02:34.079","diff"=>"01:15.404"),
   array("nr"=>"246","name"=>"Sebastian Matuszak","tm"=>"02:35.315","diff"=>"01:17.399"),
-  array("nr"=>"296","name"=>"Jaros³aw Jedrzejewski","tm"=>"02:37.784","diff"=>"01:21.070"),
+  array("nr"=>"296","name"=>"JarosÅ‚aw Jedrzejewski","tm"=>"02:37.784","diff"=>"01:21.070"),
   array("nr"=>"252","name"=>"Marcin Waniewski","tm"=>"02:35.563","diff"=>"01:25.159"),
   array("nr"=>"286","name"=>"Artur Rugor","tm"=>"02:38.029","diff"=>"01:27.546"),
   array("nr"=>"206","name"=>"Szymon Dudka","tm"=>"02:36.973","diff"=>"01:28.007"),
   array("nr"=>"244","name"=>"Lukasz Zalewski","tm"=>"02:38.865","diff"=>"01:35.794"),
   array("nr"=>"225","name"=>"Krzysztof Dynowski","tm"=>"02:39.221","diff"=>"01:42.153"),
-  array("nr"=>"264","name"=>"Zbigniew Pióro","tm"=>"02:43.686","diff"=>"01:45.829"),
-  array("nr"=>"201","name"=>"Alicja Fr±cek","tm"=>"02:44.089","diff"=>"01:50.463"),
-  array("nr"=>"204","name"=>"Jaros³aw Gegniewicz","tm"=>"02:43.828","diff"=>"01:50.942"),
+  array("nr"=>"264","name"=>"Zbigniew PiÃ“ro","tm"=>"02:43.686","diff"=>"01:45.829"),
+  array("nr"=>"201","name"=>"Alicja FrÄ…cek","tm"=>"02:44.089","diff"=>"01:50.463"),
+  array("nr"=>"204","name"=>"JarosÅ‚aw Gegniewicz","tm"=>"02:43.828","diff"=>"01:50.942"),
   array("nr"=>"203","name"=>"Wioletta Matras","tm"=>"02:54.115","diff"=>"02:56.849"),
   array("nr"=>"202","name"=>"Monika Rutkowska","tm"=>"03:49.894","diff"=>"-1 lap"),
   array("nr"=>"223","name"=>"Adam Rzepkowski","tm"=>"","diff"=>""),
   array("nr"=>"265","name"=>"Peter Bilcik","tm"=>"","diff"=>""),
-  array("nr"=>"233","name"=>"Pawe³ Krupa","tm"=>"","diff"=>""),
+  array("nr"=>"233","name"=>"PaweÅ‚ Krupa","tm"=>"","diff"=>""),
   array("nr"=>"147","name"=>"Pawel Seredynski","tm"=>"","diff"=>""),
   array("nr"=>"263","name"=>"Patryk Bukanski","tm"=>"","diff"=>""),
   array("nr"=>"224","name"=>"Mariusz Suchan","tm"=>"","diff"=>""),
-  array("nr"=>"226","name"=>"Wojciech Bia³as","tm"=>"","diff"=>""),
+  array("nr"=>"226","name"=>"Wojciech BiaÅ‚as","tm"=>"","diff"=>""),
   array("nr"=>"294","name"=>"Dorota Drelich","tm"=>"","diff"=>""),
 );
 %>
-<table class="t1"><caption>Wy¶cig - grupa C:</caption>
+<table class="t1"><caption>WyÅ›cig - grupa C:</caption>
 <tr><th>Pos</th><th>No.</th><th>Driver</th><th>Fastest Lap</th><th>Diff</th></tr>
 <%for($i=0; $i<sizeof($race); ++$i){$r=$race[$i];%>
 <tr><td class="num"><%$i+1%></td>
@@ -110,7 +110,7 @@ $race=array(
 </table>
 
 <br>
-Zdjêcia z PanPhoto: (wiêcej mo¿na znale¼æ na <a href="http://www.pannonia-ring.com">pannonia-ring.com</a>)<br>
+ZdjÄ™cia z PanPhoto: (wiÄ™cej moÅ¼na znaleÅºÄ‡ na <a href="http://www.pannonia-ring.com">pannonia-ring.com</a>)<br>
 <% $files=readfiles("moto/events/2012-08-29","panphoto.*jpg");
 for ($i=0; $i<sizeof($files); ++$i){%>
 <img src="moto/events/2012-08-29/<%$files[$i]%>">

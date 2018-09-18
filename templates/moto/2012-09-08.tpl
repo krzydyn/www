@@ -4,13 +4,13 @@ Filmik promocyjny MotoZgonu:<br>
 <iframe src="http://www.youtube.com/embed/4kJ2tSNRE78" frameborder="0" width="420" height="315"></iframe>
 
 <table><tr><td>
-Pokoiki pamietaj± zapewne czasy Gomó³ki<br>
+Pokoiki pamietajÄ… zapewne czasy GomÃ³Å‚ki<br>
 <img class="sp" src="moto/events/2012-09-08/20120908386.jpg"/>
 </td><td>
 <br>
 <img class="sp" src="moto/events/2012-09-08/20120908387.jpg"/>
 </td></tr><tr><td>
-Galeria rze¼by<br>
+Galeria rzeÅºby<br>
 <img class="sp" src="moto/events/2012-09-08/20120908390.jpg"/>
 </td><td>
 <br>
@@ -19,6 +19,6 @@ Galeria rze¼by<br>
 Jezioro Mokre<br>
 <img class="sp" src="moto/events/2012-09-08/20120909394.jpg"/>
 </td><td>
-¯egnamy siê z MotoZgonem<br>
+Å»egnamy siÄ™ z MotoZgonem<br>
 <img class="sp" src="moto/events/2012-09-08/20120909396.jpg"/>
 </td></tr></table>

@@ -1,7 +1,7 @@
-<h2>V zlot motocyklowy Ba≥tÛw 2012</h2><br>
+<h2>V zlot motocyklowy, Ba≈Çt√≥w 2012</h2><br>
 
 <table><tr><td>
-Tyrolki w weso≥ym miasteczku<br>
+Tyrolki w weso≈Çym miasteczku<br>
 <img class="sp" src="moto/events/2012-08-04/20120804352.jpg"/>
 </td><td>
 <br>
@@ -33,10 +33,10 @@ Konkurs mokrego podkoszulka<br>
 <br>
 <img class="sp" src="moto/events/2012-08-04/20120804364.jpg"/>
 </td></tr><tr><td>
-Przywracanie zdatno∂ci do jazdy<br>
+Przywracanie zdatno≈õci do jazdy<br>
 <iframe src="http://www.youtube.com/embed/iWsj_WiPAQI" frameborder="0" width="420" height="315"></iframe>
 </td><td>
-Pakujemy siÍ i wracamy<br>
+Pakujemy siƒô i wracamy<br>
 <img class="sp" src="moto/events/2012-08-04/06082012135.jpg"/>
 
 </td></tr></table>

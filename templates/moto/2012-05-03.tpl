@@ -36,46 +36,46 @@ Bellow fotoreport and&nbsp;some mowies:<br>
 
 <%}else{%>
 
-<h2>Trening (1) na torze Pannonia Ring, Wêgry, maj 2012</h2>
+<h2>Trening (1) na torze Pannonia Ring, WÄ™gry, maj 2012</h2>
 <br>
 <img class="sp" class src="moto/logos/PannoniaPlan_bg.jpg" align="right"/>
-Mia³em okazjê i&nbsp;przyjemno¶æ wzi±æ udzia³ w&nbsp;jazdach treningowych
-na wêgierskim torze Pannonia Ring (d³. 4740m).<br>
-Jest to impreza cykliczna organizowana przez Grandysów (<a target="_blank" href="http://www.grandysduo.com.pl">GRANDys duo</a>).<br>
+MiaÅ‚em okazjÄ™ i&nbsp;przyjemnoÅ›Ä‡ wziÄ…Ä‡ udziaÅ‚ w&nbsp;jazdach treningowych
+na wÄ™gierskim torze Pannonia Ring (dÅ‚. 4740m).<br>
+Jest to impreza cykliczna organizowana przez GrandysÃ³w (<a target="_blank" href="http://www.grandysduo.com.pl">GRANDys duo</a>).<br>
 <br>
-By³ to&nbsp;mój pierwszy raz na&nbsp;torze i&nbsp;wg mojej opinii jest to&nbsp;¶wietny tor na rozpoczêcie
-przygody torowej na&nbsp;motocyklu (start oczywi¶cie w&nbsp;grupie C).<br>
+ByÅ‚ to&nbsp;mÃ³j pierwszy raz na&nbsp;torze i&nbsp;wg mojej opinii jest to&nbsp;Å›wietny tor na rozpoczÄ™cie
+przygody torowej na&nbsp;motocyklu (start oczywiÅ›cie w&nbsp;grupie C).<br>
 <br>
-<b>Dzieñ pierwszy.</b><br>
-Pierwsze jazdy by³y nieco zniechêcaj±ce - wszyscy mi&nbsp;odje¿d¿ali, nie mog³em nawet nad±¿yæ
-za&nbsp;trenerem (dwie pierwsze jazdy s±&nbsp;z trenerem od&nbsp;Grandysa).
-Druga rzecz to, ¿e&nbsp;od pocz±tku powiedzia³em sobie ¿eby siê nie nakrêcaæ ¿eby nie zakoñczyæ
-zabawy przedwcze¶nie :) jak±¶ gleb±.
-Na&nbsp;przerwê obiadow± zjecha³em niezbyt zadowolony ze&nbsp;swoich poczynañ,
-ale ¿e&nbsp;pogoda by³a doskona³a wiêc siê nie poddawa³em! :)<br>
-Po po³udniu by³o ju¿ lepiej.<br>
+<b>DzieÅ„ pierwszy.</b><br>
+Pierwsze jazdy byÅ‚y nieco zniechÄ™cajÄ…ce - wszyscy mi&nbsp;odjeÅ¼dÅ¼ali, nie mogÅ‚em nawet nadÄ…Å¼yÄ‡
+za&nbsp;trenerem (dwie pierwsze jazdy sÄ…&nbsp;z trenerem od&nbsp;Grandysa).
+Druga rzecz to, Å¼e&nbsp;od poczÄ…tku powiedziaÅ‚em sobie Å¼eby siÄ™ nie nakrÄ™caÄ‡i - Å¼eby nie zakoÅ„czyÄ‡
+zabawy przedwczeÅ›nie :) jakÄ…Å› glebÄ….
+Na&nbsp;przerwÄ™ obiadowÄ… zjechaÅ‚em niezbyt zadowolony ze&nbsp;swoich poczynaÅ„,
+ale Å¼e&nbsp;pogoda byÅ‚a doskonaÅ‚a wiÄ™c siÄ™ nie poddawaÅ‚em! :)<br>
+Po poÅ‚udniu byÅ‚o juÅ¼ lepiej. :-)<br>
 <br>
-<b>Dzieñ drugi.</b><br>
-Jako ¿e&nbsp;ju¿ trochê siê wkrêci³em no i&nbsp;mia³ byæ wy¶cig, wykupi³em kostkê do&nbsp;pomiaru czasu.
-Niestety nad ranem w&nbsp;pobli¿u przesz³a burza i&nbsp;na pierwszych jazdach jeszcze tor by³ mokry i&nbsp;trochê pada³o
-- co&nbsp;nie wró¿y³o uzyskaniu dobrego czasu w&nbsp;sesji kwalifikacyjnej - najlepsze kó³ko zajê³o a¿&nbsp;niemal 4min
-(a mog³em wykupiæ t±&nbsp;kostkê na&nbsp;dwa dni i&nbsp;zrobiæ kwalifikacje w&nbsp;super warunkach).
-Jednak za&nbsp;chwile wysz³o s³oñce i&nbsp;uda³o siê zrobiæ w&nbsp;miarê dobre kó³ko (3:15).
-Wy¶cig by³ ju¿ na&nbsp;suchym torze i&nbsp;zrobi³em kó³ko w&nbsp;2:58.
-Na koniec okaza³o siê ¿e&nbsp;jeszcze trafi³ mi&nbsp;siê puchar za&nbsp;5&nbsp;miejsce w&nbsp;poj. do&nbsp;600ccm :D<br>
+<b>DzieÅ„ drugi.</b><br>
+Jako Å¼e&nbsp;juÅ¼ trochÄ™ siÄ™ wjeÅºdziÅ‚em, no i&nbsp;miaÅ‚ byÅ‚ wyÅ›cig, wykupiÅ‚em kostkÄ™ do&nbsp;pomiaru czasu.
+Niestety nad ranem w&nbsp;pobliÅ¼u przeszÅ‚a burza i&nbsp;na pierwszych jazdach jeszcze tor byÅ‚ mokry i&nbsp;trochÄ™ nadal padaÅ‚o
+- co&nbsp;nie wrÃ³Å¼yÅ‚o uzyskaniu dobrego czasu w&nbsp;sesji kwalifikacyjnej - najlepsze kÃ³Å‚ko zajÄ™Å‚o prawie 4min
+(a mogÅ‚em wykupiÄ‡ tÄ™&nbsp;kostkÄ™ na&nbsp;dwa dni i&nbsp;zrobiÄ‡ kwalifikacje w&nbsp;super warunkach pierwsego dnia).
+Jednak za&nbsp;chwilÄ™ wyszÅ‚o sÅ‚oÅ„ce i&nbsp;udaÅ‚o siÄ™ zrobiÄ‡ w&nbsp;miarÄ™ dobre kÃ³Å‚ko (3:15).
+WyÅ›cig odbyÅ‚ juÅ¼ na&nbsp;suchym torze i&nbsp;zrobiÅ‚em kÃ³Å‚ko w&nbsp;2:58.
+Na koniec okazaÅ‚o siÄ™ Å¼e&nbsp;jeszcze trafiÅ‚ mi&nbsp;siÄ™ puchar za&nbsp;5&nbsp;miejsce w&nbsp;poj. do&nbsp;600ccm :D<br>
 <br>
 <b>Podsumowanie.</b><br>
-Grandysi ca³y czas uczulaj± ¿eby siê nie napalaæ.
-Mi osobi¶cie podoba³o siê to, ¿e&nbsp;oprócz jazd treningowych by³ wy¶cig.
-W&nbsp;jazdach treningowych zawsze sobie trochê odpuszcza³em (85%).
-W&nbsp;wy¶cigu te¿ wcale nie pojecha³em na&nbsp;maksa - znaczy ile potrafi³em ale jednak asekuracyjnie.
+Grandysi caÅ‚y czas uczulajÄ… Å¼eby siÄ™ nie napalaÄ‡.
+Mi osobiÅ›cie podobaÅ‚o siÄ™ to, Å¼e&nbsp;oprÃ³cz jazd treningowych byÅ‚ wyÅ›cig.
+W&nbsp;jazdach treningowych zawsze sobie trochÄ™ odpuszczaÅ‚em (85%).
+W&nbsp;wyÅ›cigu teÅ¼ wcale nie pojechaÅ‚em na&nbsp;maksa - znaczy ile potrafiÅ‚em ale jednak asekuracyjnie.
 <br>
-Na pierwszych dwóch jazdach (tych z&nbsp;trenerem) by³em tak surowy ¿e&nbsp;nie mia³em szans utrzymaæ
-siê za&nbsp;swoja grup± - wiêc osobistych porad nie mia³em.
-Ale spoko, uwa¿ne s³uchanie uwag do&nbsp;innych uczestników, rad ogólnych, w³asne przemy¶lenia
-wystarczy³y ¿eby dobrze siê bawiæ i&nbsp;wróciæ bez strat.<br>
+Na pierwszych dwÃ³ch jazdach (tych z&nbsp;trenerem) byÅ‚em tak surowy Å¼e&nbsp;nie miaÅ‚em szans utrzymaÄ‡
+siÄ™ za&nbsp;swoja grupÄ… - wiÄ™c osobistych porad nie dostaÅ‚Ä™m.
+Ale spoko, uwaÅ¼ne sÅ‚uchanie uwag do&nbsp;innych uczestnikÃ³w, rad ogÃ³lnych, wÅ‚asne przemyÅ›lenia
+wystarczyÅ‚y Å¼eby dobrze siÄ™ bawiÄ‡ i&nbsp;wrÃ³ciÄ‡ bez strat w sprzÄ™cie i zdrowiu.<br>
 <br>
-Poni¿ej fotoreporta¿ i&nbsp;kilka filmików:<br>
+PoniÅ¼ej fotoreportaÅ¼ i&nbsp;kilka filmikÃ³w:<br>
 <%}%>
 
 <br><div class="nowrap">
@@ -92,32 +92,32 @@ Nasze obozowisko na Pannonii<br>
 <img src="moto/events/2012-05-03/IMG_0482.JPG" alt="oboz"/>
 <br><br>
 
-Sprzêty w pe³nej gotowo¶ci<br>
+SprzÄ™ty w peÅ‚nej gotowoÅ›ci<br>
 <img src="moto/events/2012-05-03/IMG_0480.JPG" alt="oboz"/>
 <img src="moto/events/2012-05-03/IMG_0485.JPG" alt="oboz"/>
 <br><br>
 
-W koñcu oponki zosta³y pozamykane<br>
+W koÅ„cu oponki zostaÅ‚y pozamykane<br>
 <img src="moto/events/2012-05-03/IMG_0484.JPG" alt="oboz"/>
 <img src="moto/events/2012-05-03/IMG_0488.JPG" alt="oboz"/>
 <br><br>
 
-Rozdanie nagród<br>
+Rozdanie nagrÃ³d<br>
 <img src="moto/events/2012-05-03/IMG_0504.JPG" alt="oboz"/>
 <img src="moto/events/2012-05-03/IMG_0505.JPG" alt="oboz"/>
 <br><br>
 
-Nawet uda³o siê puchar zdobyæ<br>
+Nawet udaÅ‚o siÄ™ puchar zdobyÄ‡<br>
 <img src="moto/events/2012-05-03/IMG_0516.JPG" alt="oboz"/>
 <img src="moto/events/2012-05-03/IMG_0517.JPG" alt="oboz"/>
 <br><br>
 </div>
 
-Filmiki s± krêcone z pok³adu motocykla kumpla(GSXR1000) - ja siê czasem gdzie¶ pojawiam (¿ó³ty kask)<br>
+Filmiki sÄ… krÄ™cone z pokÅ‚adu motocykla kumpla(GSXR1000) - ja siÄ™ czasem gdzieÅ› pojawiam (Å¼Ã³Å‚ty kask)<br>
 <iframe src="http://www.youtube.com/embed/videoseries?list=PL91235D5414A575AA" 
 width="420" height="315" frameborder="0"></iframe><br>
 <br>
-Zdjêcia z PanPhoto: (wiêcej mo¿na znale¼æ na <a href="http://www.pannonia-ring.com">pannonia-ring.com</a>)<br>
+ZdjÄ™cia z PanPhoto: (wiÄ™cej moÅ¼na znaleÅºÄ‡ na <a href="http://www.pannonia-ring.com">pannonia-ring.com</a>)<br>
 <% $files=readfiles("moto/events/2012-05-03","panphoto.*jpg");
 for ($i=0; $i<sizeof($files); ++$i){%>
  <img src="moto/events/2012-05-03/<%$files[$i]%>">

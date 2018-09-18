@@ -1,4 +1,4 @@
-<h2>XVI zlot motocyklowy Giøycko 2012</h2><br>
+<h2>XVI zlot motocyklowy Gi≈ºycko 2012</h2><br>
 <br>
 <table><tr><td>
 Pole namiotowe<br>
@@ -17,7 +17,7 @@ Parking motocyklowy<br>
 Zwiedzanie fortyfikacji<br>
 <img class="sp" src="moto/events/2012-07-27/fort1.jpg"/>
 </td></tr><tr><td>
-Wycieczka do Mr±gowa<br>
+Wycieczka do MrƒÖgowa<br>
 <img class="sp" src="moto/events/2012-07-27/mrag1.jpg"/>
 </td><td>
 <br>
@@ -25,16 +25,16 @@ Wycieczka do Mr±gowa<br>
 </td></tr><tr><td>
 <br>
 Koncerty <a target="_blank" href="http://www.raggafaya.pl">Raggafaya</a> oraz
-<a target="_blank" href="http://www.lydkagrubasa.pl">£ydka Grubasa</a><br>
+<a target="_blank" href="http://www.lydkagrubasa.pl">≈Åydka Grubasa</a><br>
 <img class="sp" src="moto/events/2012-07-27/bynight1.jpg"/>
 </td><td>
 Polecam utwory Rf:
-<a target="_blank" href="http://www.youtube.com/watch?v=P_1Bks7Fwok&feature=related">Bongo mam</a>
+<a target="_blank" href="https://www.youtube.com/watch?v=SA-HnQLCtq8">Bongo mam</a>
 <br>
-Polecam utwory £G:
-<a target="_blank" href="http://www.youtube.com/watch?v=rf57azM3Tgo">Rapapara</a>
-<a target="_blank" href="http://www.youtube.com/watch?v=o4uvqUSUALg&feature=related">Øyd</a>
-<a target="_blank" href="http://www.youtube.com/watch?v=t35o75a3CUI&feature=channel&list=UL">Robocik</a>
+Polecam utwory ≈ÅG:
+<a target="_blank" href="https://www.youtube.com/watch?v=LaN8Z8Kz6kA">Rapapara</a>
+<a target="_blank" href="https://www.youtube.com/watch?v=kMsvNRHaL0c">≈ªyd</a>
+<a target="_blank" href="https://www.youtube.com/watch?v=DMzA6avXWVo">Robocik</a>
 <br>
 <img class="sp" src="moto/events/2012-07-27/bynight2.jpg"/>
 </td></tr><tr><td>

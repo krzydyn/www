@@ -1,1 +1,1 @@
-<h2>X ZIMOWY zlot motocyklowy Giøycko 2013</h2><br>
+<h2>X ZIMOWY zlot motocyklowy, Gi≈ºycko 2013</h2><br>
