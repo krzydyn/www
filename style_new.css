@@ -3,7 +3,6 @@
 	color:#333;
 	border:0px;margin:0px;
 	background-clip:border-box;
-	font-size:14pt;
 	font-family: times;
 }
 
@@ -47,7 +46,7 @@ input,textarea,select {
 	margin:0px;
 	background-color:#DDD;
 }
-option{font-size:12pt;}
+option{font-size:inherit;}
 button,input[type="button"],input[type="submit"],input[type="reset"] {
 	font:normal 14pt times;
 	padding:1px 2px;
@@ -151,6 +150,7 @@ img.icon{float:left;padding-right:5px;}
 }
 .content {
 	float:none;
+	font-size: 14pt;
 	margin-top:-2px;
 	background-color:#CCC;
 	padding:10px 10px;

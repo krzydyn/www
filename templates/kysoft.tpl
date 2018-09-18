@@ -48,7 +48,7 @@
   })();
 function onload_init() {
 	page_init();
-	//sh_highlightDocument('shjs/lang/','.js');
+	sh_highlightDocument('shjs/lang/','.js');
 	//getGeoLocation();
 }
 </script>
