@@ -11,11 +11,11 @@
 <br>
 <a class="post" href="?tab=moto/2013-02-08">
 <img class="icon" src="moto/logos/boyen.gif" alt="Gizycko" width="100px"/>
-2013-02-08..10 <b>Boyen fortress</b>, XIV Winter-Whales motor-meet in Gizycko</a>
+2013-02-08..10 <b>Boyen fortress</b>, XIV Winter-Whales motorbike rally in Gizycko</a>
 <br>
 <a class="post" href="?tab=moto/2012-09-08">
 <img class="icon" src="moto/logos/motozgon.jpg" alt="MotoZgon" width="100px"/>
-2012-09-08..09 <b>MotoZgon</b>, IV motor-meet in Zgon n/Ruciane</a>
+2012-09-08..09 <b>MotoZgon</b>, IV motorbike rally in Zgon n/Ruciane</a>
 <br>
 <a class="post" href="?tab=moto/2012-08-29">
 <img class="icon" src="moto/logos/pannonia.jpg" alt="Pannonia" width="100px"/>
@@ -23,15 +23,15 @@
 <br>
 <a class="post" href="?tab=moto/2012-08-04">
 <img class="icon" src="moto/events/2012-08-04/logo.jpg" alt="Baltow" width="100px"/>
-2012-08-04..05 <b>Moto Zauro Music</b>, V motor-meet in Ba³tow</a>
+2012-08-04..05 <b>Moto Zauro Music</b>, V motorbike rally in Ba³tow</a>
 <br>
 <a class="post" href="?tab=moto/2012-07-27">
 <img class="icon" src="moto/logos/boyen.gif" alt="Gizycko" width="100px"/>
-2012-07-27..29 <b>Boyen fortress</b>, motor-meet in Gizycko</a>
+2012-07-27..29 <b>Boyen fortress</b>, motorbike rally in Gizycko</a>
 <br>
 <a class="post" href="?tab=moto/2012-05-19">
 <img class="icon" src="moto/events/2012-05-19/nas4.jpg" alt="Rybaki" width="100px"/>
-2012-05-19..20 <b>Rybaki</b>, V motor-meet near Ostro³êka</a>
+2012-05-19..20 <b>Rybaki</b>, V motorbike rally near Ostro³êka</a>
 <br>
 <a class="post" href="?tab=moto/2012-05-03">
 <img class="icon" src="moto/logos/pannonia.jpg" alt="Pannonia" width="100px"/>
@@ -39,7 +39,7 @@
 <br>
 <a class="post" href="?tab=moto/2012-04-20">
 <img class="icon" src="moto/events/2012-04-20/logo.jpg" alt="Tabunada" height="75px"/>
-2012-04-20..22 <b>Tabunada</b>, motor-meet in Mierki near Olsztynek</a>
+2012-04-20..22 <b>Tabunada</b>, motorbike rally in Mierki near Olsztynek</a>
 
 </td><td>
 <a class="post" href="?tab=moto/dynoiler">
