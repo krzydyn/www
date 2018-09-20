@@ -81,11 +81,17 @@ class Request{
 
 		$this->setval("cookie",$_COOKIE);
 		$this->setval("req",$_REQUEST);
-		//TODO propagate SESSION into REQUEST
 		//propagate get
 		if (isset($_GET)){
 			while (list($fld,$a)=each($_GET)) {
 				$this->setval("req.".$fld,$a);
+			}
+		}
+		//propagate cookie
+		if (isset($_COOKIE)){
+			while (list($fld,$a)=each($_COOKIE)) {
+				if ($this->hasval("req.".$fld)===false)
+					$this->setval("req.".$fld,$a);
 			}
 		}
 		array_unslash($this->vals["req"]);

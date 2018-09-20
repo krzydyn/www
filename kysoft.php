@@ -210,7 +210,8 @@ class KySoft extends Application{
 		else $preflang=substr($preflang,0,2);
 		if ($preflang!="pl") $preflang="en";
 		$lang=$this->getval("req.lang");
-		if (empty($lang)) {$lang=$preflang;$this->setval("req.lang",$lang);}
+		if (empty($lang)) $lang=$preflang;
+		$this->setval("req.lang",$lang);
 		setcookie("lang",$lang,time()+3600*24*30);
 
 		parent::process();
