@@ -62,7 +62,6 @@
   <li><a class="extern" href="https://developers.facebook.com/">developers on FB</a></li>
   <li><a class="extern" href="http://www.adres-ip.eu">Geolocalization</a></li>
   <li><a class="extern" href="http://www.arin.net">Whois RWS</a></li>
-  <li><a class="extern" href="http://www.google.com/a/xyologic.com">XYO-gmail</a></li>
   <li><a class="extern" href="http://www.yelp.pl">yelp</a></li>
   <li><a class="extern" href="http://searchengineland.com/seotable/">seo</a></li>
 </ul></td>
@@ -145,7 +144,6 @@
   <!--li><a class="extern" href="http://adres-ip.eu/">Geolokalizacja</a></li-->
   <li><a class="extern" href="http://www.adres-ip.pl">Geolokalizacja</a></li>
   <li><a class="extern" href="http://www.arin.net">Whois RWS</a></li>
-  <li><a class="extern" href="http://www.google.com/a/xyologic.com">XYO-gmail</a></li>
   <li><a class="extern" href="http://www.yelp.pl">yelp</a></li>
   <li><a class="extern" href="http://searchengineland.com/seotable/">seo</a></li>
 </ul></td>
