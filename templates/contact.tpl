@@ -8,7 +8,6 @@
 <br/>
 <p>email: <a href="mailto:biuro@kysoft.pl">biuro@kysoft.pl</a></p>
 <br/>
-<p>phone(mob): (+48)509653521
 
 <%}else{%>
 
@@ -19,14 +18,14 @@
 <br/>
 <p>email: <a href="mailto:biuro@kysoft.pl">biuro@kysoft.pl</a></p>
 <br/>
-<p>tel(kom): (+48)509653521
 <%}%>
 
 <%if(!val("robot")){%>
-<%val("txt.send","send")%> <a href="#" onclick="$('smsframe').toggle();">SMS</a>
-<? ?RECIPIENT=509653521 ?>
-<iframe id="smsframe" style="display:none;position:absolute;top:140px" frameborder="0" width="230" height="355" scrolling="no" src="http://sms.orange.pl/minisms2.aspx?"></iframe>
-<%val("txt.to_me","to me")%> (<%val("txt.free_gate","free gate")%>)</p>
+<!-- <%val("txt.send","send")%> <a href="#" onclick="$('smsframe').toggle();">SMS</a> -->
+<?
+//<iframe id="smsframe" style="display:none;position:absolute;top:140px" frameborder="0" width="230" height="355" scrolling="no" src="http://sms.orange.pl/minisms2.aspx?"></iframe>
+//<%val("txt.to_me","to me")%> (<%val("txt.free_gate","free gate")%>)</p>
+?>
 <br/><br/>
 <form name="email" method="post" action="?" onsubmit="formcheck('email','from')">
 <input type="hidden" name="act" value="email"/>
