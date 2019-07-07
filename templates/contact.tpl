@@ -40,4 +40,15 @@
 </form>
 <%}%>
 
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="NCS3TX8E872HJ">
+<table>
+<tr><td><input type="hidden" name="on0" value="Wsparcie systemu">Wsparcie systemu</td></tr><tr><td><input type="text" name="os0" maxlength="200"></td></tr>
+</table>
+<input type="image" src="https://www.paypalobjects.com/pl_PL/PL/i/btn/btn_paynow_SM.gif" border="0" name="submit" alt="PayPal – Płać wygodnie i bezpiecznie">
+<img alt="" border="0" src="https://www.paypalobjects.com/pl_PL/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+
 </div>

@@ -21,7 +21,7 @@ W temacie proszę wpisać: SKA zadanie nr...
 </td><td>
 <b>Zadanie:</b> (czas 2tyg)<br>
 Napisać <u>samodzielnie</u> skrypt w bash'u.<br>
-Skrypt ma być narzędziem ułatwijacym realizację jakieś czynności w systemie unix<br>
+Skrypt ma być narzędziem ułatwiajacym realizację jakieś czynności w systemie unix<br>
 Wymagania twarde (must be):<br>
 - komentarz z dokładnym opisem działania skryptu<br>
 - obsługa parametrów (>=3) podanych w linii poleceñ (praca wsadowa)<br>
