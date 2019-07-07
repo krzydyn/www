@@ -2,7 +2,7 @@
 ob_start();
 date_default_timezone_set("Europe/Warsaw");
 
-function logstr($str){
+function logstr_dbg($str){
 	global $config;
 	$tm=time();
 	if (isset($config["appname"])) $fn="cache/log-".$config["appname"].date("Ymd",$tm).".txt";
@@ -16,6 +16,11 @@ function logstr($str){
 		fclose($f);
 	}
 	else echo "[log] ".$str."\n";
+}
+function logstr_rel($str){
+}
+function logstr($str){
+	logstr_rel($str);
 }
 
 function array_setval(&$t,$n,&$v=null){
