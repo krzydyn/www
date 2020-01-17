@@ -4,13 +4,13 @@ date_default_timezone_set("Europe/Warsaw");
 
 function logstr_dbg($str){
 	global $config;
-	$tm=time();
+	$tm = time();
 	if (isset($config["appname"])) $fn="cache/log-".$config["appname"].date("Ymd",$tm).".txt";
-	else $fn="cache/log".date("Ymd",$tm).".txt";
+	else $fn="cache/log".date("Ymd", $tm).".txt";
 	$f=@fopen($fn,"ab");
 	if ($f!==false){
 		if (flock($f,LOCK_EX)){
-			fwrite($f,$str."\n");
+			fwrite($f,date("H:i:s", $tm).": ".$str."\n");
 			flock($f,LOCK_UN);
 		}
 		fclose($f);
@@ -20,7 +20,7 @@ function logstr_dbg($str){
 function logstr_rel($str){
 }
 function logstr($str){
-	logstr_rel($str);
+	logstr_dbg($str);
 }
 
 function array_setval(&$t,$n,&$v=null){
@@ -44,7 +44,7 @@ function array_setval(&$t,$n,&$v=null){
 function array_hasval(&$t,$n){
 	if (empty($n)) return true;
 	$n=explode(".",$n);
-	for ($i=0; $i<sizeof($n); $i++){
+	for ($i=0; $i < sizeof($n); $i++){
 		$k=$n[$i];
 		if ((!is_array($t)&&!is_object($t))||!array_key_exists($k,$t)) return false;
 		if (is_object($t)) $t=&$t->{$k}; else $t=&$t[$k];
@@ -54,7 +54,7 @@ function array_hasval(&$t,$n){
 function &array_getval(&$t,$n,$def=null){
 	if (empty($n)) return $t;
 	$n=explode(".",$n);
-	for ($i=0; $i<sizeof($n); $i++){
+	for ($i=0; $i < sizeof($n); $i++){
 		$k=$n[$i];
 		if ((!is_array($t)&&!is_object($t))||!array_key_exists($k,$t)) return $def;
 		if (is_object($t)) $t=&$t->{$k}; else $t=&$t[$k];
@@ -63,9 +63,9 @@ function &array_getval(&$t,$n,$def=null){
 }
 function array_unslash(&$t){
 	if (!is_array($t)) return ;
-	while (list($f,$v)=each($t)){
-		if (is_array($v)) array_unslash($t[$f]);
-		else $t[$f]=stripslashes($v);
+	foreach ($t as $k => $v) {
+		if (is_array($v)) array_unslash($t[$k]);
+		else $t[$k]=stripslashes($v);
 	}
 }
 
@@ -88,15 +88,15 @@ class Request{
 		$this->setval("req",$_REQUEST);
 		//propagate get
 		if (isset($_GET)){
-			while (list($fld,$a)=each($_GET)) {
-				$this->setval("req.".$fld,$a);
+			foreach ($_GET as $k => $v) {
+				$this->setval("req.".$k,$v);
 			}
 		}
 		//propagate cookie
 		if (isset($_COOKIE)){
-			while (list($fld,$a)=each($_COOKIE)) {
-				if ($this->hasval("req.".$fld)===false)
-					$this->setval("req.".$fld,$a);
+			foreach ($_COOKIE as $k => $v) {
+				if ($this->hasval("req.".$k)===false)
+					$this->setval("req.".$k,$v);
 			}
 		}
 		array_unslash($this->vals["req"]);
@@ -130,13 +130,13 @@ class Request{
 		}
 
 		if (isset($_FILES)){
-			while (list($fld,$a)=each($_FILES)){
+			foreach ($_FILES as $k => $v) {
 				//TODO (maybe) copy files from tmp to site location
-				while (list($fld1,$a1)=each($a)){
-					while (list($fld2,$a2)=each($a1)){
-						if ($a2=="") $a2=null;
-						if ($fld1=="name") $this->setval("req.".$fld.".".$fld2,$a2);
-						$this->setval("req.".$fld.".".$fld2."_file.".$fld1,$a2);
+				foreach ($v as $k1 => $v1) {
+					foreach ($v1 as $k2 => $v2) {
+						if ($v2=="") $v2=null;
+						if ($k1=="name") $this->setval("req.".$k.".".$k2, $v2);
+						$this->setval("req.".$k.".".$k2."_file.".$k1, $v2);
 					}
 				}
 			}
@@ -156,12 +156,14 @@ class Request{
 	}
 	function setval($n,$v=null) {
 		if (is_array($n)) {
-			while (list($nn,$v)=each($n)) $this->setval($nn,$v);
+			foreach ($n as $k => $v) $this->setval($k,$v);
 			return true;
 		}
+		if ($n == "error") logstr("set error: $v");
 		return array_setval($this->vals,$n,$v);
 	}
 	function addval($n,$v) {
+		if ($n == "error") logstr("add error: $v");
 		$a=$this->getval($n);
 		if (!$a) $a=array($v);
 		else if (!is_array($a)) $a=array($a,$v);

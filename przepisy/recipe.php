@@ -52,8 +52,7 @@ class Recipe extends ModelObject
 	{
 		$a=array();
 		$fld=get_object_vars($this);
-		while (list($f,$v)=each($fld))
-		{
+		foreach ($fld as $f => $v) {
 			if (substr($f,0,1)=="_"||$f=="id"||$f=="icon") continue; //internal field
 			$a[]=$f;
 		}
@@ -88,8 +87,7 @@ class RecipeApp extends Application
 			$this->addval("error","DB:".$db->errmsg());
 			return false;
 		}
-		while (list($t,$v)=each($reqtabs))
-		{
+		foreach ($reqtabs as $t => $v) {
 			if (in_array($t,$tabs)) continue;
 			$r=$db->tabcreate($t,$v);
 			if ($r===false) {$this->addval("error","DB:".$db->errmsg());return false;}

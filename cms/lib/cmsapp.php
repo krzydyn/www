@@ -57,8 +57,7 @@ class CMSApplication extends Application
 		if ($r===false) return ;
 		$tabs=array();
 		while ($row=$r->fetch(FETCH_NUM)) $tabs[]=$row[0];
-		while (list($t,$v)=each($reqtabs))
-		{
+		foreach ($reqtabs as $t => $v) {
 			if (in_array(dbt($t),$tabs)) continue;
 			$r=db_create($t,$v);
 			if ($r===false) {$this->addval("error",__FILE__."(".__LINE__."): DB: ".db_errors());return false;}

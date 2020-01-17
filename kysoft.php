@@ -60,7 +60,7 @@ class JokeIndex extends ModelObject{
 		$ji=new JokeIndex();
 		$dao->del($ji,new Criteria("jokeid",$joke->id));
 		$ji->jokeid=$joke->id;
-		while (list($w,$cnt)=each($words_uq)){
+		foreach ($words_uq as $w => $cnt) {
 			$ji->word=$w;
 			$ji->cnt=$cnt;
 			if ($dao->insert($ji)===false) return false;
@@ -145,7 +145,7 @@ class KySoft extends Application{
 			$this->addval("error","DB:".$db->errmsg());
 			return false;
 		}
-		while (list($t,$v)=each($reqtabs)){
+		foreach ($reqtabs as $t => $v) {
 			if (in_array($t,$tabs)) continue;
 			$r=$db->tabcreate($t,$v);
 			if ($r===false) {$this->addval("error","DB:".$db->errmsg());return false;}
@@ -251,10 +251,9 @@ class KySoft extends Application{
 		else $this->setval("sitetitle","KySoft &bull; ".$t[$subt]);
 
 		if (($m=$this->getval("txt.menu"))!==false){
-			for($i=0; list($f,$v)=each($tabs); ++$i){
+			foreach ($tabs as $f => $v) {
 				if (!empty($m[$f])) $tabs[$f]=$m[$f];
 			}
-			reset($tabs);
 		} else $this->addval("info","no txt.menu");
 		$this->setval("tabs",$tabs);
 
@@ -380,8 +379,8 @@ class KySoft extends Application{
 		$r=$this->dao->find($obj,null,$crit);
 		if ($r===false) return ;
 		for ($i=0; $i<sizeof($r); ++$i){
-			$row=$r[$i]; reset($row);
-			while (list($f,$v)=each($row)){
+			$row=$r[$i];
+			foreach ($row as $f => $v) {
 				if (strpos($f,"tm")!==false && preg_match("/^[1-9][0-9]{8,10}$/",$v))
 					$row->{$f}=strftime("%Y-%m-%d %H:%M:%S",$v);
 			}
@@ -571,7 +570,8 @@ class KySoft extends Application{
 	function jokeCategories(){
 		$r=$this->dao->db->tabfind("joke","category as name,category,count(*)as _cnt","group by category order by category");
 		if ($r===false) $this->addval("error","DB:".$this->dao->errmsg());
-		for ($cnt=0; list($i,$v)=each($r); ) {
+		$cnt = 0;
+		foreach ($r as $i => $v) {
 			$cnt+=$v["_cnt"];
 			if (checkEncoding($v["name"],"UTF-8")==false) {
 				$v["name"]=iconv("ISO-8859-2","UTF-8",$v["name"]);
@@ -600,7 +600,9 @@ class KySoft extends Application{
 			$this->addval("error","DB:".$this->dao->errmsg());
 			return $this->defaultAction();
 		}
-		for ($n=$ok=0; list($i,$v)=each($r); ++$n){
+		$n=$ok=0;
+		foreach ($r as $i => $v) {
+			++$n;
 			if (JokeIndex::add($this->dao,$v)!==false) ++$ok;
 			else $this->addval("error",$this->dao->errmsg());
 		}
@@ -796,7 +798,7 @@ class KySoft extends Application{
 		if (!$this->checkForm("comment","comment.name")) return $this->defaultAction();
 		$rec=$this->getval("req.comment");
 		$err=false;
-		while (list($k,$v)=each($rec)) $rec[$k]=trim($v);
+		foreach ($rec as $k => $v) $rec[$k]=trim($v);
 		$id=0;
 		if (empty($rec["contents"])) {$this->addval("error","Comment must not be empty");$err=true;}
 		else if ($this->user){

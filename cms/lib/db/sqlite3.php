@@ -43,11 +43,10 @@ class sqlite3_DB extends DB{
 		if (!$this->dbhnd) {$this->_errmsg="not connected";return false;}
 		$q=trim($q); $r=true;
 		if (empty($q)) return $r;
-		
+
 		if (sizeof($params) > 0) {
 			$this->sql=$q."('".implode("','",$params)."')";
 			$stmt = $this->dbhnd->prepare($q);
-			reset($params);
 			foreach ($params as $k => $v)
 				$stmt->bindValue($k, $v);
 			unset($k);unset($v);

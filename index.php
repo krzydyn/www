@@ -45,14 +45,14 @@ logstr("processing default route '".Request::getInstance()->getval("uri")."'");
 global $config;
 require_once("kysoft.php");
 $req = Request::getInstance();
-try{
+try {
 	$a=new KySoft();
 	$a->initialize();
 	$a->process();
 	unset($a);
 }
-catch(Exception $e)
-{
+catch(Exception $e) {
+	logstr($e);
 	$req->setval("error",get_class($e).": ".$e->getMessage());
 }
 $t=new TemplateEngine($req);

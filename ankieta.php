@@ -16,7 +16,7 @@ class App extends Application{
 			$this->addval("error","DB:".$db->errmsg());
 			return false;
 		}
-		while (list($t,$v)=each($reqtabs)){
+		foreach ($reqtabs as $t => $v) {
 			if (in_array($t,$tabs)) continue;
 			$r=$db->tabcreate($t,$v);
 			if ($r===false) {$this->addval("error","DB:".$db->errmsg());return false;}
@@ -58,9 +58,9 @@ class App extends Application{
 	function saveAction(){
 		$id=$this->getval("req.id");
 		$item=$this->getval("req.item");
-		while (list($f,$v)=each($item))
+		foreach ($item as $f => $v)
 			$item[$f]=trim($item[$f]);
-		reset($item);
+
 		if (empty($item["name"])) {
 			$this->addval("error","Nazwa nie mo¿e byæ pusta");
 			$this->listAction();

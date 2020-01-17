@@ -8,22 +8,23 @@ class ModelObject{
 	function ModelObject(){
 		$cl=get_class($this);
 		$fld=get_class_vars($cl);
-		while (list($n,$v)=each($fld))
-			if (!isset($this->{$n})) $this->{$n}=null;
+		foreach ($fld as $f => $v) {
+			if (!isset($this->{$f})) $this->{$f}=null;
+		}
 	}
 	function defaultOrder(){return "";}
 	function clear(){
 		$cl=get_class($this);
 		$fld=get_class_vars($cl);
-		while (list($n,$v)=each($fld)) $this->{$n}=null;
+		foreach ($fld as $f => $v) $this->{$f}=null;
 	}
 	function &copy(){
 		$cl=get_class($this);
 		$o=new $cl();
 		$fld=get_object_vars($o);
-		while (list($n,$v)=each($fld)){
-			if (array_key_exists($n,$this)) $o->{$n}=$this->{$n};
-			else unset($o->{$n});
+		foreach ($fld as $f => $v) {
+			if (array_key_exists($f,$this)) $o->{$f}=$this->{$f};
+			else unset($o->{$f});
 		}
 		return $o;
 	}
@@ -36,7 +37,9 @@ class ModelObject{
 	function setValues(&$a){
 		if(is_array($a)){
 			$fld=get_class_vars(get_class($this));
-			while (list($f,$v)=each($fld)){if (array_key_exists($f,$a)) $this->{$f}=$a[$f];}
+			foreach ($fld as $f => $v) {
+				if (array_key_exists($f,$a)) $this->{$f}=$a[$f];
+			}
 			//printobj("setValues",$this);
 		}
 	}
@@ -46,11 +49,13 @@ class ModelObject{
 	function &getValues(&$a=null){
 		$fld=get_object_vars($this);
 		if (is_array($a)){
-			while (list($f,$v)=each($fld)){if (array_key_exists($f,$a)) $a[$f]=$this->{$f};}
+			foreach ($fld as $f => $v) {
+				if (array_key_exists($f,$a)) $a[$f]=$this->{$f};
+			}
 		}
 		else{
 			$a=array();
-			while (list($f,$v)=each($fld)){
+			foreach ($fld as $f => $v) {
 				if (substr($f,0,1)=="_") continue; //internal field
 				$a[$f]=$v;
 			}
@@ -65,7 +70,7 @@ class ModelObject{
 	function &getFields(){
 		$a=array();
 		$fld=get_object_vars($this);
-		while (list($f,$v)=each($fld)){
+		foreach ($fld as $f => $v) {
 			if (substr($f,0,1)=="_") continue; //internal field
 			$a[]=$f;
 		}
@@ -84,7 +89,7 @@ class ModelObject{
 		return implode(":",$pk);
 	}
 }
-class Criteria{
+class Criteria {
 	var $crit;
 	var $val=array();
 	var $limit;
@@ -103,21 +108,23 @@ class Criteria{
 	function hasValue($v){
 		return in_array($v,$this->val);
 	}
-	function addfv($f,$v=null){
-		if (is_array($f)){
-			while (list($n,$v)=each($f)) $this->val[$n]=$v;
+	function addfv($fld,$v=null){
+		if (is_array($fld)){
+			foreach ($fld as $f => $v)
+				$this->val[$f]=$v;
 		}
-		else $this->val[$f]=$v;
+		else $this->val[$fld]=$v;
 	}
-	function addop($f,$v=null,$op="=",$type="and"){
-		if (is_array($f)){
+	function addop($fld,$v=null,$op="=",$type="and"){
+		if (is_array($fld)){
 			$op=$v?$v:"=";
-			while (list($n,$v)=each($f)) {
-				$this->val[$n]=$v;
-				$this->add($n.$op."#".$n,$type);
+			foreach ($fld as $f => $v) {
+				$this->val[$f]=$v;
+				$this->add($f.$op."#".$f, $type);
 			}
 		}
 		else {
+			$f = $fld;
 			$this->val[$f]=$v;
 			$this->add($f.$op."#".$f,$type);
 		}
@@ -136,7 +143,7 @@ class Criteria{
 		return DB::buildfmt($s,$this->val);
 	}
 }
-class ObjectDB{
+class ObjectDB {
 	private $_errmsg;
 	var $db;
 	function __construct(&$db) {

@@ -12,9 +12,8 @@ function printo($l,$n,&$o){
 	//else if (is_string($o)) echo strtr($o,array("&"=>"&amp;","<"=>"&lt;"))."\n";
 	else if (is_array($o)){
 		echo "Array[".sizeof($o)."](\n";
-		while(list($f,$v)=each($o)) printo("[".$f."]",$n+1,$v);
+		foreach ($o as $f => $v) printo("[".$f."]",$n+1,$v);
 		echo str_repeat(" ",2*$n).")\n";
-		reset($o);
 	}
 	else if (is_object($o)){
 		echo "class ".get_class($o)." {\n";
@@ -72,14 +71,12 @@ function readfiles($path,$patt=false){
 }
 function a2str(&$a){
 	$str="";
-	while (list($f,$v)=each($a)) $str.=",'".$f."'=>'".$v."'";
-	reset($a);
+	foreach ($a as $f => $v) $str.=",'".$f."'=>'".$v."'";
 	return "{".substr($str,1)."}";
 }
 function a2url(&$a){
 	$str="";
-	while (list($f,$v)=each($a)) $str.="&".$f."=".$v;
-	reset($a);
+	foreach ($a as $f => $v) $str.=",'".$f."'=>'".$v."'";
 	return $str;
 }
 //793007164 Mikolaj Palinski
@@ -116,15 +113,15 @@ function gethost_byptr($ip){
     $ptr = implode(".",array_reverse(explode(".",$ip))).".in-addr.arpa";
     $hosts = dns_get_record($ptr,DNS_PTR);
     $r=array();
-    foreach($hosts as $h) $r[]=$h['target'];
+    foreach ($hosts as $h) $r[]=$h['target'];
     return sizeof($r)>0 ? $r : false;
 }
 if(!function_exists('http_build_str')){
 	function http_build_str($aq){
 		$a=array();
-		foreach($aq as $k=>$v){
+		foreach ($aq as $k=>$v){
 			if (is_array($v)){
-				foreach($v as $kt=>$vt)
+				foreach ($v as $kt=>$vt)
 					$a[]=$k."[".$kt."]=".urlencode($vt);
 			}
 			else $a[]=$k."=".urlencode($v);

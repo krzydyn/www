@@ -18,7 +18,9 @@ class Application{
 
 	function getval($n,$v=null){return $this->req->getval($n,$v);}
 	function setval($n,$v=null){return $this->req->setval($n,$v);}
-	function addval($n,$v) { return $this->req->addval($n,$v); }
+	function addval($n,$v) {
+		return $this->req->addval($n,$v);
+	}
 	function process() {
 		$action="";
 		$action=$this->getval("req.act",$action);

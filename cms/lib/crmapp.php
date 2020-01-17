@@ -186,8 +186,7 @@ class CRMApplication extends Application
 		);
 		$tabs=$this->dao->tables();
 		if ($tabs===false) return ;
-		while (list($t,$v)=each($reqtabs))
-		{
+		foreach ($reqtabs as $t => $v) {
 			if (in_array(dbt($t),$tabs)) continue;
 			$r=$this->dao->db->tabcreate(dbt($t),$v);
 			if ($r===false) {$this->addval("error","DB:".$this->dao->errmsg());return false;}
@@ -213,10 +212,8 @@ class CRMApplication extends Application
 
 	function mapFields($fld,&$res)
 	{
-		for (reset($res); list($i,$ri)=each($res); )
-		{
-			for (reset($fld); list($f,$cl)=each($fld); )
-			{
+		foreach ($res as $i => $ri) {
+			foreach ($fld as $f => $cl) {
 				if (!array_key_exists($f,$ri))
 				{
 					$this->addval("warn",get_class($ri)." has no field ".$f);
@@ -465,7 +462,7 @@ class CRMApplication extends Application
 		{
 			$a=$this->dao->find(new Project());
 			//printobj("projs",$a);
-			for (reset($a); list($i,$o)=each($a); ) $o->setPath($a);
+			foreach ($a as $i => $o) $o->setPath($a);
 			$this->setval("projects",$a);
 			$x=new Employee();
 			$a=$this->dao->find($x);
@@ -504,13 +501,14 @@ class CRMApplication extends Application
 		{
 			$a=$this->dao->find(new Project());
 			//printobj("projs",$a);
-			for (reset($a); list($i,$o)=each($a); ) $o->setPath($a);
+			foreach ($a as $i => $o) $o->setPath($a);
 			$this->setval("projects",$a);
 
 			$a=$this->dao->find(new Firm());
 			$addrs=$this->dao->find(new Address());
-			if ($addrs!==false)
-				{for (reset($a); list($i,$o)=each($a); ) $o->setAddress($addrs);}
+			if ($addrs!==false) {
+				foreach ($a as $i => $o) $o->setAddress($addrs);
+			}
 			else $this->addval("warn","DB:".$this->dao->errmsg());
 			$this->setval("firms",$a);
 
@@ -529,8 +527,7 @@ class CRMApplication extends Application
 			$activities=$this->getval("activities");
 			if ($addrs!==false)
 			{
-				for (reset($res); list($i,$ri)=each($res); )
-				{
+				foreach ($res as $i => $ri) {
 					if (is_object($ri->id_firm)) $ri->id_firm->setAddress($addrs);
 					$ri->id_activity=$activities[$ri->id_activity];
 				}

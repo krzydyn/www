@@ -19,7 +19,7 @@ class Collection
 		{
 			$r=&$this->arr[$i];
 			$s="<tr>";
-			while (list($f,$v)=each($r)) $s.="<td>".$v."</td>";
+			foreach ($r as $f=>$v) $s.="<td>".$v."</td>";
 			$s.="</tr>\n";
 			echo $s;
 		}

@@ -86,18 +86,14 @@ $decl_info=array(
 							"\$1y","\$1ów","\$1om","\$1y","\$1ami","\$1ach","\$1y")
 );
 
-function decline($name,$d,$p)
-{
+function decline($name,$d,$p) {
 	global $decl_info;
 	if ($d < 0 || $d > 6) return "decline($name,$d,$p):wrong_d$d";
 	if ($p < 0 || $p > 1) return "decline($name,$d,$p):wrong_p$p";
-	reset($decl_info);
 	$v="";
-	while (list($patt,$val)=each($decl_info))
-	{
+	foreach ($decl_info as $patt => $val) {
 		$patt="/^".$patt."$/i";
-		if (preg_match($patt,$name))
-		{
+		if (preg_match($patt,$name)) {
 			//logstr("matched pattern: $patt on $name");
 			//echo "matched pattern: $patt on $name";
 			$v=preg_replace($patt,$val[7*$p+$d],$name); break;
@@ -105,8 +101,7 @@ function decline($name,$d,$p)
 	}
 	return $v?$v:"$name-??";
 }
-function numbered($name,$cnt)
-{
+function numbered($name,$cnt) {
 	$cnt=(int)$cnt;
   if ($cnt==1) return decline($name,MIAN,SINGULAR);
   $cnt%=100;
@@ -115,8 +110,7 @@ function numbered($name,$cnt)
   if ($cnt > 1 && $cnt < 5) return decline($name,MIAN,PLURAL);
   return decline($name,DOPE,PLURAL);
 }
-function number2text($n)
-{
+function number2text($n) {
 	$n=(int)$n;
 	//logstr("number2text($n)");
 	$d0=array("zero","jeden","dwa","trzy","cztery",

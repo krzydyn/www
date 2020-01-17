@@ -49,13 +49,12 @@ class pdo_DB extends DB{
 		$q=trim($q); $r=true;
 		$this->_affected = 0;
 		if (empty($q)) return $r;
-		
+
 		if (sizeof($params) > 0) {
 			$this->sql=$q."('".implode("','",$params)."')";
 			$stmt = $this->dbhnd->prepare($q);
 			$this->seterr($stmt);
 			if ($stmt===false) return $stmt;
-			reset($params);
 			foreach ($params as $k => $v)
 				$stmt->bindValue($k, $v);
 			unset($k);unset($v);

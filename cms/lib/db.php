@@ -52,7 +52,7 @@ abstract class DB{
 	function tabinsert($tab,$row){
 		$fields=array();
 		$values=array();
-		while (list($f,$v)=each($row)){
+		foreach ($row as $f => $v) {
 			if ($v===null) continue;
 			if ($v==="") $v="''";
 			else if (is_numeric($v)) ;
@@ -65,7 +65,7 @@ abstract class DB{
 	}
 	function tabupdate($tab,$row,$fmt,$a=null){
 		$set="";
-		while (list($f,$v)=each($row)){
+		foreach ($row as $f => $v) {
 			if ($v===null) continue;
 			if ($v==="") $v="''";
 			else if (is_numeric($v)) ;
@@ -103,7 +103,7 @@ abstract class DB{
 		if ($desc===false) return false;
 		$row=explode(",",$cdef);
 		$cdef=array();
-		while (list($f,$v)=each($desc)){
+		foreach ($desc as $f => $v) {
 			if ($f==$before){
 				for ($i=0; $i<sizeof($row); ++$i)
 					$cdef[]=$row[$i];
@@ -126,7 +126,7 @@ abstract class DB{
 	function tabdump($tab) {
 		$desc=$this->describe($tab);
 		$s="CREATE TABLE $tab (";
-		while (list($f,$v)=each($desc)){
+		foreach ($desc as $f => $v) {
 			$s.= "$f $v,";
 		}
 		$s = substr($s,0,-1).");";
@@ -146,7 +146,7 @@ abstract class DB{
 	}
 	function dump() {
 		$tabs = $this->tables();
-		foreach($tabs as $t) {
+		foreach ($tabs as $t) {
 			$this->tabdump($t);
 		}
 	}
@@ -157,7 +157,7 @@ abstract class DB{
 		if ($fmt==null) return "";
 		if ($a==null) return " ".$fmt;
 		$tr=array("\\#"=>"#");
-		while (list($f,$v)=each($a)){
+		foreach ($a as $f => $v) {
 			if ($v=="") $v="''";
 			else if (is_numeric($v)) ;
 			else $v="'".sql_escape($v)."'";

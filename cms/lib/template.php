@@ -16,15 +16,15 @@ function parseArgs($str){
 	//preg_match_all("#\s*(\w+)\s*=\s*\"([^\"]*)\"#",$str,$t);
 	//preg_match_all("#\s*(\w+)\s*=\s*\"([^\"<]*(?:<%(?:.+?)%>)*[^\"]*)\"#s",$t[2],$a);
 	preg_match_all("#\s*(\w+)\s*=\s*\"([^\"<]*(?:<%(?:.+?)%>)*[^\"]*)\"#s",$str,$t);
-	for ($i=0; $i<sizeof($t[0]); ++$i)
-		$a[$t[1][$i]]=$t[2][$i];
+	for ($i=0; $i < sizeof($t[0]); ++$i)
+		$a[$t[1][$i]] = $t[2][$i];
 	unset($t);
 	return $a;
 }
 function buildArgs($a){
-	$str=""; reset($a);
-	while (list($n,$v)=each($a))
-		$str.=" $n=\"".$v."\"";
+	$str="";
+	foreach ($a as $k => $v)
+		$str.=" $k=\"".$v."\"";
 	return $str;
 }
 function parseTags($t){
@@ -63,10 +63,10 @@ function parseTags($t){
 			if (strlen($t[3])==0) $t[3]="<%\$$id%>";
 			$t3c=compile_tags($t[3]);
 			$pn="\$".strtr($prop,array("."=>"_"));
-			$c.="<% $pn=val(\"".$prop."\");if(sizeof($pn)>0){%>";
+			$c.="<% $pn=val(\"".$prop."\");if($pn!==false){%>";
 			if ($encl) $c.="<$encl".buildArgs($args).">";
 			$c.="<%if(is_array($pn)||is_object($pn)){%>";
-			$c.="\n<%for(reset($pn),\$$val"."cnt=0;list(\$$id,\$$val)=each($pn);++\$$val"."cnt){%>";
+			$c.="\n<% \$$val"."cnt=0;foreach($pn as \$$id=>\$$val){++\$$val"."cnt;%>";
 			$c.=$t3c;
 			$c.="<%}}else if (strlen(\$$val=$pn)>0){%>";
 			$c.=$t3c;
@@ -97,7 +97,7 @@ function parseTags($t){
 			$c.="<% $pn=val(\"".$prop."\");%>";
 			$c.="<select".buildArgs($args).">";
 			if ($emp) $c.="<option value=\"\">$emp</option>\n";
-			$c.="\n<%for(reset($pn),\$$val"."cnt=0;list(\$$id,\$$val)=each($pn);++\$$val"."cnt){%>\n";
+			$c.="\n<% \$$val"."cnt=0;foreach($pn as \$$id=>\$$val){++\$$val"."cnt;%>";
 			$c.=$t3c;
 			$c.="\n<%}%>\n</select>";
 		}
@@ -296,7 +296,10 @@ class TemplateEngine {
 	function headers(){
 		if ($this->headerdone) return ;
 		$h=$this->val("hdr");
-		if (is_array($h)) {while (list($f,$v)=each($h)) header($v);}
+		if (is_array($h)) {
+			foreach ($h as $k => $v)
+				header($v);
+		}
 		$this->headerdone=true;
 	}
 	function load($fn){
@@ -318,8 +321,8 @@ class TemplateEngine {
 
 		ob_start();
 		$this->inc($fn);
-		$c = ob_get_contents();
-		ob_end_clean();
+		$c = ob_get_clean();
+		//ob_end_clean();
 		//$c=preg_replace_callback('#([^/]>)\s*([^<]+)(</)#s','parseNoTags',$c);
 		//$c=preg_replace_callback('#(</\w>)([^<]+)(<)#s','parseNoTags',$c);
 		//TODO don't process <script>...</script>
