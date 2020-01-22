@@ -4,13 +4,17 @@ date_default_timezone_set("Europe/Warsaw");
 
 function logstr_dbg($str){
 	global $config;
+	$e = new Exception;
+	$trace = $e->getTrace();
+	$file = $trace[1]["file"];
+	$line = $trace[1]["line"];
 	$tm = time();
 	if (isset($config["appname"])) $fn="cache/log-".$config["appname"].date("Ymd",$tm).".txt";
 	else $fn="cache/log".date("Ymd", $tm).".txt";
 	$f=@fopen($fn,"ab");
 	if ($f!==false){
 		if (flock($f,LOCK_EX)){
-			fwrite($f,date("H:i:s", $tm).": ".$str."\n");
+			fwrite($f,date("H:i:s", $tm)." (".$file.":".$line.") ".$str."\n");
 			flock($f,LOCK_UN);
 		}
 		fclose($f);

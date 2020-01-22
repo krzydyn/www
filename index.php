@@ -12,16 +12,16 @@ $r->addRoute("GET","/.*(js|css|jpg|png|gif)",function() {
 	$f = ".".Request::getInstance()->getval("uri");
 	logstr("reading file $f type ".make_content_type($f));
 	if (file_exists($f)) {
-$s=filesize($f);
-header("Pragma: public"); // required
-header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-header("Cache-Control: private",false); // required for certain browsers
-header("Content-Type: ".make_content_type($f));
-//Content-Disposition: inline/attachment
-header("Content-Disposition: inline; filename=\"".basename($f)."\"");
-header("Content-Transfer-Encoding: binary");
-header("Content-Length: ".$s);
-header("Accept-Ranges: bytes"); //to show progress bar
+		$s=filesize($f);
+		header("Pragma: public"); // required
+		header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+		header("Cache-Control: private",false); // required for certain browsers
+		header("Content-Type: ".make_content_type($f));
+		//Content-Disposition: inline/attachment
+		header("Content-Disposition: inline; filename=\"".basename($f)."\"");
+		header("Content-Transfer-Encoding: binary");
+		header("Content-Length: ".$s);
+		header("Accept-Ranges: bytes"); //to show progress bar
 		readfile($f);
 	}
 	else {
@@ -32,11 +32,17 @@ header("Accept-Ranges: bytes"); //to show progress bar
 });
 
 //valid php scripts
-$r->addRoute("GET","/.*php",function() {
-	$valid=array("/rss.php");
-	$uri = Request::getInstance()->getval("uri");
+$r->addRoute("GET","/.*(php|html)",function() {
 	global $config;
-	require_once(".".$uri);
+	$f = ".".Request::getInstance()->getval("uri");
+	if (file_exists($f)) {
+		require_once($f);
+	}
+	else {
+		header("'HTTP/1.1", true, 404);
+		logstr("not found $f");
+		exit;
+	}
 });
 
 //default
