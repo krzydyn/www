@@ -3,33 +3,33 @@ require_once("../config.php");
 require_once($config["cmslib"]."modules.php");
 require_once($config["cmslib"]."application.php");
 
-$resp=Response::getInstance();
-if ($resp->getval("req.res")===null)
-	$resp->setval("req.res","user");
-if ($resp->getval("req.type")===null)
-	$resp->setval("req.type","txt");
-if ($resp->getval("req.file")===null)
-	$resp->setval("req.file",$resp->getval("req.res").".".$resp->getval("req.type"));
+$req=Request::getInstance();
+if ($req->getval("req.res")===null)
+	$req->setval("req.res","user");
+if ($req->getval("req.type")===null)
+	$req->setval("req.type","txt");
+if ($req->getval("req.file")===null)
+	$req->setval("req.file",$req->getval("req.res").".".$req->getval("req.type"));
 
-$resp->setval("hdr"); //clear hdr
-$type=$resp->getval("req.type");
-$resp->setval("tpl","html");
-if ($type=="csv") {$resp->addval("hdr","Content-type: text/plain");$resp->setval("tpl","txt");}
-else if ($type=="xls") $resp->addval("hdr","Content-type: application/vnd.ms-excel");
-else if ($type=="html") $resp->addval("hdr","Content-type: text/html");
-else $resp->addval("hdr","Content-type: text/plain");
+$req->setval("hdr"); //clear hdr
+$type=$req->getval("req.type");
+$req->setval("tpl","html");
+if ($type=="csv") {$req->addval("hdr","Content-type: text/plain");$req->setval("tpl","txt");}
+else if ($type=="xls") $req->addval("hdr","Content-type: application/vnd.ms-excel");
+else if ($type=="html") $req->addval("hdr","Content-type: text/html");
+else $req->addval("hdr","Content-type: text/plain");
 
-if ($resp->getval("req.inline")===0)
-	$resp->addval("hdr","Content-disposition: attachment; filename=".$resp->getval("req.file"));
+if ($req->getval("req.inline")===0)
+	$req->addval("hdr","Content-disposition: attachment; filename=".$req->getval("req.file"));
 else
-	$resp->addval("hdr","Content-disposition: filename=".$resp->getval("req.file"));
+	$req->addval("hdr","Content-disposition: filename=".$req->getval("req.file"));
 
-$resp->addval("hdr","Expires: Mon, 26 Jul 1997 05:00:00 GMT");
-$resp->addval("hdr","Pragma: no-store");
+$req->addval("hdr","Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+$req->addval("hdr","Pragma: no-store");
 
 db_connect();
-$resp->setval("result",db_find($resp->getval("req.res"),"*"));
+$req->setval("result",db_find($req->getval("req.res"),"*"));
 
-$t=new TemplateEngine($resp);
+$t=new TemplateEngine($req);
 $t->load("export.tpl");
 ?>

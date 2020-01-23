@@ -4,6 +4,8 @@ $config["appname"]="kysoft";
 
 ini_set("magic_quotes_runtime", 0);
 
+$_SERVER["HTTP_HOST"]="localhost";
+
 if ($_SERVER["HTTP_HOST"]=="localhost"){
 	error_reporting(E_ALL);
 	ini_set('display_errors','On');

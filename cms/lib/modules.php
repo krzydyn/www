@@ -79,7 +79,7 @@ function a2url(&$a){
 	foreach ($a as $f => $v) $str.=",'".$f."'=>'".$v."'";
 	return $str;
 }
-//793007164 Mikolaj Palinski
+
 //published on:
 //http://www.php-help.ro/php-tutorials/php-highlight-search-keywords/comment-page-1/
 function str_highlight($txt,$words){

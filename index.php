@@ -7,6 +7,7 @@ $r = new Router();
 
 //static files
 $r->addRoute("GET","/.*(js|css|jpg|png|gif)",function() {
+	logstr("");
 	global $config;
 	require_once($config["cmslib"]."modules.php");
 	$f = ".".Request::getInstance()->getval("uri");
@@ -25,28 +26,28 @@ $r->addRoute("GET","/.*(js|css|jpg|png|gif)",function() {
 		readfile($f);
 	}
 	else {
-		header("'HTTP/1.1", true, 404);
+		header("HTTP/1.1 404 Not Found");
 		logstr("not found $f");
 		exit;
 	}
 });
 
-//valid php scripts
-$r->addRoute("GET","/.*(php|html)",function() {
+$r->addRoute("GET","/.*(html|php)",function() {
+	logstr("uri = ".Request::getInstance()->getval("uri"));
 	global $config;
 	$f = ".".Request::getInstance()->getval("uri");
 	if (file_exists($f)) {
 		require_once($f);
 	}
 	else {
-		header("'HTTP/1.1", true, 404);
+		header("HTTP/1.1 404 Not Found");
 		logstr("not found $f");
 		exit;
 	}
 });
 
 //default
-$r->addRoute("","/",function() {
+$r->addRoute("","(|index.php)",function() {
 logstr("processing default route '".Request::getInstance()->getval("uri")."'");
 global $config;
 require_once("kysoft.php");

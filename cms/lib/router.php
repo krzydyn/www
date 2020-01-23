@@ -23,23 +23,21 @@ class Route {
 		$this->handler = $handler;
 	}
 	public function match($method, $uri, &$matches) {
-		if (!empty($this->method) && $this->method != $method) return 0;
-		if (empty($this->re_uri)) return 1;
+		$cnt = 1;
+		if (!empty($this->method)) {
+			if ($this->method != $method) return 0;
+			++$cnt;
+		}
+		if (empty($this->re_uri)) return $cnt;
+
 		$patt="/^".$this->esc_re($this->re_uri,"/")."$/i";
 		if (!preg_match($patt, $uri, $matches)) {
 			return 0;
 		}
-		$cnt=0;
-		for ($i=strlen($this->re_uri); --$i>=0; ) {
-			if ($this->re_uri[$i] == "|") {
-				while ($i > 0 && $this->re_uri[$i]!="(") --$i;
-				if ($i == 0) break;
-			}
-			if (ctype_alnum($this->re_uri[$i])) ++$cnt;
+		if (is_array($matches) && sizeof($matches) > 0) {
+			for ($i = 1; $i < sizeof($matches); ++$i)
+				$cnt += strlen($matches[$i]);
 		}
-		$wcnt = strlen($this->re_uri) - $cnt;
-		$cnt=$wcnt + $cnt*10 + 2;
-		if (empty($this->method)) return $cnt-1;
 		return $cnt;
 	}
 }
@@ -57,7 +55,7 @@ class Router {
 		if ($dbg) logstr("matching '".$uri."'");
 		foreach ($this->routes as $r) {
 			$m = $r->match($method, $uri, $matches);
-			$patt="/^".$r->esc_re($r->re_uri,"/")."$/i";
+			$patt="%^".$r->esc_re($r->re_uri,"%")."$%i";
 			if ($dbg) logstr("match on ".$patt." is ".$m);
 			if ($m > $best_match) {
 				$best_match = $m;
@@ -65,10 +63,16 @@ class Router {
 				$best_matches = $matches;
 			}
 		}
-		if ($best_route) {
+		if ($best_route != null) {
 			$r=$best_route;
 			//echo "REQ '[".$method."]:".$uri."' ROUTE TO '[".$r->method."]:".$r->re_uri."'\n";
-			call_user_func_array($r->handler,$best_matches);
+			call_user_func($r->handler);
+		}
+		else {
+			logstr("no route for '".$uri."'");
+			header("HTTP/1.1 403 Forbidden"); //Forbiden
+			flush();
+			die();
 		}
 	}
 }

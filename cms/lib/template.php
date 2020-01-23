@@ -303,6 +303,7 @@ class TemplateEngine {
 		$this->headerdone=true;
 	}
 	function load($fn){
+		logstr("");
 		global $config;
 		$this->req->setval("srv",null);
 		$this->headers();
@@ -312,8 +313,7 @@ class TemplateEngine {
 			//echo "file $fn not found";
 			return ;
 		}
-		$c = ob_get_contents();
-		ob_end_clean();
+		$c = ob_get_clean();
 		if (!empty($c)) {
 			if ($c[strlen($c)-1] != '\n') $c .= "\n";
 			$this->req->addval("error",$c);
@@ -322,7 +322,7 @@ class TemplateEngine {
 		ob_start();
 		$this->inc($fn);
 		$c = ob_get_clean();
-		//ob_end_clean();
+
 		//$c=preg_replace_callback('#([^/]>)\s*([^<]+)(</)#s','parseNoTags',$c);
 		//$c=preg_replace_callback('#(</\w>)([^<]+)(<)#s','parseNoTags',$c);
 		//TODO don't process <script>...</script>

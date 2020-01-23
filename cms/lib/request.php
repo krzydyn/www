@@ -11,7 +11,9 @@ function logstr_dbg($str){
 	$tm = time();
 	if (isset($config["appname"])) $fn="cache/log-".$config["appname"].date("Ymd",$tm).".txt";
 	else $fn="cache/log".date("Ymd", $tm).".txt";
+	$m=umask(0111);
 	$f=@fopen($fn,"ab");
+	umask($m);
 	if ($f!==false){
 		if (flock($f,LOCK_EX)){
 			fwrite($f,date("H:i:s", $tm)." (".$file.":".$line.") ".$str."\n");
@@ -45,7 +47,7 @@ function array_setval(&$t,$n,&$v=null){
 	//echo "$t[$k]=$v<br>";
 	return true;
 }
-function array_hasval(&$t,$n){
+function array_hasval(&$t, $n){
 	if (empty($n)) return true;
 	$n=explode(".",$n);
 	for ($i=0; $i < sizeof($n); $i++){
@@ -55,7 +57,7 @@ function array_hasval(&$t,$n){
 	}
 	return true;
 }
-function &array_getval(&$t,$n,$def=null){
+function &array_getval(&$t, $n, $def=false){
 	if (empty($n)) return $t;
 	$n=explode(".",$n);
 	for ($i=0; $i < sizeof($n); $i++){
@@ -85,28 +87,29 @@ class Request{
 		*/
 		global $_REQUEST,$_FILES,$_SERVER,$_GET,$_POST,$_COOKIE;
 		global $config,$text;
-		$this->setval("cfg",$config);
-		$this->setval("txt",$text);
+		$this->setval("cfg", $config);
+		$this->setval("txt", $text);
 
 		$this->setval("cookie",$_COOKIE);
 		$this->setval("req",$_REQUEST);
 		//propagate get
 		if (isset($_GET)){
 			foreach ($_GET as $k => $v) {
-				$this->setval("req.".$k,$v);
+				$this->setval("req.".$k, $v);
 			}
 		}
 		//propagate cookie
 		if (isset($_COOKIE)){
 			foreach ($_COOKIE as $k => $v) {
 				if ($this->hasval("req.".$k)===false)
-					$this->setval("req.".$k,$v);
+					$this->setval("req.".$k, $v);
 			}
 		}
 		array_unslash($this->vals["req"]);
 
 		unset($_COOKIE);unset($_REQUEST);unset($_GET);unset($_POST);
 
+		logstr("REQUEST_URI = ".$_SERVER["REQUEST_URI"]);
 		$this->setval("srv",$_SERVER);
 		unset($_SERVER);
 		$this->setval("method",$this->getval("srv.REQUEST_METHOD"));
@@ -121,13 +124,12 @@ class Request{
 		if (strpos($uri,"?")!==false) {
 			$uri=substr($uri,0,strpos($uri,"?"));
 		}
-		if ($appuri!==false) {
+		if (!empty($appuri)) {
+			logstr("appuri = '$appuri'   uri = '$uri'");
 			if (strpos($uri,$appuri)===0)
 				$this->setval("uri","/".substr($uri,strlen($appuri)));
-			else {
-				header("Location: ".$appuri,true,303);
-				die();
-			}
+			else
+				$this->setval("uri",$appuri);
 		}
 		else {
 			$this->setval("uri","/");
@@ -163,7 +165,6 @@ class Request{
 			foreach ($n as $k => $v) $this->setval($k,$v);
 			return true;
 		}
-		if ($n == "error") logstr("set error: $v");
 		return array_setval($this->vals,$n,$v);
 	}
 	function addval($n,$v) {
